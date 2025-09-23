@@ -3,13 +3,13 @@ import dbConnect from "../../lib/mongodb"
 // Optional: import models if they exist; fall back gracefully if not
 let Blog, Resource, CaseStudy
 try {
-  Blog = (await import("@/models/Blog")).default
+  Blog = (await import("../../models/Blog")).default
 } catch {}
 try {
-  Resource = (await import("@/models/Resource")).default
+  Resource = (await import("../../models/Resource")).default
 } catch {}
 try {
-  CaseStudy = (await import("@/models/CaseStudy")).default
+  CaseStudy = (await import("../../models/CaseStudy")).default
 } catch {}
 
 function urlTag(loc, lastmod) {
