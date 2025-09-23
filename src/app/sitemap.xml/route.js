@@ -1,4 +1,4 @@
-import dbConnect from "@/lib/mongodb"
+import dbConnect from "../../lib/mongodb"
 
 // Optional: import models if they exist; fall back gracefully if not
 let Blog, Resource, CaseStudy

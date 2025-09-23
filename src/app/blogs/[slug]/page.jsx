@@ -1,5 +1,5 @@
-import dbConnect from "@/lib/mongodb"
-import Blog from "@/models/Blog"
+import dbConnect from "../../../lib/mongodb"
+import Blog from "../../../models/Blog"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 

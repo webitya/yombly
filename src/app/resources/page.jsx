@@ -1,4 +1,4 @@
-import ResourceList from "@/components/resources/ResourceList"
+import ResourceList from "../../components/resources/ResourceList"
 
 export const metadata = {
   title: "Resources | Yombly",

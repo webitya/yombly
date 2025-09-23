@@ -1,4 +1,4 @@
-import CaseStudyList from "@/components/case-studies/CaseStudyList"
+import CaseStudyList from "../../components/case-studies/CaseStudyList"
 
 export const metadata = {
   title: "Case Studies | Yombly",

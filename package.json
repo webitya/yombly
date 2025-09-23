@@ -14,6 +14,7 @@
     "@mui/icons-material": "^7.3.2",
     "@mui/material": "^7.3.2",
     "@vercel/analytics": "^1.5.0",
+    "crypto-js": "^4.2.0",
     "geist": "^1.5.1",
     "mongoose": "^8.18.2",
     "next": "15.5.3",
@@ -21,6 +22,8 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-icons": "^4.11.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
     "swr": "^2.3.6"
   },
   "devDependencies": {
