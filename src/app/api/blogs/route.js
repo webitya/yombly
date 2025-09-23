@@ -1,34 +1,34 @@
-import { NextResponse } from "next/server"
-import dbConnect from "../../../lib/mongodb"
-import Blog from "../../../lib/mongodb"
-import { isAdminRequest } from "../../../lib/admin-auth"
+import { NextResponse } from "next/server";
+import dbConnect from "../../../lib/mongodb";
+import Blog from "../../../models/Blog"; // fix: import your Blog model
+import { isAdminRequest } from "../../../lib/admin-auth";
 
 export async function GET(req) {
-  const { searchParams } = new URL(req.url)
-  const q = (searchParams.get("q") || "").trim()
-  const tag = (searchParams.get("tag") || "").trim()
-  const category = (searchParams.get("category") || "").trim()
-  const page = Number.parseInt(searchParams.get("page") || "1", 10)
-  const limit = Number.parseInt(searchParams.get("limit") || "12", 10)
+  const { searchParams } = new URL(req.url);
+  const q = (searchParams.get("q") || "").trim();
+  const tag = (searchParams.get("tag") || "").trim();
+  const category = (searchParams.get("category") || "").trim();
+  const page = parseInt(searchParams.get("page") || "1", 10);
+  const limit = parseInt(searchParams.get("limit") || "12", 10);
 
-  await dbConnect()
+  await dbConnect();
 
-  const query = {}
-  // Public endpoint: only published
-  query.status = "published"
+  const query = { status: "published" };
 
   if (q) {
-    // Simple text search on title/description
-    query.$or = [{ title: { $regex: q, $options: "i" } }, { description: { $regex: q, $options: "i" } }]
+    query.$or = [
+      { title: { $regex: q, $options: "i" } },
+      { description: { $regex: q, $options: "i" } },
+    ];
   }
-  if (tag) query.tags = { $in: [tag] }
-  if (category) query.category = category
+  if (tag) query.tags = { $in: [tag] };
+  if (category) query.category = category;
 
-  const skip = (page - 1) * limit
+  const skip = (page - 1) * limit;
   const [items, total] = await Promise.all([
-    Blog.find(query).sort({ createdAt: -1 }).skip(skip).limit(limit),
+    Blog.find(query).sort({ createdAt: -1 }).skip(skip).limit(limit).lean(),
     Blog.countDocuments(query),
-  ])
+  ]);
 
   return NextResponse.json({
     items,
@@ -36,16 +36,18 @@ export async function GET(req) {
     limit,
     total,
     pages: Math.ceil(total / limit),
-  })
+  });
 }
 
 export async function POST(req) {
   // Admin-only create
-  if (!isAdminRequest()) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+  if (!(await isAdminRequest(req))) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  await dbConnect()
-  const payload = await req.json()
+
+  await dbConnect();
+
+  const payload = await req.json();
   const {
     title = "",
     slug = "",
@@ -57,22 +59,21 @@ export async function POST(req) {
     status = "draft",
     seoTitle = "",
     seoDescription = "",
-  } = payload || {}
+  } = payload || {};
 
   if (!title || !description || !bodyMarkdown) {
-    return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
+    return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
   }
 
   // Ensure unique slug
-  let finalSlug = (slug || title).toString().toLowerCase().trim()
-  finalSlug = finalSlug
+  let finalSlug = (slug || title).toLowerCase().trim()
     .replace(/[\s_]+/g, "-")
     .replace(/[^\w-]+/g, "")
-    .replace(/--+/g, "-")
+    .replace(/--+/g, "-");
 
-  const exists = await Blog.findOne({ slug: finalSlug })
+  const exists = await Blog.findOne({ slug: finalSlug });
   if (exists) {
-    return NextResponse.json({ error: "Slug already exists" }, { status: 409 })
+    return NextResponse.json({ error: "Slug already exists" }, { status: 409 });
   }
 
   const doc = await Blog.create({
@@ -86,7 +87,7 @@ export async function POST(req) {
     status,
     seoTitle,
     seoDescription,
-  })
+  });
 
-  return NextResponse.json({ ok: true, item: doc }, { status: 201 })
+  return NextResponse.json({ ok: true, item: doc }, { status: 201 });
 }

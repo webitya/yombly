@@ -7,7 +7,7 @@ if (!MONGODB_URI) {
   throw new Error("[v0] Missing MONGODB_URI environment variable");
 }
 
-// Use global object to cache the connection across hot reloads in development
+// Global cache for hot-reload in development
 let cached = global.mongoose;
 
 if (!cached) {
@@ -15,16 +15,13 @@ if (!cached) {
 }
 
 async function dbConnect() {
-  if (cached.conn) {
-    return cached.conn; // Return existing connection if available
-  }
+  if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
+    // Create a new Mongoose connection promise
     cached.promise = mongoose.connect(MONGODB_URI, {
-      bufferCommands: false, // Disable Mongoose buffering for faster startup
-      // Optional recommended options (latest Mongoose handles these by default)
-      // useNewUrlParser: true,
-      // useUnifiedTopology: true,
+      bufferCommands: false, // Recommended for serverless
+      // useNewUrlParser and useUnifiedTopology are default in latest Mongoose
     }).then((mongooseInstance) => mongooseInstance);
   }
 
@@ -32,8 +29,5 @@ async function dbConnect() {
   return cached.conn;
 }
 
-// Default export for easy import
 export default dbConnect;
-
-// Named export for flexibility
 export { dbConnect as connectDB };

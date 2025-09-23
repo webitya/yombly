@@ -1,20 +1,23 @@
-import dbConnect from "../../../lib/mongodb"
-import Blog from "../../../models/Blog"
-import ReactMarkdown from "react-markdown"
-import remarkGfm from "remark-gfm"
+import dbConnect from "../../../lib/mongodb";
+import Blog from "../../../models/Blog";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 export async function generateMetadata({ params }) {
-  await dbConnect()
-  const item = await Blog.findOne({ slug: params.slug }).lean()
+  await dbConnect();
+  const item = await Blog.findOne({ slug: params.slug }).lean();
 
   if (!item) {
-    return { title: "Blog | Yombly", alternates: { canonical: `/blogs/${params.slug}` } }
+    return {
+      title: "Blog | Yombly",
+      alternates: { canonical: `/blogs/${params.slug}` },
+    };
   }
 
-  const title = item.seoTitle || item.title
-  const description = item.seoDescription || item.description
-  const image = item.imageUrl || "/open-graph-image.jpg"
-  const url = `/blogs/${params.slug}`
+  const title = item.seoTitle || item.title;
+  const description = item.seoDescription || item.description;
+  const image = item.imageUrl || "/open-graph-image.jpg";
+  const url = `/blogs/${params.slug}`;
 
   return {
     title,
@@ -22,29 +25,30 @@ export async function generateMetadata({ params }) {
     openGraph: { title, description, images: [image], type: "article", url },
     twitter: { card: "summary_large_image", title, description, images: [image] },
     alternates: { canonical: url },
-  }
+  };
 }
 
-export const revalidate = 60
+export const revalidate = 60;
 
 export default async function BlogDetailPage({ params }) {
-  await dbConnect()
-  const post = await Blog.findOne({ slug: params.slug, status: "published" }).lean()
+  await dbConnect();
+  const post = await Blog.findOne({ slug: params.slug, status: "published" }).lean();
 
   if (!post) {
     return (
       <main className="mx-auto max-w-3xl px-4 py-10">
         <h1 className="text-2xl font-semibold">Not found</h1>
       </main>
-    )
+    );
   }
 
-  const site = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
-  const pageUrl = `${site}/blogs/${params.slug}`
-  const image = post.imageUrl || "/images/yombly-logo.png"
+  const site = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  const pageUrl = `${site}/blogs/${params.slug}`;
+  const image = post.imageUrl || `${site}/images/yombly-logo.png`;
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-10">
+      {/* Structured data for SEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -76,9 +80,13 @@ export default async function BlogDetailPage({ params }) {
             />
           )}
         </header>
+
         <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-md p-5">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.bodyMarkdown}</ReactMarkdown>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {post.bodyMarkdown || ""}
+          </ReactMarkdown>
         </div>
+
         {post.tags?.length > 0 && (
           <div className="mt-6 flex flex-wrap gap-2">
             {post.tags.map((t) => (
@@ -93,5 +101,5 @@ export default async function BlogDetailPage({ params }) {
         )}
       </article>
     </main>
-  )
+  );
 }
