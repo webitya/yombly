@@ -14,13 +14,15 @@ if (!cached) {
   cached = global.mongoose = { conn: null, promise: null };
 }
 
-export async function dbConnect() {
-  if (cached.conn) return cached.conn;
+async function dbConnect() {
+  if (cached.conn) {
+    return cached.conn; // Return existing connection if available
+  }
 
   if (!cached.promise) {
     cached.promise = mongoose.connect(MONGODB_URI, {
-      bufferCommands: false,
-      // optional: other recommended options for latest Mongoose
+      bufferCommands: false, // Disable Mongoose buffering for faster startup
+      // Optional recommended options (latest Mongoose handles these by default)
       // useNewUrlParser: true,
       // useUnifiedTopology: true,
     }).then((mongooseInstance) => mongooseInstance);
@@ -30,5 +32,8 @@ export async function dbConnect() {
   return cached.conn;
 }
 
-export { dbConnect as connectDB };
+// Default export for easy import
 export default dbConnect;
+
+// Named export for flexibility
+export { dbConnect as connectDB };

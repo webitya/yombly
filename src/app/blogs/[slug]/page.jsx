@@ -3,17 +3,19 @@ import Blog from "../../../models/Blog"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 
-// SEO metadata for each blog
 export async function generateMetadata({ params }) {
   await dbConnect()
   const item = await Blog.findOne({ slug: params.slug }).lean()
+
   if (!item) {
     return { title: "Blog | Yombly", alternates: { canonical: `/blogs/${params.slug}` } }
   }
+
   const title = item.seoTitle || item.title
   const description = item.seoDescription || item.description
   const image = item.imageUrl || "/open-graph-image.jpg"
   const url = `/blogs/${params.slug}`
+
   return {
     title,
     description,
@@ -66,19 +68,18 @@ export default async function BlogDetailPage({ params }) {
         <header className="mb-6">
           <h1 className="text-3xl font-bold">{post.title}</h1>
           <p className="text-foreground/70 mt-2">{post.description}</p>
-          {post.imageUrl ? (
-            // eslint-disable-next-line @next/next/no-img-element
+          {post.imageUrl && (
             <img
-              src={post.imageUrl || "/placeholder.svg"}
+              src={post.imageUrl}
               alt={post.title}
               className="w-full h-64 object-cover rounded-xl mt-4"
             />
-          ) : null}
+          )}
         </header>
         <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-md p-5">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.bodyMarkdown}</ReactMarkdown>
         </div>
-        {Array.isArray(post.tags) && post.tags.length ? (
+        {post.tags?.length > 0 && (
           <div className="mt-6 flex flex-wrap gap-2">
             {post.tags.map((t) => (
               <span
@@ -89,7 +90,7 @@ export default async function BlogDetailPage({ params }) {
               </span>
             ))}
           </div>
-        ) : null}
+        )}
       </article>
     </main>
   )

@@ -10,11 +10,10 @@ const BlogSchema = new mongoose.Schema(
     tags: { type: [String], default: [] },
     category: { type: String, default: "" },
     status: { type: String, enum: ["draft", "published"], default: "draft" },
-    // Optional SEO overrides
     seoTitle: { type: String, default: "" },
     seoDescription: { type: String, default: "" },
   },
-  { timestamps: true },
+  { timestamps: true }
 )
 
 export default mongoose.models.Blog || mongoose.model("Blog", BlogSchema)
