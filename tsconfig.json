@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/lib/utils.js", "src/components/theme-provider.js", "src/components/ui/accordion.js", "src/components/ui/alert-dialog.js", "src/components/ui/alert.js"  ],
+, "src/lib/utils.js", "src/components/theme-provider.js", "src/components/ui/accordion.js", "src/components/ui/alert-dialog.js", "src/components/ui/alert.js", "src/components/ui/aspect-ratio.js", "src/components/ui/avatar.js"  ],
   "exclude": [
     "node_modules"
   ]
