@@ -25,7 +25,7 @@ export default function NewsletterForm() {
       setEmail("")
     } catch (err) {
       setStatus("error")
-      console.log("[v0] newsletter error:", err.message)
+      console.log("Yombly newsletter error:", err.message)
     }
   }
 

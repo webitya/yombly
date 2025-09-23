@@ -51,7 +51,7 @@ export async function GET() {
     }
 
   } catch (e) {
-    console.log("[v0] sitemap generation error:", e?.message);
+    console.log("[] sitemap generation error:", e?.message);
   }
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

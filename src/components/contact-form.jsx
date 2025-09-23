@@ -21,7 +21,7 @@ export default function ContactForm() {
       setForm({ name: "", email: "", message: "" })
     } catch (err) {
       setStatus("error")
-      console.log("[v0] contact error:", err.message)
+      console.log("[] contact error:", err.message)
     }
   }
 

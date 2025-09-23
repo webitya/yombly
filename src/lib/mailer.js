@@ -7,7 +7,7 @@ function getTransporter() {
   const pass = process.env.EMAIL_PASS
 
   if (!user || !pass) {
-    console.log("[v0] Missing EMAIL_USER or EMAIL_PASS")
+    console.log("Yombly Missing EMAIL_USER or EMAIL_PASS")
   }
 
   // If a host is provided, use SMTP host; otherwise fallback to a common service-less config

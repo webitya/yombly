@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGODB_URI) {
-  throw new Error("[v0] Missing MONGODB_URI environment variable");
+  throw new Error("Yombly Missing MONGODB_URI environment variable");
 }
 
 // Global cache for hot-reload in development
