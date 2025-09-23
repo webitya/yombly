@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { dbConnect } from "../../../../../lib/mongodb";
+import  dbConnect  from "../../../../../lib/mongodb";
 import Ticket from "../../../../../models/Ticket";
 import { isAdminRequest } from "../../../../../lib/admin-auth";
 import { sendAdminReplyEmail } from "../../../../../lib/mailer";

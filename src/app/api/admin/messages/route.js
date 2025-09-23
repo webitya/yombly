@@ -1,6 +1,7 @@
 /* list messages for admin */
 import { NextResponse } from "next/server";
-import { dbConnect } from "../../../../lib/mongodb";
+// Use default import
+import dbConnect from "../../../../lib/mongodb";
 import Message from "../../../../models/Message";
 import { requireAdmin } from "../_guard";
 

@@ -21,7 +21,6 @@ async function dbConnect() {
     // Create a new Mongoose connection promise
     cached.promise = mongoose.connect(MONGODB_URI, {
       bufferCommands: false, // Recommended for serverless
-      // useNewUrlParser and useUnifiedTopology are default in latest Mongoose
     }).then((mongooseInstance) => mongooseInstance);
   }
 
@@ -29,5 +28,8 @@ async function dbConnect() {
   return cached.conn;
 }
 
+// Default export for simple import
 export default dbConnect;
-export { dbConnect as connectDB };
+
+// Named export for flexibility
+export { dbConnect };

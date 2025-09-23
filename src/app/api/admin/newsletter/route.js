@@ -1,6 +1,6 @@
 /* list subscribers for admin */
 import { NextResponse } from "next/server";
-import { dbConnect } from "../../../../lib/mongodb";
+import  dbConnect  from "../../../../lib/mongodb";
 import Subscriber from "../../../../models/Subscriber";
 import { requireAdmin } from "../_guard";
 

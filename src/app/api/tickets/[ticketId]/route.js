@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { dbConnect } from "../../../../lib/mongodb";
+import  dbConnect  from "../../../../lib/mongodb";
 import Ticket from "../../../../models/Ticket";
 
 export async function GET(_req, { params }) {
