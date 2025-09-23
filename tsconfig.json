@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/lib/utils.js", "src/components/theme-provider.js"  ],
+, "src/lib/utils.js", "src/components/theme-provider.js", "src/components/ui/accordion.js"  ],
   "exclude": [
     "node_modules"
   ]
