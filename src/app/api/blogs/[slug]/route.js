@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import dbConnect from "../../../lib/mongodb";
+import dbConnect from "../../../../lib/mongodb";
 import Blog from "../../../../models/Blog";
 import { isAdminRequest } from "../../../../lib/admin-auth";
 
