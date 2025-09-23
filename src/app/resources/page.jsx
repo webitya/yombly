@@ -1,4 +1,6 @@
+import Header from "../../components/header"
 import ResourceList from "../../components/resources/ResourceList"
+import Footer from "../../components/footer"
 
 export const metadata = {
   title: "Resources | Yombly",
@@ -25,7 +27,9 @@ export const revalidate = 60
 export default function ResourcesPage() {
   const site = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
   return (
-    <main className="container mx-auto max-w-5xl px-4 py-10">
+  <>
+  <Header/>
+  <main className="container mx-auto max-w-5xl px-4 py-10">
       <header className="mb-6">
         <h1 className="text-3xl font-bold text-foreground text-balance">Resources</h1>
         <p className="mt-2 text-foreground/80">Download helpful PDFs and materials.</p>
@@ -44,5 +48,10 @@ export default function ResourcesPage() {
       />
       <ResourceList />
     </main>
+
+
+  <Footer/>
+  
+  </>
   )
 }

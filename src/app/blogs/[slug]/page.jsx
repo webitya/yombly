@@ -1,7 +1,9 @@
+import Header from "../../../components/header";
 import dbConnect from "../../../lib/mongodb";
 import Blog from "../../../models/Blog";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import Footer from "../../../components/footer";
 
 export async function generateMetadata({ params }) {
   await dbConnect();
@@ -47,7 +49,10 @@ export default async function BlogDetailPage({ params }) {
   const image = post.imageUrl || `${site}/images/yombly-logo.png`;
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-10">
+    <>
+    <Header/>
+
+<main className="mx-auto max-w-3xl px-4 py-10">
       {/* Structured data for SEO */}
       <script
         type="application/ld+json"
@@ -101,5 +106,7 @@ export default async function BlogDetailPage({ params }) {
         )}
       </article>
     </main>
+    <Footer/>
+    </>
   );
 }

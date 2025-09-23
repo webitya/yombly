@@ -1,9 +1,13 @@
+import Header from "../../../components/header"
 import TrackTicketSearch from "../../../components/tickets/TrackTicketSearch"
+import Footer from "../../../components/footer"
 
 export const metadata = { title: "Track Ticket • Yombly" }
 
 export default function Page() {
   return (
+   <>
+   <Header/>
     <main className="mx-auto max-w-5xl px-4 py-10">
       <header className="mb-6">
         <h1 className="text-balance text-3xl font-bold tracking-tight">Track Your Ticket</h1>
@@ -11,5 +15,7 @@ export default function Page() {
       </header>
       <TrackTicketSearch />
     </main>
+    <Footer/>
+   </>
   )
 }
