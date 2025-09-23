@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Menu } from "@mui/icons-material"
+import MobileDrawer from "./MobileDrawer"
 
 export default function Header() {
   const [open, setOpen] = useState(false)
@@ -60,42 +61,15 @@ export default function Header() {
           <button
             aria-label="Open Menu"
             className="md:hidden"
-            onClick={() => setOpen(!open)}
+            onClick={() => setOpen(true)}
           >
             <Menu />
           </button>
         </div>
-
-        {/* Mobile Navigation */}
-        {open && (
-          <div className="mt-3 md:hidden flex flex-col gap-3 text-sm">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
-
-            <Link
-              href="/tickets/track"
-              onClick={() => setOpen(false)}
-              className="px-4 py-2 rounded-md border border-[var(--border)] text-center"
-            >
-              Track Ticket
-            </Link>
-            <Link
-              href="/tickets/raise"
-              onClick={() => setOpen(false)}
-              className="px-4 py-2 rounded-md bg-[var(--primary)] text-[var(--primary-foreground)] text-center"
-            >
-              Raise Ticket
-            </Link>
-          </div>
-        )}
       </div>
+
+      {/* Mobile Drawer */}
+      <MobileDrawer open={open} setOpen={setOpen} navLinks={navLinks} />
     </header>
   )
 }
