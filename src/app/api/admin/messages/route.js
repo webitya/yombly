@@ -1,6 +1,5 @@
 /* list messages for admin */
 import { NextResponse } from "next/server";
-// Use default import
 import dbConnect from "../../../../lib/mongodb";
 import Message from "../../../../models/Message";
 import { requireAdmin } from "../_guard";
@@ -13,10 +12,10 @@ export async function GET(request) {
     // Connect to DB
     await dbConnect();
 
-    // Optional: support pagination via query params
+    // Pagination
     const url = new URL(request.url);
-    const page = parseInt(url.searchParams.get("page")) || 1;
-    const limit = parseInt(url.searchParams.get("limit")) || 200;
+    const page = Math.max(1, parseInt(url.searchParams.get("page")) || 1);
+    const limit = Math.min(200, parseInt(url.searchParams.get("limit")) || 50);
     const skip = (page - 1) * limit;
 
     // Fetch messages
@@ -26,11 +25,12 @@ export async function GET(request) {
       .limit(limit)
       .lean();
 
-    // Total count for pagination
+    // Count
     const total = await Message.countDocuments();
 
     return NextResponse.json({ items, total, page, limit });
   } catch (e) {
+    console.error("[Admin Messages GET] error:", e);
     const status = e.message === "Unauthorized" ? 401 : 500;
     return NextResponse.json({ error: e.message }, { status });
   }

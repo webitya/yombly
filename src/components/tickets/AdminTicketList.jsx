@@ -12,11 +12,14 @@ export default function AdminTicketList() {
   const { data, mutate, isLoading } = useSWR("/api/tickets", fetcher)
   const [active, setActive] = useState(null)
 
+  const tickets = data?.tickets || []
+
   return (
     <div className="grid gap-6 md:grid-cols-3">
+      {/* Tickets List */}
       <div className="rounded-xl border border-white/15 bg-white/10 backdrop-blur p-4">
         <div className="flex items-center justify-between">
-          <h3 className="font-semibold">Tickets</h3>
+          <h3 className="font-semibold">Tickets ({tickets.length})</h3>
           <button
             onClick={() => mutate()}
             className="inline-flex items-center gap-1 rounded-md bg-emerald-600 px-2 py-1 text-white"
@@ -24,13 +27,21 @@ export default function AdminTicketList() {
             <MdRefresh /> Refresh
           </button>
         </div>
+
         {isLoading && <p className="mt-4 text-sm opacity-70">Loading...</p>}
+
+        {!tickets.length && !isLoading && (
+          <p className="mt-4 text-sm opacity-70">No tickets found.</p>
+        )}
+
         <ul className="mt-3 space-y-2">
-          {data?.tickets?.map((t) => (
+          {tickets.map((t) => (
             <li
               key={t.ticketId}
               onClick={() => setActive(t.ticketId)}
-              className={`cursor-pointer rounded-lg border border-white/10 p-3 ${active === t.ticketId ? "bg-emerald-600/20" : "bg-background/40"}`}
+              className={`cursor-pointer rounded-lg border border-white/10 p-3 ${
+                active === t.ticketId ? "bg-emerald-600/20" : "bg-background/40"
+              }`}
             >
               <div className="flex items-center justify-between">
                 <span className="font-mono text-sm">{t.ticketId}</span>
@@ -47,6 +58,7 @@ export default function AdminTicketList() {
         </ul>
       </div>
 
+      {/* Ticket Details */}
       <div className="md:col-span-2 space-y-4">
         {!active && (
           <p className="rounded-xl border border-dashed border-white/15 p-6 opacity-70">
@@ -67,8 +79,19 @@ function AdminTicketDetail({ ticketId, onReplied }) {
     onReplied?.()
   }
 
-  if (isLoading) return <p className="rounded-xl border border-white/15 p-6 opacity-70">Loading...</p>
-  if (!data?.ticket) return <p className="rounded-xl border border-white/15 p-6 text-red-500">Ticket not found</p>
+  if (isLoading)
+    return (
+      <p className="rounded-xl border border-white/15 p-6 opacity-70">
+        Loading...
+      </p>
+    )
+
+  if (!data?.ticket)
+    return (
+      <p className="rounded-xl border border-white/15 p-6 text-red-500">
+        Ticket not found
+      </p>
+    )
 
   return (
     <div className="space-y-4">

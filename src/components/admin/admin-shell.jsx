@@ -26,6 +26,12 @@ export default function AdminShell({ children }) {
               <Link href="/admin/tickets" className="hover:underline">
                 Tickets
               </Link>
+              <Link href="/admin/messages" className="hover:underline">
+                Messages
+              </Link>
+              <Link href="/admin/newsletter" className="hover:underline">
+                Subscribers
+              </Link>
               <Link href="/admin/case-studies" className="hover:underline">
                 Case Studies
               </Link>
