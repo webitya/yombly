@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
-import dbConnect from "../../../../lib/mongodb"
-import Ticket from "../../../../models/Ticket"
+import dbConnect from "../../../../../../lib/mongodb"
+import Ticket from "../../../../.././../models/Ticket"
 
 export async function POST(req, { params }) {
   try {
