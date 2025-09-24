@@ -13,6 +13,7 @@ export default function Header() {
     { href: "/sales-syllabus", label: "Sales Syllabus" },
     { href: "/marketcrew", label: "MarketCrew" },
     { href: "/exactiq", label: "ExactIQ" },
+     { href: "/revenue-pilot", label: "Revenue Pilot" },
     { href: "/about", label: "About" },
     { href: "/blogs", label: "Blogs" },
     { href: "/resources", label: "Resources" },

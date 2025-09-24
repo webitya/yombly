@@ -52,7 +52,7 @@ export default function Footer() {
             <div className="font-medium mb-3">Company</div>
             <ul className="space-y-2">
               <li><Link href="/about" className="hover:text-[var(--primary)]">About</Link></li>
-              <li><a href="#contact" className="hover:text-[var(--primary)]">Contact</a></li>
+              <li><a href="/contact" className="hover:text-[var(--primary)]">Contact</a></li>
               <li><Link href="/admin" className="hover:text-[var(--primary)]">Admin</Link></li>
             </ul>
           </div>
@@ -71,7 +71,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li><Link href="/tickets/track" className="hover:text-[var(--primary)]">Track Ticket</Link></li>
               <li><Link href="/tickets/raise" className="hover:text-[var(--primary)]">Raise Ticket</Link></li>
-              <li><a href="#contact" className="hover:text-[var(--primary)]">Contact</a></li>
+              <li><a href="/contact" className="hover:text-[var(--primary)]">Contact</a></li>
             </ul>
           </div>
         </div>
