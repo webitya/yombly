@@ -16,9 +16,11 @@ export default function Header() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
+    // Services will be handled separately as 3rd item
     { href: "/blogs", label: "Blogs" },
     { href: "/resources", label: "Resources" },
     { href: "/case-studies", label: "Case Studies" },
+    { href: "/contact", label: "Contact" },
   ];
 
   const servicesLinks = [
@@ -34,7 +36,7 @@ export default function Header() {
   };
 
   const handleMouseLeave = () => {
-    closeTimeout.current = setTimeout(() => setServicesOpen(false), 150); // small delay
+    closeTimeout.current = setTimeout(() => setServicesOpen(false), 150);
   };
 
   return (
@@ -48,24 +50,27 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6 text-sm text-gray-700 relative">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`transition ${
-                    isActive
-                      ? "text-[var(--primary)] font-semibold"
-                      : "hover:text-[var(--primary)]"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
+            {/* Home */}
+            <Link
+              href="/"
+              className={`transition ${
+                pathname === "/" ? "text-[var(--primary)] font-semibold" : "hover:text-[var(--primary)]"
+              }`}
+            >
+              Home
+            </Link>
 
-            {/* Services Dropdown */}
+            {/* About */}
+            <Link
+              href="/about"
+              className={`transition ${
+                pathname === "/about" ? "text-[var(--primary)] font-semibold" : "hover:text-[var(--primary)]"
+              }`}
+            >
+              About
+            </Link>
+
+            {/* Services Dropdown (3rd) */}
             <div
               className="relative"
               onMouseEnter={handleMouseEnter}
@@ -81,7 +86,6 @@ export default function Header() {
                 Services ▾
               </button>
 
-              {/* Dropdown Menu */}
               <div
                 className={`absolute left-0 top-full mt-1 w-48 bg-white border border-[var(--border)] shadow-lg rounded-md overflow-hidden transition-all duration-200
                   ${servicesOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}
@@ -104,6 +108,22 @@ export default function Header() {
                 })}
               </div>
             </div>
+
+            {/* Remaining Nav Links */}
+            {navLinks.slice(2).map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`transition ${
+                    isActive ? "text-[var(--primary)] font-semibold" : "hover:text-[var(--primary)]"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
 
             {/* CTA Buttons */}
             <Link

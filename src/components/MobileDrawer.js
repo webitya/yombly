@@ -7,6 +7,14 @@ import { MdClose } from "react-icons/md";
 export default function MobileDrawer({ open, setOpen, navLinks, servicesLinks }) {
   const pathname = usePathname();
 
+  // Reorder links to put Services in 3rd place
+  const reorderedNavLinks = [
+    navLinks[0], // Home
+    navLinks[1], // About
+    { href: "#services", label: "Services" }, // Placeholder for dropdown
+    ...navLinks.slice(2), // Blogs, Resources, Case Studies
+  ];
+
   return (
     <>
       {/* Overlay */}
@@ -33,46 +41,49 @@ export default function MobileDrawer({ open, setOpen, navLinks, servicesLinks })
 
         {/* Navigation */}
         <nav className="mt-16 flex flex-col gap-5 px-6 text-base font-medium">
-          {/* Main Links */}
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className={`transition-colors ${
-                  isActive
-                    ? "text-[var(--primary)] font-semibold"
-                    : "hover:text-[var(--primary)]"
-                }`}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-
-          {/* Services Section */}
-          <div className="mt-4 border-t border-[var(--border)] pt-4 flex flex-col gap-2">
-            <span className="text-gray-500 text-sm uppercase">Services</span>
-            {servicesLinks.map((s) => {
-              const isActive = pathname === s.href;
+          {reorderedNavLinks.map((link) => {
+            if (link.href === "#services") {
+              // Services dropdown
+              return (
+                <div key="services" className="flex flex-col gap-2 mt-2">
+                  <span className="text-gray-500 text-sm uppercase">Services</span>
+                  {servicesLinks.map((s) => {
+                    const isActive = pathname === s.href;
+                    return (
+                      <Link
+                        key={s.href}
+                        href={s.href}
+                        onClick={() => setOpen(false)}
+                        className={`block pl-2 transition-colors ${
+                          isActive
+                            ? "text-[var(--primary)] font-semibold"
+                            : "hover:text-[var(--primary)]"
+                        }`}
+                      >
+                        {s.label}
+                      </Link>
+                    );
+                  })}
+                </div>
+              );
+            } else {
+              const isActive = pathname === link.href;
               return (
                 <Link
-                  key={s.href}
-                  href={s.href}
+                  key={link.href}
+                  href={link.href}
                   onClick={() => setOpen(false)}
-                  className={`block transition-colors pl-2 ${
+                  className={`transition-colors ${
                     isActive
                       ? "text-[var(--primary)] font-semibold"
                       : "hover:text-[var(--primary)]"
                   }`}
                 >
-                  {s.label}
+                  {link.label}
                 </Link>
               );
-            })}
-          </div>
+            }
+          })}
 
           {/* CTA Buttons */}
           <Link
