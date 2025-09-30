@@ -48,12 +48,7 @@ export default function AdminShell({ children }) {
       {/* Main */}
       <main className="mx-auto max-w-6xl px-6 py-8">{children}</main>
 
-      {/* Footer */}
-      <footer className="mt-12 border-t border-border">
-        <div className="mx-auto max-w-6xl px-6 py-6 text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Yombly — Admin
-        </div>
-      </footer>
+    
 
       {/* Shortcut Drawer mounted globally */}
       <AdminShortcutDrawer />
