@@ -28,9 +28,9 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50">
-      <div className="glass mx-auto max-w-7xl px-4 py-3 rounded-b-xl">
-        <div className="flex items-center justify-between">
+    <header className="sticky top-0 z-50 w-full shadow-md">
+      <div className="glass w-full px-6 md:px-12 py-3  bg-white/70 backdrop-blur-sm shadow-lg">
+        <div className="flex items-center justify-between max-w-[1400px] mx-auto">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <Logo />
@@ -71,7 +71,6 @@ export default function Header() {
                 Services ▾
               </button>
 
-              {/* Dropdown Menu */}
               {servicesOpen && (
                 <div className="absolute left-0 top-full mt-2 w-48 bg-white border border-[var(--border)] shadow-lg rounded-md overflow-hidden transition-all duration-200">
                   {servicesLinks.map((s) => {
@@ -123,7 +122,7 @@ export default function Header() {
             className="md:hidden"
             onClick={() => setOpen(true)}
           >
-            <Menu />
+            <Menu fontSize="large" />
           </button>
         </div>
       </div>
