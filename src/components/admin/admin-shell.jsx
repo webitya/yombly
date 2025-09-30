@@ -48,8 +48,6 @@ export default function AdminShell({ children }) {
       {/* Main */}
       <main className="mx-auto max-w-6xl px-6 py-8">{children}</main>
 
-    
-
       {/* Shortcut Drawer mounted globally */}
       <AdminShortcutDrawer />
     </div>
