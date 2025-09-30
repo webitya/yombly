@@ -1,51 +1,109 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { MdClose } from "react-icons/md"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { MdClose } from "react-icons/md";
 
-export default function MobileDrawer({ open, setOpen, navLinks }) {
+export default function MobileDrawer({ open, setOpen, navLinks, servicesLinks }) {
+  const pathname = usePathname();
+
   return (
-    <div
-      className={`fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 ${
-        open ? "translate-x-0" : "translate-x-full"
-      } z-50`}
-    >
-      {/* Close button */}
-      <button
-        className="absolute top-4 right-4 text-2xl"
+    <>
+      {/* Overlay */}
+      <div
+        className={`fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300 ${
+          open ? "opacity-100 visible" : "opacity-0 invisible"
+        } z-40`}
         onClick={() => setOpen(false)}
+      />
+
+      {/* Drawer */}
+      <div
+        className={`fixed top-0 right-0 h-full w-64 sm:w-72 bg-white shadow-xl transform transition-transform duration-300 ${
+          open ? "translate-x-0" : "translate-x-full"
+        } z-50 flex flex-col`}
       >
-        <MdClose />
-      </button>
+        {/* Close Button */}
+        <button
+          className="absolute top-4 right-4 text-2xl text-gray-600 hover:text-red-500 transition"
+          onClick={() => setOpen(false)}
+        >
+          <MdClose />
+        </button>
 
-      {/* Navigation Links */}
-      <nav className="mt-16 flex flex-col gap-4 px-6 text-sm">
-        {navLinks.map((link) => (
+        {/* Navigation */}
+        <nav className="mt-16 flex flex-col gap-5 px-6 text-base font-medium">
+          {/* Main Links */}
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className={`transition-colors ${
+                  isActive
+                    ? "text-[var(--primary)] font-semibold"
+                    : "hover:text-[var(--primary)]"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+
+          {/* Services Section */}
+          <div className="mt-4 border-t border-[var(--border)] pt-4 flex flex-col gap-2">
+            <span className="text-gray-500 text-sm uppercase">Services</span>
+            {servicesLinks.map((s) => {
+              const isActive = pathname === s.href;
+              return (
+                <Link
+                  key={s.href}
+                  href={s.href}
+                  onClick={() => setOpen(false)}
+                  className={`block transition-colors pl-2 ${
+                    isActive
+                      ? "text-[var(--primary)] font-semibold"
+                      : "hover:text-[var(--primary)]"
+                  }`}
+                >
+                  {s.label}
+                </Link>
+              );
+            })}
+          </div>
+
+          {/* CTA Buttons */}
           <Link
-            key={link.href}
-            href={link.href}
+            href="/tickets/track"
             onClick={() => setOpen(false)}
-            className="hover:text-[var(--primary)]"
+            className={`px-4 py-2 rounded-md border border-[var(--border)] text-center transition ${
+              pathname === "/tickets/track"
+                ? "bg-gray-100 font-semibold"
+                : "hover:bg-gray-50"
+            }`}
           >
-            {link.label}
+            Track Ticket
           </Link>
-        ))}
+          <Link
+            href="/tickets/raise"
+            onClick={() => setOpen(false)}
+            className={`px-4 py-2 rounded-md text-center transition ${
+              pathname === "/tickets/raise"
+                ? "bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold"
+                : "bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90"
+            }`}
+          >
+            Raise Ticket
+          </Link>
+        </nav>
 
-        <Link
-          href="/tickets/track"
-          onClick={() => setOpen(false)}
-          className="px-4 py-2 rounded-md border border-[var(--border)] text-center"
-        >
-          Track Ticket
-        </Link>
-        <Link
-          href="/tickets/raise"
-          onClick={() => setOpen(false)}
-          className="px-4 py-2 rounded-md bg-[var(--primary)] text-[var(--primary-foreground)] text-center"
-        >
-          Raise Ticket
-        </Link>
-      </nav>
-    </div>
-  )
+        {/* Footer */}
+        <div className="mt-auto px-6 py-4 text-xs text-gray-500 border-t">
+          © {new Date().getFullYear()} Yombly. All rights reserved.
+        </div>
+      </div>
+    </>
+  );
 }
