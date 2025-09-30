@@ -1,78 +1,92 @@
-import Image from "next/image"
-import NewsletterForm from "../../components/newsletter-form"
-import GlassCard from "../../components/glass-card"
-import { HiBadgeCheck } from "react-icons/hi"
+"use client"
 
-export default function HomeHero() {
+import Image from "next/image"
+import Link from "next/link"
+import RocketLaunchIcon from "@mui/icons-material/RocketLaunch"
+
+export default function HeroSection() {
   return (
-    <section className="relative">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            name: "Yombly — Revenue Productivity Platform",
-            description: "Hire right. Upskill teams. Act on real market intelligence.",
-            url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
-            inLanguage: "en",
-            publisher: { "@type": "Organization", name: "Yombly" },
-          }),
-        }}
-      />
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-100 via-white to-white" />
-      <div className="mx-auto max-w-7xl px-4 py-16">
-        <div className="grid lg:grid-cols-2 gap-10 items-center">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-200 bg-white/70 backdrop-blur shadow-sm text-sm">
-              <HiBadgeCheck className="text-blue-600" size={16} />
-              <span className="text-slate-600">Unified Revenue Productivity</span>
-            </div>
-            <h1 className="mt-5 text-4xl md:text-5xl font-semibold tracking-tight text-balance">
-              Build, Grow & Future‑Proof Your Sales and Marketing Teams
-            </h1>
-            <p className="mt-4 text-lg text-slate-600">
-              Yombly helps you hire right-fit talent, upskill with real-world intelligence, and keep teams future‑ready.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a href="#contact" className="px-5 py-3 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition">
-                Start Your Revenue Journey
-              </a>
-              <a
-                href="#contact"
-                className="px-5 py-3 rounded-md border border-slate-200 hover:border-blue-600 transition"
-              >
-                Book a Demo
-              </a>
-            </div>
-            <div className="mt-8">
-              <NewsletterForm />
-            </div>
-          </div>
-          <div>
-            <GlassCard className="relative">
-              <Image
-                src="/abstract-dashboard-showing-unified-modules-hiring-.jpg"
-                alt="Unified modules dashboard"
-                width={720}
-                height={360}
-                className="rounded-lg"
-              />
-              <div className="absolute -bottom-4 left-4 right-4 grid grid-cols-3 gap-3">
-                <div className="border border-slate-200 bg-white/70 backdrop-blur rounded-md px-3 py-2 text-xs">
-                  Hiring
-                </div>
-                <div className="border border-slate-200 bg-white/70 backdrop-blur rounded-md px-3 py-2 text-xs">
-                  Training
-                </div>
-                <div className="border border-slate-200 bg-white/70 backdrop-blur rounded-md px-3 py-2 text-xs">
-                  Market Intelligence
-                </div>
-              </div>
-            </GlassCard>
+    <section className="relative min-h-[75vh] flex items-center bg-white text-gray-900 overflow-hidden">
+      {/* Background gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/10 via-purple-500/5 to-blue-900/10 pointer-events-none"></div>
+
+      {/* Content Wrapper */}
+      <div className="relative z-10 container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        {/* Left Content */}
+        <div className="text-center md:text-left space-y-4">
+          <h1 className="text-2xl md:text-4xl font-bold leading-snug">
+            Build, Grow & Future-Proof{" "}
+            <span className="text-indigo-700">Your Sales & Marketing Teams</span>
+          </h1>
+
+          <p className="text-sm md:text-base text-gray-600 max-w-sm mx-auto md:mx-0">
+            Yombly helps companies hire the right-fit sales & marketing talent,
+            continuously upskill them with real-world market intelligence, and
+            keep teams future-ready.
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap justify-center md:justify-start gap-3 pt-2">
+            <Link
+              href="/start-revenue"
+              className="px-4 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white shadow transition"
+            >
+              <span className="inline-flex items-center gap-2">
+                <RocketLaunchIcon fontSize="small" /> Start Journey
+              </span>
+            </Link>
+            <Link
+              href="/book-demo"
+              className="px-4 py-2 text-sm font-semibold rounded-lg border border-indigo-200 text-indigo-700 hover:bg-indigo-50 transition"
+            >
+              Book Demo
+            </Link>
           </div>
         </div>
+
+        {/* Right Side Image */}
+        <div className="flex justify-center md:justify-end relative">
+          <div className="absolute -top-6 -left-4 w-[110%] h-[110%] bg-gradient-to-tr from-indigo-50 via-white to-purple-50 rounded-full blur-2xl opacity-60 -z-10"></div>
+          <Image
+            src="/abstract-dashboard-showing-unified-modules-hiring-.jpg"
+            alt="Integrated Platform Dashboard"
+            width={380}
+            height={300}
+            className="rounded-lg shadow-xl border border-indigo-100"
+            priority
+          />
+        </div>
       </div>
+
+      {/* Scroll Mouse Design (purely decorative) */}
+      <div className="absolute left-1/2 transform -translate-x-1/2 bottom-6 md:bottom-8 z-20">
+        <div className="w-7 h-11 rounded-[12px] border-2 border-gray-400 flex items-start justify-center p-[6px]">
+          {/* animated dot */}
+          <span className="block w-1.5 h-1.5 rounded-full bg-gray-500 animate-scroll-dot" />
+        </div>
+      </div>
+
+      {/* Inline styles for the scroll animation */}
+      <style jsx>{`
+        @keyframes scrollDot {
+          0% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+          50% {
+            transform: translateY(8px);
+            opacity: 0.5;
+          }
+          100% {
+            transform: translateY(14px);
+            opacity: 0;
+          }
+        }
+
+        .animate-scroll-dot {
+          animation: scrollDot 1.6s infinite;
+        }
+      `}</style>
     </section>
   )
 }

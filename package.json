@@ -16,6 +16,7 @@
     "@radix-ui/react-accordion": "^1.2.12",
     "@vercel/analytics": "^1.5.0",
     "crypto-js": "^4.2.0",
+    "framer-motion": "^12.23.22",
     "geist": "^1.5.1",
     "lucide-react": "^0.517.0",
     "mongodb": "^6.20.0",
