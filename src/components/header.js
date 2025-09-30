@@ -29,7 +29,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full shadow-md">
-      <div className="glass w-full px-6 md:px-12 py-3  bg-white/70 backdrop-blur-sm shadow-lg">
+      <div className="glass w-full px-6 md:px-12 py-3 rounded-b-xl bg-white/70 backdrop-blur-sm shadow-lg">
         <div className="flex items-center justify-between max-w-[1400px] mx-auto">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
@@ -37,7 +37,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6 text-sm relative">
+          <nav className="hidden md:flex items-center gap-6 text-sm text-gray-700 relative">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -71,26 +71,28 @@ export default function Header() {
                 Services ▾
               </button>
 
-              {servicesOpen && (
-                <div className="absolute left-0 top-full mt-2 w-48 bg-white border border-[var(--border)] shadow-lg rounded-md overflow-hidden transition-all duration-200">
-                  {servicesLinks.map((s) => {
-                    const isActive = pathname === s.href;
-                    return (
-                      <Link
-                        key={s.href}
-                        href={s.href}
-                        className={`block px-4 py-2 text-sm transition ${
-                          isActive
-                            ? "bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold"
-                            : "hover:bg-gray-50"
-                        }`}
-                      >
-                        {s.label}
-                      </Link>
-                    );
-                  })}
-                </div>
-              )}
+              <div
+                className={`absolute left-0 top-full mt-1 w-48 bg-white border border-[var(--border)] shadow-lg rounded-md overflow-hidden transition-all duration-200 ${
+                  servicesOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
+                }`}
+              >
+                {servicesLinks.map((s) => {
+                  const isActive = pathname === s.href;
+                  return (
+                    <Link
+                      key={s.href}
+                      href={s.href}
+                      className={`block px-4 py-2 text-sm transition ${
+                        isActive
+                          ? "bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold"
+                          : "hover:bg-gray-50"
+                      }`}
+                    >
+                      {s.label}
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
 
             {/* CTA Buttons */}
