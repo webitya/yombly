@@ -1,15 +1,25 @@
 /* ExactIQ page per outline */
 import Header from "../../components/header"
 import Footer from "../../components/footer"
-import ExactIQHero from "../../components/exactiq/ExactIQHero"
-import ExactIQFeatures from "../../components/exactiq/ExactIQFeatures"
+import Hero from "../../components/exactiq/hero"
+import Why from "../../components/exactiq/why"
+import Differentiators from "../../components/exactiq/differentiators"
+import Coverage from "../../components/exactiq/coverage"
+import Process from "../../components/exactiq/process"
+import Impact from "../../components/exactiq/impact"
+import Cta from "../../components/exactiq/cta"
 
 export default function ExactIQPage() {
   return (
     <main>
       <Header />
-      <ExactIQHero />
-      <ExactIQFeatures />
+           <Hero />
+      <Why />
+      <Differentiators />
+      <Coverage />
+      <Process />
+      <Impact />
+      <Cta />
       <Footer />
     </main>
   )
