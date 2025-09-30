@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "@mui/icons-material";
@@ -10,6 +10,7 @@ import Logo from "./logo";
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const closeTimeout = useRef(null);
   const pathname = usePathname();
 
   const navLinks = [
@@ -26,6 +27,15 @@ export default function Header() {
     { href: "/exactiq", label: "ExactIQ" },
     { href: "/revenue-pilot", label: "Revenue Pilot" },
   ];
+
+  const handleMouseEnter = () => {
+    if (closeTimeout.current) clearTimeout(closeTimeout.current);
+    setServicesOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimeout.current = setTimeout(() => setServicesOpen(false), 150); // small delay
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full shadow-md">
@@ -58,8 +68,8 @@ export default function Header() {
             {/* Services Dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => setServicesOpen(true)}
-              onMouseLeave={() => setServicesOpen(false)}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             >
               <button
                 className={`transition ${
@@ -71,10 +81,10 @@ export default function Header() {
                 Services ▾
               </button>
 
+              {/* Dropdown Menu */}
               <div
-                className={`absolute left-0 top-full mt-1 w-48 bg-white border border-[var(--border)] shadow-lg rounded-md overflow-hidden transition-all duration-200 ${
-                  servicesOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
-                }`}
+                className={`absolute left-0 top-full mt-1 w-48 bg-white border border-[var(--border)] shadow-lg rounded-md overflow-hidden transition-all duration-200
+                  ${servicesOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}
               >
                 {servicesLinks.map((s) => {
                   const isActive = pathname === s.href;
