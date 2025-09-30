@@ -4,7 +4,13 @@ import Footer from "../components/footer"
 import HomeHero from "../components/home/HomeHero"
 import HomeWhy from "../components/home/HomeWhy"
 import HomeModules from "../components/home/HomeModules"
+import HomeScalingWithYombly from "../components/home/HomeScalingWYoumbly"
 import HomeContact from "../components/home/HomeContact"
+import { Home } from "@mui/icons-material"
+import HomeTestimonialsSection from "@/components/home/HomeTestimonial"
+import HomeWhoWeAre from "@/components/home/HomeWhoWeAre"
+import HomeFooterCTA from "@/components/home/HomeCTA"
+// import HomeScalingWithYombly from "@/components/home/HomeScalingWYoumbly"
 
 export const metadata = {
   title: "Yombly — Revenue Productivity Platform",
@@ -32,7 +38,11 @@ export default function HomePage() {
       <HomeHero />
       <HomeWhy />
       <HomeModules />
-      <HomeContact />
+      <HomeScalingWithYombly/>
+      <HomeTestimonialsSection/>
+      <HomeWhoWeAre/>
+      <HomeFooterCTA/>
+      {/* <HomeContact /> */}
       <Footer />
     </main>
   )

@@ -5,6 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Menu } from "@mui/icons-material"
 import MobileDrawer from "./MobileDrawer"
+import Logo from "./logo"
 
 export default function Header() {
   const [open, setOpen] = useState(false)
@@ -26,14 +27,7 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <Image
-              src="/images/yombly-logo.png"
-              alt="Yombly logo"
-              width={28}
-              height={28}
-              className="rounded-sm"
-            />
-            <span className="font-semibold tracking-tight">Yombly</span>
+            <Logo/>
           </Link>
 
           {/* Desktop Navigation */}

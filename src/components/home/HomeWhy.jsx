@@ -1,27 +1,43 @@
-import GlassCard from "../../components/glass-card"
-import { FaChartLine, FaUsersCog, FaGraduationCap } from "react-icons/fa"
+"use client"
 
-export default function HomeWhy() {
-  const items = [
-    { icon: FaUsersCog, title: "One Platform", desc: "Hiring, training, and intelligence unified—no silos, no chaos." },
-    { icon: FaGraduationCap, title: "Real-World Learning", desc: "Case-based upskilling to keep teams future-ready." },
-    { icon: FaChartLine, title: "Revenue Outcomes", desc: "Define → Measure → Improve productivity with clarity." },
+import { CheckCircle } from "@mui/icons-material"
+
+export default function WhyYombly() {
+  const points = [
+    "One platform, multiple growth levers",
+    "No fragmented vendors or broken systems",
+    "Scalable for founders & enterprise teams",
   ]
+
   return (
-    <section className="mx-auto max-w-7xl px-4 py-16">
-      <div className="grid md:grid-cols-3 gap-6">
-        {items.map((it) => {
-          const I = it.icon
-          return (
-            <GlassCard key={it.title}>
-              <div className="flex items-center gap-3">
-                <I className="text-blue-600 text-xl" />
-                <h3 className="font-semibold">{it.title}</h3>
-              </div>
-              <p className="mt-2 text-sm text-slate-600">{it.desc}</p>
-            </GlassCard>
-          )
-        })}
+    <section className="relative bg-white py-16 md:py-20">
+      <div className="container mx-auto px-6 md:px-8 text-center space-y-8">
+        {/* Heading */}
+        <div>
+          <h2 className="text-2xl md:text-4xl font-bold text-gray-900">
+            Why <span className="text-indigo-700">Yombly?</span>
+          </h2>
+          <p className="mt-4 text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+            Today, sales growth is fragmented—hiring, training, and intelligence 
+            all run through multiple vendors, creating silos and chaos. 
+            Yombly unifies these critical functions into one seamless platform.
+          </p>
+        </div>
+
+        {/* Bullet Points */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
+          {points.map((point, index) => (
+            <div
+              key={index}
+              className="flex items-start gap-3 p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition bg-white"
+            >
+              <CheckCircle className="text-green-600" fontSize="small" />
+              <p className="text-sm md:text-base text-gray-700 font-medium">
+                {point}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
