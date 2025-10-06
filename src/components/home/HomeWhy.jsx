@@ -1,44 +1,117 @@
-"use client"
+"use client";
 
-import { CheckCircle } from "@mui/icons-material"
+import { useEffect, useState } from "react";
+import {
+  RocketLaunch,
+  IntegrationInstructions,
+  Lan,
+} from "@mui/icons-material";
 
 export default function WhyYombly() {
   const points = [
-    "One platform, multiple growth levers",
-    "No fragmented vendors or broken systems",
-    "Scalable for founders & enterprise teams",
-  ]
+    {
+      text: "One unified platform for scalable growth",
+      icon: <RocketLaunch className="text-indigo-600" fontSize="medium" />,
+    },
+    {
+      text: "No more fragmented vendors or broken workflows",
+      icon: (
+        <IntegrationInstructions
+          className="text-purple-600"
+          fontSize="medium"
+        />
+      ),
+    },
+    {
+      text: "Future-ready intelligence for founders & enterprises",
+      icon: <Lan className="text-blue-600" fontSize="medium" />,
+    },
+  ];
+
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  // Smooth forward-only looping
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % points.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [points.length]);
 
   return (
-    <section className="relative bg-white py-16 md:py-20">
-      <div className="container mx-auto px-6 md:px-8 text-center space-y-8">
+    <section className="relative bg-gradient-to-b from-white via-indigo-50/40 to-white py-12 md:py-20 overflow-hidden">
+      {/* Background glow */}
+      <div className="absolute -top-32 -right-32 w-[40vw] h-[40vw] bg-gradient-to-tr from-indigo-300/20 via-purple-300/20 to-blue-300/20 blur-[100px] rounded-full -z-10" />
+      <div className="absolute bottom-[-25%] left-[-15%] w-[35vw] h-[35vw] bg-gradient-to-tr from-blue-300/15 via-indigo-200/15 to-purple-200/15 blur-[100px] rounded-full -z-10" />
+
+      <div className="mx-auto px-6 md:px-10 text-center relative z-10 space-y-12">
         {/* Heading */}
         <div>
-          <h2 className="text-2xl md:text-4xl font-bold text-gray-900">
-            Why <span className="text-indigo-700">Yombly?</span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+            Why{" "}
+            <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
+              Yombly?
+            </span>
           </h2>
-          <p className="mt-4 text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
-            Today, sales growth is fragmented—hiring, training, and intelligence 
-            all run through multiple vendors, creating silos and chaos. 
-            Yombly unifies these critical functions into one seamless platform.
+          <p className="mt-4 text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            Yombly unifies hiring, training, and performance intelligence into
+            one connected ecosystem — empowering founders and teams to scale
+            with precision.
           </p>
         </div>
 
-        {/* Bullet Points */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
+        {/* Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 md:gap-6 max-w-5xl mx-auto">
           {points.map((point, index) => (
             <div
               key={index}
-              className="flex items-start gap-3 p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition bg-white"
+              className={`relative bg-white/70 backdrop-blur-lg border border-white/40 rounded-2xl p-6 md:p-8 flex flex-col items-center text-center transition-all duration-1000 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                activeIndex === index
+                  ? "scale-[1.05] shadow-[0_0_20px_rgba(99,102,241,0.2)]"
+                  : "scale-[0.97] opacity-75"
+              }`}
             >
-              <CheckCircle className="text-green-600" fontSize="small" />
-              <p className="text-sm md:text-base text-gray-700 font-medium">
-                {point}
+              {/* Glow loader line */}
+              {activeIndex === index && (
+                <div className="absolute inset-0 rounded-2xl overflow-hidden">
+                  <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-indigo-500 to-transparent animate-glow" />
+                </div>
+              )}
+
+              {/* Icon */}
+              <div className="mb-4 p-3 bg-gradient-to-tr from-indigo-100 via-purple-100 to-blue-100 rounded-full shadow-inner">
+                {point.icon}
+              </div>
+
+              {/* Text */}
+              <p className="text-base md:text-lg font-semibold text-gray-800 leading-snug">
+                {point.text}
               </p>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Glow Animation */}
+      <style jsx>{`
+        @keyframes glow {
+          0% {
+            transform: translateX(-100%);
+            opacity: 0.2;
+          }
+          50% {
+            transform: translateX(0%);
+            opacity: 1;
+          }
+          100% {
+            transform: translateX(100%);
+            opacity: 0.2;
+          }
+        }
+        .animate-glow {
+          animation: glow 3.5s ease-in-out infinite;
+        }
+      `}</style>
     </section>
-  )
+  );
 }
