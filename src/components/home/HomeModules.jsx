@@ -74,7 +74,7 @@ export default function ServicesTabs() {
       </div>
 
       {/* Animated Content */}
-      <div className="relative w-full max-w-6xl z-10">
+      <div className="relative w-full z-10">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
