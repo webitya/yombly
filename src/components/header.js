@@ -10,16 +10,15 @@ import Logo from "./logo";
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
   const closeTimeout = useRef(null);
   const pathname = usePathname();
 
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
-    // Services will be handled separately as 3rd item
-    { href: "/blogs", label: "Blogs" },
-    { href: "/resources", label: "Resources" },
-    { href: "/case-studies", label: "Case Studies" },
+    { type: "dropdown", label: "Services" },
+    { type: "dropdown", label: "Resources" },
     { href: "/contact", label: "Contact" },
   ];
 
@@ -30,13 +29,19 @@ export default function Header() {
     { href: "/revenue-pilot", label: "Revenue Pilot" },
   ];
 
-  const handleMouseEnter = () => {
+  const resourcesLinks = [
+    { href: "/blogs", label: "Blogs" },
+    { href: "/resources", label: "Free Resources" },
+    { href: "/case-studies", label: "Case Studies" },
+  ];
+
+  const handleEnter = (setter) => {
     if (closeTimeout.current) clearTimeout(closeTimeout.current);
-    setServicesOpen(true);
+    setter(true);
   };
 
-  const handleMouseLeave = () => {
-    closeTimeout.current = setTimeout(() => setServicesOpen(false), 150);
+  const handleLeave = (setter) => {
+    closeTimeout.current = setTimeout(() => setter(false), 150);
   };
 
   return (
@@ -50,74 +55,75 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6 text-sm text-gray-700 relative">
-            {/* Home */}
-            <Link
-              href="/"
-              className={`transition ${
-                pathname === "/" ? "text-[var(--primary)] font-semibold" : "hover:text-[var(--primary)]"
-              }`}
-            >
-              Home
-            </Link>
+            {/* Static Nav Links */}
+            {navLinks.map((link) => {
+              // Handle dropdowns separately
+              if (link.type === "dropdown") {
+                const isServices = link.label === "Services";
+                const dropdownOpen = isServices ? servicesOpen : resourcesOpen;
+                const setDropdownOpen = isServices
+                  ? setServicesOpen
+                  : setResourcesOpen;
+                const dropdownLinks = isServices
+                  ? servicesLinks
+                  : resourcesLinks;
 
-            {/* About */}
-            <Link
-              href="/about"
-              className={`transition ${
-                pathname === "/about" ? "text-[var(--primary)] font-semibold" : "hover:text-[var(--primary)]"
-              }`}
-            >
-              About
-            </Link>
-
-            {/* Services Dropdown (3rd) */}
-            <div
-              className="relative"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-            >
-              <button
-                className={`transition ${
-                  servicesLinks.some((s) => s.href === pathname)
-                    ? "text-[var(--primary)] font-semibold"
-                    : "hover:text-[var(--primary)]"
-                }`}
-              >
-                Services ▾
-              </button>
-
-              <div
-                className={`absolute left-0 top-full mt-1 w-48 bg-white border border-[var(--border)] shadow-lg rounded-md overflow-hidden transition-all duration-200
-                  ${servicesOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}
-              >
-                {servicesLinks.map((s) => {
-                  const isActive = pathname === s.href;
-                  return (
-                    <Link
-                      key={s.href}
-                      href={s.href}
-                      className={`block px-4 py-2 text-sm transition ${
-                        isActive
-                          ? "bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold"
-                          : "hover:bg-gray-50"
+                return (
+                  <div
+                    key={link.label}
+                    className="relative"
+                    onMouseEnter={() => handleEnter(setDropdownOpen)}
+                    onMouseLeave={() => handleLeave(setDropdownOpen)}
+                  >
+                    <button
+                      className={`transition ${
+                        dropdownLinks.some((d) => d.href === pathname)
+                          ? "text-[var(--primary)] font-semibold"
+                          : "hover:text-[var(--primary)]"
                       }`}
                     >
-                      {s.label}
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
+                      {link.label} ▾
+                    </button>
 
-            {/* Remaining Nav Links */}
-            {navLinks.slice(2).map((link) => {
+                    <div
+                      className={`absolute left-0 top-full mt-1 w-48 bg-white border border-[var(--border)] shadow-lg rounded-md overflow-hidden transition-all duration-200
+                        ${
+                          dropdownOpen
+                            ? "opacity-100 translate-y-0 pointer-events-auto"
+                            : "opacity-0 -translate-y-2 pointer-events-none"
+                        }`}
+                    >
+                      {dropdownLinks.map((d) => {
+                        const isActive = pathname === d.href;
+                        return (
+                          <Link
+                            key={d.href}
+                            href={d.href}
+                            className={`block px-4 py-2 text-sm transition ${
+                              isActive
+                                ? "bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold"
+                                : "hover:bg-gray-50"
+                            }`}
+                          >
+                            {d.label}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              }
+
+              // Normal link
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.href}
                   href={link.href}
                   className={`transition ${
-                    isActive ? "text-[var(--primary)] font-semibold" : "hover:text-[var(--primary)]"
+                    isActive
+                      ? "text-[var(--primary)] font-semibold"
+                      : "hover:text-[var(--primary)]"
                   }`}
                 >
                   {link.label}

@@ -3,17 +3,31 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MdClose } from "react-icons/md";
+import { useState } from "react";
 
 export default function MobileDrawer({ open, setOpen, navLinks, servicesLinks }) {
   const pathname = usePathname();
+  const [expanded, setExpanded] = useState(null);
 
-  // Reorder links to put Services in 3rd place
+  // Dropdown links for "Resources"
+  const resourcesLinks = [
+    { href: "/blogs", label: "Blogs" },
+    { href: "/resources", label: "Free Resources" },
+    { href: "/case-studies", label: "Case Studies" },
+  ];
+
+  // Reorder to place dropdowns properly
   const reorderedNavLinks = [
     navLinks[0], // Home
     navLinks[1], // About
-    { href: "#services", label: "Services" }, // Placeholder for dropdown
-    ...navLinks.slice(2), // Blogs, Resources, Case Studies
+    { type: "dropdown", label: "Services" },
+    { type: "dropdown", label: "Resources" },
+    ...navLinks.slice(5), // Contact and others if any
   ];
+
+  const toggleExpand = (label) => {
+    setExpanded((prev) => (prev === label ? null : label));
+  };
 
   return (
     <>
@@ -41,36 +55,57 @@ export default function MobileDrawer({ open, setOpen, navLinks, servicesLinks })
 
         {/* Navigation */}
         <nav className="mt-16 flex flex-col gap-5 px-6 text-base font-medium">
-          {reorderedNavLinks.map((link) => {
-            if (link.href === "#services") {
-              // Services dropdown
+          {reorderedNavLinks.map((link, index) => {
+            if (link.type === "dropdown") {
+              const dropdownLinks =
+                link.label === "Services" ? servicesLinks : resourcesLinks;
+
+              const isExpanded = expanded === link.label;
+
               return (
-                <div key="services" className="flex flex-col gap-2 mt-2">
-                  <span className="text-gray-500 text-sm uppercase">Services</span>
-                  {servicesLinks.map((s) => {
-                    const isActive = pathname === s.href;
-                    return (
-                      <Link
-                        key={s.href}
-                        href={s.href}
-                        onClick={() => setOpen(false)}
-                        className={`block pl-2 transition-colors ${
-                          isActive
-                            ? "text-[var(--primary)] font-semibold"
-                            : "hover:text-[var(--primary)]"
-                        }`}
-                      >
-                        {s.label}
-                      </Link>
-                    );
-                  })}
+                <div key={`${link.label}-${index}`} className="flex flex-col gap-2">
+                  <button
+                    onClick={() => toggleExpand(link.label)}
+                    className={`flex justify-between items-center transition-colors ${
+                      dropdownLinks.some((d) => d.href === pathname)
+                        ? "text-[var(--primary)] font-semibold"
+                        : "hover:text-[var(--primary)]"
+                    }`}
+                  >
+                    {link.label}
+                    <span className="text-gray-500 text-sm">
+                      {isExpanded ? "▴" : "▾"}
+                    </span>
+                  </button>
+
+                  {isExpanded && (
+                    <div className="pl-3 border-l border-gray-100">
+                      {dropdownLinks.map((s, i) => {
+                        const isActive = pathname === s.href;
+                        return (
+                          <Link
+                            key={s.href || `${s.label}-${i}`}
+                            href={s.href}
+                            onClick={() => setOpen(false)}
+                            className={`block py-1 transition-colors ${
+                              isActive
+                                ? "text-[var(--primary)] font-semibold"
+                                : "text-gray-600 hover:text-[var(--primary)]"
+                            }`}
+                          >
+                            {s.label}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
               );
             } else {
               const isActive = pathname === link.href;
               return (
                 <Link
-                  key={link.href}
+                  key={link.href || `${link.label}-${index}`}
                   href={link.href}
                   onClick={() => setOpen(false)}
                   className={`transition-colors ${
@@ -97,6 +132,7 @@ export default function MobileDrawer({ open, setOpen, navLinks, servicesLinks })
           >
             Track Ticket
           </Link>
+
           <Link
             href="/tickets/raise"
             onClick={() => setOpen(false)}
