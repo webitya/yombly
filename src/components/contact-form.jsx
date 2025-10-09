@@ -1,9 +1,17 @@
 "use client"
 import { useState } from "react"
-import { FiMail } from "react-icons/fi"
+import { FiMail, FiLoader } from "react-icons/fi"
+
+const services = [
+  "Smart Screening System",
+  "Revenue Team Continuity Service",
+  "30-Day Onboarding Program",
+  "Monthly Mentoring Sessions",
+  "Build Your Next Leaders (12-Month Program)",
+]
 
 export default function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" })
+  const [form, setForm] = useState({ name: "", email: "", service: "", message: "" })
   const [status, setStatus] = useState(null)
 
   async function onSubmit(e) {
@@ -18,50 +26,89 @@ export default function ContactForm() {
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || "Failed")
       setStatus("success")
-      setForm({ name: "", email: "", message: "" })
-    } catch (err) {
+      setForm({ name: "", email: "", service: "", message: "" })
+    } catch {
       setStatus("error")
-      console.log("[] contact error:", err.message)
     }
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4">
-      <div className="grid md:grid-cols-2 gap-4">
+    <form
+      onSubmit={onSubmit}
+      className="space-y-4 text-gray-100"
+    >
+      <div className="grid md:grid-cols-2 gap-3">
         <input
           type="text"
           required
-          placeholder="Your name"
+          placeholder="Full Name"
           value={form.name}
           onChange={(e) => setForm({ ...form, name: e.target.value })}
-          className="px-4 py-3 rounded-md bg-white/60 text-slate-700 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-4 py-2.5 rounded-lg bg-white/10 border border-white/20 placeholder-gray-400 text-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
         />
         <input
           type="email"
           required
-          placeholder="Your email"
+          placeholder="Work Email"
           value={form.email}
           onChange={(e) => setForm({ ...form, email: e.target.value })}
-          className="px-4 py-3 rounded-md bg-white/60 text-slate-700 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-4 py-2.5 rounded-lg bg-white/10 border border-white/20 placeholder-gray-400 text-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
         />
       </div>
+
+      <select
+        required
+        value={form.service}
+        onChange={(e) => setForm({ ...form, service: e.target.value })}
+        className={`w-full px-4 py-2.5 rounded-lg bg-white/10 border border-white/20 text-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none ${
+          !form.service ? "text-gray-400" : ""
+        }`}
+      >
+        <option value="">Select a Service</option>
+        {services.map((s, i) => (
+          <option key={i} value={s} className="text-gray-900">
+            {s}
+          </option>
+        ))}
+      </select>
+
       <textarea
         required
-        placeholder="How can we help?"
-        rows={5}
+        placeholder="Tell us briefly about your requirement..."
+        rows={4}
         value={form.message}
         onChange={(e) => setForm({ ...form, message: e.target.value })}
-        className="w-full px-4 py-3 rounded-md bg-white/60 text-slate-700 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full px-4 py-2.5 rounded-lg bg-white/10 border border-white/20 placeholder-gray-400 text-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
       />
+
       <button
         type="submit"
-        className="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition"
+        disabled={status === "loading"}
+        className="w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium transition disabled:opacity-60"
       >
-        <FiMail size={16} />
-        <span>Send Message</span>
+        {status === "loading" ? (
+          <>
+            <FiLoader className="animate-spin" />
+            Sending...
+          </>
+        ) : (
+          <>
+            <FiMail />
+            Send Message
+          </>
+        )}
       </button>
-      {status === "success" && <div className="text-sm text-green-700">Thanks! We’ll reach you soon.</div>}
-      {status === "error" && <div className="text-sm text-red-600">Something went wrong. Try again.</div>}
+
+      {status === "success" && (
+        <div className="text-sm text-green-400 bg-green-900/20 border border-green-700 rounded-lg px-3 py-2">
+          ✅ Message sent successfully!
+        </div>
+      )}
+      {status === "error" && (
+        <div className="text-sm text-red-400 bg-red-900/20 border border-red-700 rounded-lg px-3 py-2">
+          ⚠️ Something went wrong. Please try again.
+        </div>
+      )}
     </form>
   )
 }
