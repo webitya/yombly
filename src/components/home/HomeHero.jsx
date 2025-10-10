@@ -12,23 +12,23 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline"
 
 export default function HeroSection() {
   return (
-    <section className="relative isolate min-h-[72vh] lg:min-h-[82vh] overflow-hidden flex items-center justify-center bg-gradient-to-tr from-[#0a1020] via-black to-[#0b1230] text-white">
+    <section className="relative isolate min-h-[72vh] lg:min-h-[90vh] overflow-hidden flex items-center justify-center bg-background text-foreground">
       {/* Animated grid lines */}
       <div className="pointer-events-none absolute inset-0 z-0">
         <div
-          className="absolute inset-0 opacity-25 bg-[linear-gradient(to_right,rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:48px_48px]"
+          className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,rgba(0,0,0,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.06)_1px,transparent_1px)] bg-[size:48px_48px]"
           style={{ animation: "gridMove 22s linear infinite" }}
         />
-        <div className="absolute inset-0 opacity-15 bg-[radial-gradient(circle_at_30%_20%,rgba(0,112,243,0.18)_0%,transparent_50%)]" />
-        <div className="absolute inset-0 opacity-15 bg-[radial-gradient(circle_at_70%_80%,rgba(0,212,255,0.12)_0%,transparent_50%)]" />
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_30%_20%,rgba(0,112,243,0.08)_0%,transparent_50%)]" />
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_70%_80%,rgba(0,112,243,0.05)_0%,transparent_50%)]" />
       </div>
 
       {/* Scanner sweep */}
       <div
-        className="pointer-events-none absolute inset-0 z-[1] mix-blend-screen opacity-20"
+        className="pointer-events-none absolute inset-0 z-[1] mix-blend-multiply opacity-15"
         aria-hidden="true"
         style={{
-          background: "linear-gradient(180deg, transparent 0%, rgba(0,212,255,0.08) 45%, transparent 55%)",
+          background: "linear-gradient(180deg, transparent 0%, rgba(0,112,243,0.06) 45%, transparent 55%)",
           backgroundSize: "100% 220%",
           animation: "scan 10s linear infinite",
         }}
@@ -36,11 +36,11 @@ export default function HeroSection() {
 
       {/* Glow orbs */}
       <div
-        className="pointer-events-none absolute top-[-14%] left-[-8%] w-[42vw] h-[42vw] bg-gradient-to-r from-[#0070F3]/20 to-[#00D4FF]/15 rounded-full blur-[110px] z-0"
+        className="pointer-events-none absolute top-[-14%] left-[-8%] w-[42vw] h-[42vw] bg-gradient-to-r from-[#0070F3]/15 to-[#1A73E8]/10 rounded-full blur-[110px] z-0"
         style={{ animation: "float1 16s ease-in-out infinite" }}
       />
       <div
-        className="pointer-events-none absolute bottom-[-18%] right-[-10%] w-[46vw] h-[46vw] bg-gradient-to-tr from-[#00D4FF]/15 via-[#0070F3]/10 to-[#66BBFF]/20 rounded-full blur-[130px] z-0"
+        className="pointer-events-none absolute bottom-[-18%] right-[-10%] w-[46vw] h-[46vw] bg-gradient-to-tr from-[#1A73E8]/10 via-[#0070F3]/8 to-[#4DA3FF]/12 rounded-full blur-[130px] z-0"
         style={{ animation: "float2 20s ease-in-out infinite" }}
       />
 
@@ -48,7 +48,7 @@ export default function HeroSection() {
       <div className="relative z-30 container mx-auto px-5 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-center py-8">
         {/* Left */}
         <div className="text-center lg:text-left space-y-4" style={{ animation: "fadeUp 0.9s ease-out" }}>
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-[#0070F3]/20 to-[#00D4FF]/20 border border-[#0070F3]/35 text-xs md:text-sm font-semibold text-[#66BBFF] shadow-md shadow-[#0070F3]/20">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-[#0A66C2]/20 to-[#2F8AF5]/20 border border-[#0A66C2]/35 text-xs md:text-sm font-semibold text-[#2F8AF5] shadow-md shadow-[#0A66C2]/20">
             <TrendingUpIcon fontSize="small" />
             Growth Platform
           </div>
@@ -56,29 +56,44 @@ export default function HeroSection() {
           <h1 className="text-[28px] md:text-[34px] lg:text-[38px] font-bold leading-tight text-balance">
             Empower{" "}
             <span
-              className="bg-gradient-to-r from-[#0070F3] via-[#00A3FF] to-[#00D4FF] text-transparent bg-clip-text bg-[length:200%_auto]"
+              className="bg-gradient-to-r from-[#0A66C2] via-[#2F8AF5] to-[#66A9FF] text-transparent bg-clip-text bg-[length:200%_auto]"
               style={{ animation: "gradientShift 6s ease infinite" }}
             >
               Smarter Sales & Marketing Teams
             </span>
           </h1>
 
-          <p className="text-[#B8C7DA] text-sm md:text-[15px] max-w-xl mx-auto lg:mx-0 leading-relaxed">
+          <p className="text-muted-foreground text-sm md:text-[15px] max-w-xl mx-auto lg:mx-0 leading-relaxed">
             Hire right-fit talent, upskill continuously with market intelligence, and keep teams future‑ready.
           </p>
 
           {/* Feature Pills - compact */}
           <div className="flex flex-wrap gap-2.5 justify-center lg:justify-start">
-            <FeaturePill icon={<CloudIcon fontSize="inherit" />} text="Cloud Native" />
-            <FeaturePill icon={<ShieldIcon fontSize="inherit" />} text="Enterprise Security" />
-            <FeaturePill icon={<QueryStatsIcon fontSize="inherit" />} text="Real-time Analytics" />
+            <div className="flex items-center gap-1.5 px-3.5 py-1.5 bg-secondary border border-border rounded-full text-[13px] font-medium text-foreground shadow-sm hover:bg-accent transition-colors duration-200">
+              <span className="text-blue-600 text-[16px] leading-none">
+                <CloudIcon fontSize="inherit" />
+              </span>
+              Cloud Native
+            </div>
+            <div className="flex items-center gap-1.5 px-3.5 py-1.5 bg-secondary border border-border rounded-full text-[13px] font-medium text-foreground shadow-sm hover:bg-accent transition-colors duration-200">
+              <span className="text-blue-600 text-[16px] leading-none">
+                <ShieldIcon fontSize="inherit" />
+              </span>
+              Enterprise Security
+            </div>
+            <div className="flex items-center gap-1.5 px-3.5 py-1.5 bg-secondary border border-border rounded-full text-[13px] font-medium text-foreground shadow-sm hover:bg-accent transition-colors duration-200">
+              <span className="text-blue-600 text-[16px] leading-none">
+                <QueryStatsIcon fontSize="inherit" />
+              </span>
+              Real-time Analytics
+            </div>
           </div>
 
           {/* CTAs - compact */}
           <div className="flex flex-wrap justify-center lg:justify-start gap-2.5 pt-1">
             <Link
               href="/start-revenue"
-              className="group relative px-6 py-2.5 text-sm md:text-base font-semibold rounded-md bg-gradient-to-r from-[#0070F3] to-[#00A3FF] hover:from-[#0060D3] hover:to-[#0090E3] text-white shadow-lg shadow-[#0070F3]/35 transition-all duration-300 transform hover:scale-[1.03] hover:shadow-xl hover:shadow-[#0070F3]/45"
+              className="group relative px-6 py-2.5 text-sm md:text-base font-semibold rounded-md bg-gradient-to-r from-[#0A66C2] to-[#2F8AF5] hover:from-[#004182] hover:to-[#0A66C2] text-white shadow-lg shadow-[#0A66C2]/35 transition-all duration-300 transform hover:scale-[1.03] hover:shadow-xl hover:shadow-[#0A66C2]/45"
             >
               <span className="flex items-center gap-2">
                 <RocketLaunchIcon fontSize="small" />
@@ -87,21 +102,29 @@ export default function HeroSection() {
             </Link>
             <Link
               href="/raise-ticket"
-              className="group relative px-6 py-2.5 text-sm md:text-base font-semibold rounded-md border-2 border-[#0070F3]/50 text-[#66BBFF] hover:bg-[#0070F3]/10 hover:border-[#0070F3] transition-all duration-300 transform hover:scale-[1.03]"
+              className="group relative px-6 py-2.5 text-sm md:text-base font-semibold rounded-md border-2 border-[#0A66C2]/50 text-[#2F8AF5] hover:bg-[#0A66C2]/10 hover:border-[#0A66C2] transition-all duration-300 transform hover:scale-[1.03]"
             >
               <span className="flex items-center gap-2">
                 <HelpOutlineIcon fontSize="small" />
                 Ask 1 Free Question
               </span>
             </Link>
-          
           </div>
 
           {/* Stats - compact */}
           <div className="grid grid-cols-3 gap-3 pt-4 max-w-md mx-auto lg:mx-0">
-            <StatItem number="500+" label="Enterprises" />
-            <StatItem number="99.9%" label="Uptime" />
-            <StatItem number="24/7" label="Support" />
+            <div className="text-center">
+              <div className="text-xl md:text-2xl font-bold text-blue-600">500+</div>
+              <div className="text-xs md:text-[13px] text-muted-foreground mt-0.5">Enterprises</div>
+            </div>
+            <div className="text-center">
+              <div className="text-xl md:text-2xl font-bold text-blue-600">99.9%</div>
+              <div className="text-xs md:text-[13px] text-muted-foreground mt-0.5">Uptime</div>
+            </div>
+            <div className="text-center">
+              <div className="text-xl md:text-2xl font-bold text-blue-600">24/7</div>
+              <div className="text-xs md:text-[13px] text-muted-foreground mt-0.5">Support</div>
+            </div>
           </div>
         </div>
 
@@ -109,37 +132,45 @@ export default function HeroSection() {
         <div className="relative z-10 flex justify-center lg:justify-end" style={{ animation: "fadeIn 1s ease-out" }}>
           {/* Glow behind image */}
           <div
-            className="absolute inset-0 bg-gradient-to-tr from-[#0070F3]/30 via-[#003D82]/20 to-[#00D4FF]/30 rounded-2xl blur-3xl opacity-60"
+            className="absolute inset-0 bg-gradient-to-tr from-[#0A66C2]/30 via-[#004182]/20 to-[#2F8AF5]/30 rounded-2xl blur-3xl opacity-60"
             style={{ animation: "pulse 3.8s ease-in-out infinite" }}
           />
           <div className="relative">
             {/* Techy animated background layers behind the image */}
-            <div className="pointer-events-none absolute inset-0 z-0">
-              {/* Rotating rings */}
+            <div className="pointer-events-none absolute inset-0 z-[2]">
               <div
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#00D4FF]/30 w-[540px] h-[540px] md:w-[600px] md:h-[600px]"
+                className="absolute inset-0 opacity-70 bg-[linear-gradient(to_right,rgba(255,255,255,0.14)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.14)_1px,transparent_1px)] bg-[size:24px_24px]"
+                style={{
+                  animation: "gridMove 18s linear infinite",
+                  maskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 35%, black 60%)",
+                  WebkitMaskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 35%, black 60%)",
+                }}
+                aria-hidden="true"
+              />
+              <div
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#2F8AF5]/30 w-[540px] h-[540px] md:w-[600px] md:h-[600px]"
                 style={{ animation: "rotateSlow 24s linear infinite" }}
                 aria-hidden="true"
               />
               <div
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#0070F3]/25 w-[440px] h-[440px]"
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#0A66C2]/25 w-[440px] h-[440px]"
                 style={{ animation: "rotateSlow 18s linear reverse infinite" }}
                 aria-hidden="true"
               />
 
               {/* Circuit lines: horizontal + vertical dashed flows */}
               <div
-                className="absolute left-0 right-0 top-[15%] h-[2px] opacity-50"
+                className="absolute left-0 right-0 top-[15%] h-[2px] opacity-60"
                 style={{
-                  background: "repeating-linear-gradient(90deg, rgba(0,212,255,0.5) 0 14px, transparent 14px 30px)",
+                  background: "repeating-linear-gradient(90deg, rgba(10,102,194,0.55) 0 14px, transparent 14px 30px)",
                   animation: "dashMoveX 10s linear infinite",
                 }}
                 aria-hidden="true"
               />
               <div
-                className="absolute left-[10%] bottom-[18%] w-[2px] top-[12%] opacity-50"
+                className="absolute left-[10%] bottom-[18%] w-[2px] top-[12%] opacity-60"
                 style={{
-                  background: "repeating-linear-gradient(180deg, rgba(0,112,243,0.5) 0 14px, transparent 14px 30px)",
+                  background: "repeating-linear-gradient(180deg, rgba(10,102,194,0.6) 0 14px, transparent 14px 30px)",
                   animation: "dashMoveY 12s linear infinite",
                 }}
                 aria-hidden="true"
@@ -147,30 +178,30 @@ export default function HeroSection() {
 
               {/* Micro particles */}
               <span
-                className="absolute w-1 h-1 rounded-full bg-[#00D4FF]/90 blur-[0.5px] left-[12%] top-[22%]"
+                className="absolute w-1 h-1 rounded-full bg-[#2F8AF5]/90 blur-[0.5px] left-[12%] top-[22%]"
                 style={{ animation: "drift 8s ease-in-out infinite" }}
               />
               <span
-                className="absolute w-1 h-1 rounded-full bg-[#66BBFF]/90 blur-[0.5px] left-[76%] top-[12%]"
+                className="absolute w-1 h-1 rounded-full bg-[#66A9FF]/90 blur-[0.5px] left-[76%] top-[12%]"
                 style={{ animation: "drift 7s 0.5s ease-in-out infinite" }}
               />
               <span
-                className="absolute w-1 h-1 rounded-full bg-[#00D4FF]/80 blur-[0.5px] left-[82%] top-[64%]"
+                className="absolute w-1 h-1 rounded-full bg-[#2F8AF5]/80 blur-[0.5px] left-[82%] top-[64%]"
                 style={{ animation: "drift 9s 0.2s ease-in-out infinite" }}
               />
               <span
-                className="absolute w-1 h-1 rounded-full bg-[#66BBFF]/80 blur-[0.5px] left-[18%] top-[70%]"
+                className="absolute w-1 h-1 rounded-full bg-[#66A9FF]/80 blur-[0.5px] left-[18%] top-[70%]"
                 style={{ animation: "drift 10s 0.8s ease-in-out infinite" }}
               />
               <span
-                className="absolute w-1 h-1 rounded-full bg-[#00D4FF]/90 blur-[0.5px] left-[44%] top-[8%]"
+                className="absolute w-1 h-1 rounded-full bg-[#2F8AF5]/90 blur-[0.5px] left-[44%] top-[8%]"
                 style={{ animation: "drift 8.5s 1.1s ease-in-out infinite" }}
               />
             </div>
 
-            <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl border border-[#0070F3]/30 hover:border-[#0070F3]/55 transition-all duration-500 hover:scale-[1.015] bg-gradient-to-br from-[#001E50]/50 to-[#003D82]/30 backdrop-blur-sm">
+            <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl border border-[#0A66C2]/30 hover:border-[#0A66C2]/55 transition-all duration-500 hover:scale-[1.015] bg-gradient-to-br from-[#001E50]/50 to-[#004182]/30 backdrop-blur-sm">
               <img
-                src="/enterprise-ai-dashboard-preview.jpg"
+                src="/hero1.webp"
                 alt="Enterprise AI dashboard preview"
                 className="w-auto h-auto max-w-[640px] md:max-w-[700px] lg:max-w-[740px] max-h-[64vh] object-contain"
               />
@@ -179,7 +210,7 @@ export default function HeroSection() {
                 className="pointer-events-none absolute inset-0"
                 aria-hidden="true"
                 style={{
-                  background: "linear-gradient(180deg, transparent 0%, rgba(0,212,255,0.12) 45%, transparent 55%)",
+                  background: "linear-gradient(180deg, transparent 0%, rgba(10,102,194,0.12) 45%, transparent 55%)",
                   backgroundSize: "100% 200%",
                   animation: "scan 6.5s linear infinite",
                   mixBlendMode: "screen",
@@ -187,41 +218,66 @@ export default function HeroSection() {
               />
             </div>
             {/* Floating feature chips remain */}
-            <FloatingCard
-              icon={<EmailIcon fontSize="small" />}
-              title="Automated Emails"
-              delay="0s"
-              position="top-[-14px] right-[-32px]"
-            />
-            <FloatingCard
-              icon={<PsychologyIcon fontSize="small" />}
-              title="Smart Insights"
-              delay="0.25s"
-              position="bottom-[-14px] right-[-32px]"
-            />
-            <FloatingCard
-              icon={<GroupsIcon fontSize="small" />}
-              title="AI Matchmaking"
-              delay="0.5s"
-              position="top-[36%] left-[-56px]"
-            />
-            <FloatingCard
-              icon={<QueryStatsIcon fontSize="small" />}
-              title="Data Analytics"
-              delay="0.75s"
-              position="bottom-[-20px] left-[16%]"
-            />
-            <FloatingCard
-              icon={<RocketLaunchIcon fontSize="small" />}
-              title="Growth Sync"
-              delay="1s"
-              position="top-[-8px] left-[26%]"
-            />
+            <div
+              className="absolute z-20 top-[-14px] right-[-32px] hidden lg:block"
+              style={{ animation: "floatCard 4s ease-in-out 0s infinite" }}
+            >
+              <div className="flex items-center gap-2.5 px-3.5 py-2.5 bg-[#0a1b45]/90 border border-[#0070F3]/40 rounded-lg text-sm font-semibold text-white shadow-2xl shadow-[#0070F3]/25 backdrop-blur-md hover:scale-[1.06] transition-transform duration-300 whitespace-nowrap">
+                <span className="text-blue-600">
+                  <EmailIcon fontSize="small" />
+                </span>
+                <span>Automated Emails</span>
+              </div>
+            </div>
+            <div
+              className="absolute z-20 bottom-[-14px] right-[-32px] hidden lg:block"
+              style={{ animation: "floatCard 4s ease-in-out 0.25s infinite" }}
+            >
+              <div className="flex items-center gap-2.5 px-3.5 py-2.5 bg-[#0a1b45]/90 border border-[#0070F3]/40 rounded-lg text-sm font-semibold text-white shadow-2xl shadow-[#0070F3]/25 backdrop-blur-md hover:scale-[1.06] transition-transform duration-300 whitespace-nowrap">
+                <span className="text-blue-600">
+                  <PsychologyIcon fontSize="small" />
+                </span>
+                <span>Smart Insights</span>
+              </div>
+            </div>
+            <div
+              className="absolute z-20 top-[36%] left-[-56px] hidden lg:block"
+              style={{ animation: "floatCard 4s ease-in-out 0.5s infinite" }}
+            >
+              <div className="flex items-center gap-2.5 px-3.5 py-2.5 bg-[#0a1b45]/90 border border-[#0070F3]/40 rounded-lg text-sm font-semibold text-white shadow-2xl shadow-[#0070F3]/25 backdrop-blur-md hover:scale-[1.06] transition-transform duration-300 whitespace-nowrap">
+                <span className="text-blue-600">
+                  <GroupsIcon fontSize="small" />
+                </span>
+                <span>AI Matchmaking</span>
+              </div>
+            </div>
+            <div
+              className="absolute z-20 bottom-[-20px] left-[16%] hidden lg:block"
+              style={{ animation: "floatCard 4s ease-in-out 0.75s infinite" }}
+            >
+              <div className="flex items-center gap-2.5 px-3.5 py-2.5 bg-[#0a1b45]/90 border border-[#0070F3]/40 rounded-lg text-sm font-semibold text-white shadow-2xl shadow-[#0070F3]/25 backdrop-blur-md hover:scale-[1.06] transition-transform duration-300 whitespace-nowrap">
+                <span className="text-blue-600">
+                  <QueryStatsIcon fontSize="small" />
+                </span>
+                <span>Data Analytics</span>
+              </div>
+            </div>
+            <div
+              className="absolute z-20 top-[-8px] left-[26%] hidden lg:block"
+              style={{ animation: "floatCard 4s ease-in-out 1s infinite" }}
+            >
+              <div className="flex items-center gap-2.5 px-3.5 py-2.5 bg-[#0a1b45]/90 border border-[#0070F3]/40 rounded-lg text-sm font-semibold text-white shadow-2xl shadow-[#0070F3]/25 backdrop-blur-md hover:scale-[1.06] transition-transform duration-300 whitespace-nowrap">
+                <span className="text-blue-600">
+                  <RocketLaunchIcon fontSize="small" />
+                </span>
+                <span>Growth Sync</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Keyframes */}
+      {/* Restore animation keyframes used by the techy background */}
       <style jsx>{`
         @keyframes float1 {
           0%, 100% { transform: translate(0, 0) scale(1); }
@@ -278,38 +334,5 @@ export default function HeroSection() {
         }
       `}</style>
     </section>
-  )
-}
-
-/* Reusable bits (JS only, compact) */
-function StatItem({ number, label }) {
-  return (
-    <div className="text-center">
-      <div className="text-xl md:text-2xl font-bold text-[#00D4FF]">{number}</div>
-      <div className="text-xs md:text-[13px] text-[#AFC3D8] mt-0.5">{label}</div>
-    </div>
-  )
-}
-
-function FeaturePill({ icon, text }) {
-  return (
-    <div className="flex items-center gap-1.5 px-3.5 py-1.5 bg-[#001E50]/60 border border-[#0070F3]/30 rounded-full text-[13px] font-medium text-[#B0C4DE] shadow-lg backdrop-blur-sm hover:scale-[1.04] hover:border-[#0070F3]/55 transition-transform duration-300">
-      <span className="text-[#00D4FF] text-[16px] leading-none">{icon}</span>
-      {text}
-    </div>
-  )
-}
-
-function FloatingCard({ icon, title, delay, position }) {
-  return (
-    <div
-      className={`absolute z-20 ${position} hidden lg:block`}
-      style={{ animation: `floatCard 4s ease-in-out ${delay} infinite` }}
-    >
-      <div className="flex items-center gap-2.5 px-3.5 py-2.5 bg-[#0a1b45]/90 border border-[#0070F3]/40 rounded-lg text-sm font-semibold text-white shadow-2xl shadow-[#0070F3]/25 backdrop-blur-md hover:scale-[1.06] transition-transform duration-300 whitespace-nowrap">
-        <span className="text-[#00D4FF]">{icon}</span>
-        <span>{title}</span>
-      </div>
-    </div>
   )
 }

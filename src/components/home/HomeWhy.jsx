@@ -1,115 +1,133 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {
-  RocketLaunch,
-  IntegrationInstructions,
-  Lan,
-} from "@mui/icons-material";
+import { motion, AnimatePresence } from "framer-motion";
+import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
+import IntegrationInstructionsIcon from "@mui/icons-material/IntegrationInstructions";
+import LanIcon from "@mui/icons-material/Lan";
 
 export default function WhyYombly() {
   const points = [
     {
       text: "One unified platform for scalable growth",
-      icon: <RocketLaunch className="text-indigo-600" fontSize="medium" />,
+      icon: <RocketLaunchIcon className="text-indigo-400" fontSize="medium" />,
     },
     {
       text: "No more fragmented vendors or broken workflows",
       icon: (
-        <IntegrationInstructions
-          className="text-purple-600"
+        <IntegrationInstructionsIcon
+          className="text-purple-400"
           fontSize="medium"
         />
       ),
     },
     {
       text: "Future-ready intelligence for founders & enterprises",
-      icon: <Lan className="text-blue-600" fontSize="medium" />,
+      icon: <LanIcon className="text-blue-400" fontSize="medium" />,
     },
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Smooth forward-only looping
+  // Auto-rotation every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % points.length);
-    }, 3500);
+    }, 5000);
     return () => clearInterval(interval);
   }, [points.length]);
 
   return (
-    <section className="relative bg-gradient-to-b from-white via-indigo-50/40 to-white py-12 md:py-20 overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute -top-32 -right-32 w-[40vw] h-[40vw] bg-gradient-to-tr from-indigo-300/20 via-purple-300/20 to-blue-300/20 blur-[100px] rounded-full -z-10" />
-      <div className="absolute bottom-[-25%] left-[-15%] w-[35vw] h-[35vw] bg-gradient-to-tr from-blue-300/15 via-indigo-200/15 to-purple-200/15 blur-[100px] rounded-full -z-10" />
+    <section className="relative bg-[#060a13] text-gray-100 py-16 md:py-20 overflow-hidden">
+      {/* ✨ Animated Tech Grid Background */}
+      <div className="absolute inset-0 -z-10">
+        {/* Grid lines */}
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(99,102,241,0.3) 1px, transparent 1px), linear-gradient(to bottom, rgba(99,102,241,0.25) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+            transform: "translateY(0px)",
+            animation: "gridMove 20s linear infinite",
+          }}
+        ></div>
 
-      <div className="mx-auto px-6 md:px-10 text-center relative z-10 space-y-12">
+        {/* Gradient lights */}
+        <div className="absolute top-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-gradient-to-br from-indigo-600/30 via-blue-600/20 to-purple-600/20 blur-[180px] animate-pulse" />
+        <div className="absolute bottom-[-20%] left-[-10%] w-[40vw] h-[40vw] bg-gradient-to-tr from-purple-600/30 via-blue-600/20 to-indigo-600/20 blur-[180px] animate-pulse" />
+      </div>
+
+      <div className="relative z-10 mx-auto px-6 md:px-10 text-center space-y-10">
         {/* Heading */}
         <div>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight">
             Why{" "}
-            <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-indigo-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
               Yombly?
             </span>
           </h2>
-          <p className="mt-4 text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Yombly unifies hiring, training, and performance intelligence into
-            one connected ecosystem — empowering founders and teams to scale
-            with precision.
+          <p className="mt-3 text-sm md:text-base text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            The unified growth engine that connects hiring, training, and
+            performance into one intelligent ecosystem — designed for the next
+            generation of scalable teams.
           </p>
         </div>
 
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 md:gap-6 max-w-5xl mx-auto">
           {points.map((point, index) => (
-            <div
+            <motion.div
               key={index}
-              className={`relative bg-white/70 backdrop-blur-lg border border-white/40 rounded-2xl p-6 md:p-8 flex flex-col items-center text-center transition-all duration-1000 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+              initial={{ opacity: 0.7, scale: 0.96 }}
+              animate={
                 activeIndex === index
-                  ? "scale-[1.05] shadow-[0_0_20px_rgba(99,102,241,0.2)]"
-                  : "scale-[0.97] opacity-75"
+                  ? { opacity: 1, scale: 1.05 }
+                  : { opacity: 0.85, scale: 0.98 }
+              }
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+              className={`relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-5 md:p-7 flex flex-col items-center text-center transition-all duration-700 hover:border-indigo-500/40 hover:shadow-[0_0_25px_rgba(99,102,241,0.25)] ${
+                activeIndex === index
+                  ? "border-indigo-500/40 shadow-[0_0_30px_rgba(99,102,241,0.3)]"
+                  : ""
               }`}
             >
-              {/* Glow loader line */}
               {activeIndex === index && (
-                <div className="absolute inset-0 rounded-2xl overflow-hidden">
-                  <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-indigo-500 to-transparent animate-glow" />
-                </div>
+                <motion.div
+                  key="progress"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 5, ease: "linear" }}
+                  className="absolute top-0 left-0 w-full h-[2px] origin-left bg-gradient-to-r from-indigo-500 via-blue-500 to-purple-500 rounded-t-xl"
+                />
               )}
 
-              {/* Icon */}
-              <div className="mb-4 p-3 bg-gradient-to-tr from-indigo-100 via-purple-100 to-blue-100 rounded-full shadow-inner">
+              <div className="mb-3 p-2.5 bg-gradient-to-tr from-indigo-500/10 via-blue-500/10 to-purple-500/10 rounded-full border border-white/10">
                 {point.icon}
               </div>
 
-              {/* Text */}
-              <p className="text-base md:text-lg font-semibold text-gray-800 leading-snug">
-                {point.text}
-              </p>
-            </div>
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={point.text}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-sm md:text-base font-medium text-gray-200"
+                >
+                  {point.text}
+                </motion.p>
+              </AnimatePresence>
+            </motion.div>
           ))}
         </div>
       </div>
 
-      {/* Glow Animation */}
-      <style jsx>{`
-        @keyframes glow {
-          0% {
-            transform: translateX(-100%);
-            opacity: 0.2;
-          }
-          50% {
-            transform: translateX(0%);
-            opacity: 1;
-          }
-          100% {
-            transform: translateX(100%);
-            opacity: 0.2;
-          }
-        }
-        .animate-glow {
-          animation: glow 3.5s ease-in-out infinite;
+      {/* 🔁 Inline keyframe simulation */}
+      <style>{`
+        @keyframes gridMove {
+          0% { background-position: 0px 0px; }
+          100% { background-position: 60px 60px; }
         }
       `}</style>
     </section>

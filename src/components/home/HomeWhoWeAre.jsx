@@ -4,19 +4,20 @@ import Image from "next/image";
 
 export default function HomeWhoWeAre() {
   return (
-    <section className="relative py-20 bg-gray-50 overflow-x-hidden">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+    <section className="relative py-12 bg-gradient-to-b from-sky-100 to-blue-50 overflow-x-hidden">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-16 items-center">
         
         {/* Left Content */}
-        <div className="space-y-6">
-          <h2 className="text-3xl md:text-4xl font-bold leading-snug">
+        <div className="space-y-4 max-w-md">
+          <h2 className="text-3xl md:text-3xl font-bold leading-snug">
             Who{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500">
               We Are
             </span>
           </h2>
-          <p className="text-lg text-gray-700 leading-relaxed">
-            We are on a mission to make <span className="font-semibold text-indigo-700">revenue success predictable.</span>{" "}
+          <p className="text-base text-gray-700 leading-relaxed">
+            We are on a mission to make{" "}
+            <span className="font-semibold text-indigo-700">revenue success predictable.</span> 
             Hiring, training, and market intelligence are often fragmented.{" "}
             Yombly solves this by creating a{" "}
             <span className="font-semibold text-purple-600">single platform of truth</span> — helping organizations
@@ -24,15 +25,15 @@ export default function HomeWhoWeAre() {
           </p>
         </div>
 
-        {/* Right Illustration */}
-        <div className="flex justify-center md:justify-end w-full max-w-full">
+        {/* Right Illustration - Compact */}
+        <div className="flex justify-center md:justify-end w-full max-w-[300px]">
           <Image
-            src="/images/team-illustration.png"
+            src="/dashboard-sales-forecast-visual.jpg"
             alt="Who We Are"
-            width={460}
-            height={340}
-            className="rounded-2xl shadow-xl border border-indigo-100 max-w-full h-auto"
-            style={{ width: "100%", height: "auto", objectFit: "contain" }}
+            width={300}
+            height={220}
+            className="rounded-xl shadow-lg border border-indigo-100 max-w-full h-auto transition-transform duration-500 hover:scale-105"
+            style={{ objectFit: "contain" }}
           />
         </div>
 
