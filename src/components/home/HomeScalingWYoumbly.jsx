@@ -14,27 +14,27 @@ export default function HomeScalingWithYombly() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-indigo-950 via-slate-950 to-indigo-950 py-20 text-white">
-      {/* Animated background orbs */}
+    <section className="relative overflow-hidden bg-gradient-to-br from-sky-50 via-indigo-50 to-pink-50 py-16 md:py-20 text-gray-800">
+      {/* 🌈 Animated soft orbs background */}
       <div className="absolute inset-0 overflow-hidden -z-10">
         <motion.div
-          animate={{ x: [0, 100, 0], y: [0, 50, 0], scale: [1, 1.2, 1] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[-10%] left-[10%] w-[400px] h-[400px] bg-indigo-500/30 rounded-full blur-[160px]"
+          animate={{ x: [0, 80, 0], y: [0, 50, 0], scale: [1, 1.1, 1] }}
+          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[-10%] left-[10%] w-[350px] h-[350px] bg-sky-300/30 rounded-full blur-[150px]"
         />
         <motion.div
-          animate={{ x: [0, -80, 0], y: [0, 80, 0], scale: [1.1, 0.9, 1.1] }}
+          animate={{ x: [0, -70, 0], y: [0, 70, 0], scale: [1.1, 0.9, 1.1] }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-[-15%] right-[5%] w-[500px] h-[500px] bg-purple-500/30 rounded-full blur-[180px]"
+          className="absolute bottom-[-15%] right-[5%] w-[400px] h-[400px] bg-indigo-300/25 rounded-full blur-[160px]"
         />
         <motion.div
-          animate={{ x: [0, 60, 0], y: [0, -40, 0], scale: [1, 1.15, 1] }}
+          animate={{ x: [0, 40, 0], y: [0, -40, 0], scale: [1, 1.15, 1] }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[40%] left-[40%] w-[350px] h-[350px] bg-blue-500/20 rounded-full blur-[140px]"
+          className="absolute top-[40%] left-[40%] w-[300px] h-[300px] bg-pink-300/25 rounded-full blur-[140px]"
         />
       </div>
 
-      {/* Content */}
+      {/* 💼 Content */}
       <div className="container mx-auto px-6 md:px-10 max-w-6xl text-center relative">
         {/* Heading */}
         <motion.h2
@@ -42,9 +42,12 @@ export default function HomeScalingWithYombly() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-indigo-300 via-blue-400 to-purple-400 bg-clip-text text-transparent"
+          className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-sky-600 via-indigo-600 to-pink-600 bg-clip-text text-transparent"
         >
-          Scaling with <span className="text-indigo-300">Yombly</span>
+          Scaling with{" "}
+          <span className="bg-gradient-to-r from-sky-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent">
+            Yombly
+          </span>
         </motion.h2>
 
         {/* Subtitle */}
@@ -53,13 +56,13 @@ export default function HomeScalingWithYombly() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-gray-300 max-w-3xl mx-auto mb-10 text-sm md:text-base"
+          className="text-gray-600 max-w-3xl mx-auto mb-10 text-sm md:text-base leading-relaxed"
         >
-          Scaling isn’t about more people—it’s about sharper processes, smarter
-          hiring, and better data. Yombly equips you to:
+          Scaling isn’t about more people — it’s about sharper processes,
+          smarter hiring, and stronger data foundations. Yombly empowers you to:
         </motion.p>
 
-        {/* Bullet Points — Compact 1-Line */}
+        {/* Bullet Points */}
         <motion.ul
           initial="hidden"
           whileInView="visible"
@@ -67,7 +70,7 @@ export default function HomeScalingWithYombly() {
             visible: { transition: { staggerChildren: 0.1 } },
           }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 mb-10"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-10"
         >
           {points.map((point, index) => (
             <motion.li
@@ -76,10 +79,10 @@ export default function HomeScalingWithYombly() {
                 hidden: { opacity: 0, y: 10 },
                 visible: { opacity: 1, y: 0 },
               }}
-              className="flex items-center justify-center gap-2 p-3 bg-white/10 backdrop-blur-xl rounded-xl border border-white/10 shadow-sm hover:shadow-lg hover:bg-white/20 transition-all duration-300"
+              className="flex items-center justify-center gap-2 p-4 bg-white/70 backdrop-blur-xl rounded-xl border border-gray-100 shadow-[0_2px_15px_rgba(0,0,0,0.05)] hover:shadow-[0_4px_20px_rgba(56,189,248,0.15)] hover:scale-[1.02] transition-all duration-400"
             >
-              <CheckCircleIcon className="text-indigo-300" fontSize="small" />
-              <span className="text-gray-100 text-sm font-medium">
+              <CheckCircleIcon className="text-sky-500" fontSize="small" />
+              <span className="text-gray-700 text-sm font-medium">
                 {point}
               </span>
             </motion.li>
@@ -95,7 +98,7 @@ export default function HomeScalingWithYombly() {
         >
           <Link
             href="/contact"
-            className="inline-flex items-center px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 text-white font-medium text-sm md:text-base shadow-md hover:shadow-xl hover:scale-[1.03] transition-all duration-300"
+            className="inline-flex items-center px-6 py-3 rounded-xl bg-gradient-to-r from-sky-500 via-indigo-500 to-pink-500 text-white font-medium text-sm md:text-base shadow-md hover:shadow-lg hover:scale-[1.05] transition-all duration-300"
           >
             Talk to a Growth Advisor
             <ArrowForwardIcon fontSize="small" className="ml-2" />

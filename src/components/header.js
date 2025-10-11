@@ -45,18 +45,18 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full">
-      <div className="relative bg-gradient-to-r from-[#0a0f1f] via-[#10182e] to-[#0a0f1f] backdrop-blur-xl">
-        {/* Glowing Bottom Border */}
-        <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-400 blur-[1px] opacity-80" />
+      <div className="relative bg-gradient-to-r from-[#f8fbff] via-[#e9f3ff] to-[#f8fbff] backdrop-blur-xl border-b border-gray-200/70 shadow-sm">
+        {/* Soft Highlight Line */}
+        <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-sky-400 via-teal-400 to-blue-400 opacity-60 blur-[1px]" />
 
-        <div className="flex items-center justify-between max-w-[1400px] mx-auto px-3 md:px-6 py-3 border-b border-white/10">
+        <div className="flex items-center justify-between max-w-[1350px] mx-auto px-4 md:px-8 py-3">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2 hover:scale-105 transition-transform duration-300">
             <Logo />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6 text-sm text-gray-200 relative">
+          <nav className="hidden md:flex items-center gap-6 text-sm text-gray-700 font-medium">
             {navLinks.map((link) => {
               if (link.type === "dropdown") {
                 const isServices = link.label === "Services"
@@ -72,8 +72,10 @@ export default function Header() {
                     onMouseLeave={() => handleLeave(setDropdownOpen)}
                   >
                     <button
-                      className={`transition duration-200 font-medium ${
-                        dropdownLinks.some((d) => d.href === pathname) ? "text-cyan-400" : "hover:text-cyan-400"
+                      className={`transition-all font-medium ${
+                        dropdownLinks.some((d) => d.href === pathname)
+                          ? "text-sky-600"
+                          : "hover:text-sky-500"
                       }`}
                     >
                       {link.label} ▾
@@ -81,7 +83,7 @@ export default function Header() {
 
                     {/* Dropdown */}
                     <div
-                      className={`absolute left-0 top-full mt-2 w-52 bg-[#10182e] border border-[#1f2937]/60 rounded-lg shadow-xl overflow-hidden transition-all duration-200
+                      className={`absolute left-0 top-full mt-2 w-52 bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden transition-all duration-200 ease-out
                         ${
                           dropdownOpen
                             ? "opacity-100 translate-y-0 pointer-events-auto"
@@ -94,10 +96,10 @@ export default function Header() {
                           <Link
                             key={d.href}
                             href={d.href}
-                            className={`block px-4 py-2 text-gray-300 text-sm transition ${
+                            className={`block px-4 py-2 text-gray-700 text-sm transition-all ${
                               isActive
-                                ? "bg-cyan-600/20 text-cyan-400 font-semibold"
-                                : "hover:bg-[#0d1324] hover:text-cyan-300"
+                                ? "bg-sky-50 text-sky-600 font-semibold"
+                                : "hover:bg-sky-50 hover:text-sky-600"
                             }`}
                           >
                             {d.label}
@@ -114,8 +116,10 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`transition font-medium ${
-                    isActive ? "text-cyan-400" : "text-gray-300 hover:text-cyan-400"
+                  className={`transition-all ${
+                    isActive
+                      ? "text-sky-600"
+                      : "text-gray-700 hover:text-sky-500"
                   }`}
                 >
                   {link.label}
@@ -126,20 +130,24 @@ export default function Header() {
             {/* CTA Buttons */}
             <Link
               href="/tickets/track"
-              className={`px-3 py-1 rounded-md border border-cyan-600 text-cyan-400 hover:bg-cyan-600/10 transition font-medium`}
+              className="px-3 py-1.5 rounded-md border border-sky-300 text-sky-600 hover:bg-sky-50 transition"
             >
               Track Ticket
             </Link>
             <Link
               href="/free-question"
-              className={`px-4 py-2 rounded-md bg-cyan-500 text-white hover:bg-cyan-400 transition font-semibold shadow-lg shadow-cyan-500/30`}
+              className="px-4 py-2 rounded-lg bg-gradient-to-r from-sky-500 to-teal-400 text-white hover:shadow-md hover:shadow-sky-200/70 transition-all font-semibold"
             >
               Ask 1 Free Question
             </Link>
           </nav>
 
           {/* Mobile Menu Button */}
-          <button aria-label="Open Menu" className="md:hidden text-gray-200" onClick={() => setOpen(true)}>
+          <button
+            aria-label="Open Menu"
+            className="md:hidden text-gray-700 hover:text-sky-500 transition"
+            onClick={() => setOpen(true)}
+          >
             <Menu fontSize="large" />
           </button>
         </div>
