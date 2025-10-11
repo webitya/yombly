@@ -1,103 +1,202 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import PeopleIcon from "@mui/icons-material/People"
-import SchoolIcon from "@mui/icons-material/School"
-import LeaderboardIcon from "@mui/icons-material/Leaderboard"
+import SmsIcon from "@mui/icons-material/Sms"
 import CheckCircleIcon from "@mui/icons-material/CheckCircle"
 import WorkIcon from "@mui/icons-material/Work"
 import GroupIcon from "@mui/icons-material/Group"
+import SchoolIcon from "@mui/icons-material/School"
+import LeaderboardIcon from "@mui/icons-material/Leaderboard"
 import AccountTreeIcon from "@mui/icons-material/AccountTree"
 import EmojiObjectsIcon from "@mui/icons-material/EmojiObjects"
-import PuzzleIcon from "@mui/icons-material/Extension"
-import TargetIcon from "@mui/icons-material/TrackChanges"
+import PeopleIcon from "@mui/icons-material/People"
+import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded"
+import ExpandLessRoundedIcon from "@mui/icons-material/ExpandLessRounded"
 
-const tabs = [
-  { id: 1, title: "Team-Building", icon: <PeopleIcon />, image: "/hero.png" },
-  { id: 2, title: "Mentoring", icon: <SchoolIcon />, image: "/hero.png" },
-  { id: 3, title: "Leadership", icon: <LeaderboardIcon />, image: "/hero.png" },
+const TABS = [
+  { id: 0, title: "Team-Building", icon: PeopleIcon },
+  { id: 1, title: "Mentoring", icon: SchoolIcon },
+  { id: 2, title: "Leadership", icon: LeaderboardIcon },
+  { id: 3, title: "Learning & Development Structure", icon: EmojiObjectsIcon },
 ]
 
 export default function ServicesTabs() {
-  const [activeTab, setActiveTab] = useState(0)
+  const [active, setActive] = useState(2) // start on the third to show "active" styling
+  const [expanded, setExpanded] = useState(true)
   const intervalRef = useRef(null)
-  const timeoutRef = useRef(null)
+  const pauseRef = useRef(null)
+  const durationSec = 5
 
-  const startAutoRotate = () => {
+  const start = () => {
+    stop()
     intervalRef.current = setInterval(() => {
-      setActiveTab((prev) => (prev + 1) % tabs.length)
-    }, 5000) // ⏱️ changed to 5 seconds
+      setActive((p) => (p + 1) % TABS.length)
+    }, durationSec * 1000)
+  }
+
+  const stop = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current)
   }
 
   useEffect(() => {
-    startAutoRotate()
-    return () => {
-      clearInterval(intervalRef.current)
-      clearTimeout(timeoutRef.current)
-    }
+    const media = typeof window !== "undefined" ? window.matchMedia("(prefers-reduced-motion: reduce)") : null
+    if (!media?.matches) start()
+    return stop
   }, [])
 
-  const handleTabClick = (index) => {
-    setActiveTab(index)
-    clearInterval(intervalRef.current)
-    clearTimeout(timeoutRef.current)
-    timeoutRef.current = setTimeout(() => startAutoRotate(), 180000)
+  const onTabClick = (idx) => {
+    setActive(idx)
+    stop()
+    if (pauseRef.current) clearTimeout(pauseRef.current)
+    // pause auto-rotate for 3 minutes after manual interaction
+    pauseRef.current = setTimeout(() => start(), 180000)
+  }
+
+  const onKeyDown = (e) => {
+    if (e.key === "ArrowRight") {
+      e.preventDefault()
+      onTabClick((active + 1) % TABS.length)
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault()
+      onTabClick((active - 1 + TABS.length) % TABS.length)
+    }
+  }
+
+  const toggleExpand = () => {
+    setExpanded(!expanded)
   }
 
   return (
-    <div className="flex flex-col items-center w-full px-3 py-8 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
-      {/* Tabs */}
-      <div className="flex flex-wrap justify-center gap-2 mb-6">
-        {tabs.map((tab, index) => (
-          <motion.button
-            key={tab.id}
-            onClick={() => handleTabClick(index)}
-            whileTap={{ scale: 0.95 }}
-            animate={{
-              scale: activeTab === index ? 1.05 : 1,
-              backgroundColor: activeTab === index ? "#1e3a8a" : "#ffffff",
-              color: activeTab === index ? "#ffffff" : "#1e3a8a",
-              boxShadow:
-                activeTab === index
-                  ? "0 4px 10px rgba(30,58,138,0.25)"
-                  : "0 1px 3px rgba(0,0,0,0.1)",
-            }}
-            className="flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-gray-200 text-sm font-medium transition-all duration-300 hover:shadow-sm hover:bg-blue-50"
-          >
-            {tab.icon}
-            <span>{tab.title}</span>
-          </motion.button>
-        ))}
+    <div className="relative w-full py-10">
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute inset-0 opacity-[0.35] bg-[radial-gradient(60%_50%_at_10%_0%,rgba(99,102,241,0.10),transparent_70%),radial-gradient(40%_40%_at_100%_10%,rgba(147,197,253,0.12),transparent_70%)]" />
+        <div
+          className="absolute inset-0 opacity-[0.18]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(99,102,241,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.12) 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
+          }}
+        />
+      </div>
+      <div
+        role="tablist"
+        aria-label="Services"
+        onKeyDown={onKeyDown}
+        className="mx-auto flex md:grid md:grid-cols-4 gap-2.5 md:gap-3 max-w-6xl py-3 px-2 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-1"
+      >
+        {TABS.map((t, idx) => {
+          const Icon = t.icon
+          const isActive = active === idx
+          return (
+            <motion.button
+              key={t.id}
+              role="tab"
+              aria-selected={isActive}
+              aria-controls={`tab-panel-${idx}`}
+              onClick={() => onTabClick(idx)}
+              whileTap={{ scale: 0.985 }}
+              className={[
+                "group relative py-2 snap-start shrink-0 w-[80%] min-w-[230px] md:w-full md:min-w-0 rounded-2xl border",
+                "bg-background text-foreground/80",
+                "px-3 py-2 md:px-4 md:py-3 text-left shadow-sm transition-colors",
+                "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-400",
+                isActive
+                  ? "border-indigo-500/50 ring-1 ring-indigo-500/40 shadow-[0_8px_30px_rgb(99_102_241/0.14)]"
+                  : "border-foreground/8 hover:bg-foreground/[0.02]",
+              ].join(" ")}
+            >
+              <motion.div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 rounded-2xl"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: isActive ? 0.25 : 0 }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  background: "radial-gradient(60% 70% at 50% 0%, rgba(99,102,241,0.35), transparent 70%)",
+                }}
+              />
+              <div className="flex items-center gap-3">
+                <span
+                  className={[
+                    "inline-flex h-7 w-7 md:h-8 md:w-8 shrink-0 items-center justify-center rounded-xl",
+                    isActive ? "bg-indigo-600 text-white shadow-md" : "bg-foreground/[0.06] text-indigo-700",
+                  ].join(" ")}
+                >
+                  <Icon fontSize="small" />
+                </span>
+                <div className="min-w-0">
+                  <p
+                    className={[
+                      "text-[13px] md:text-[15px] font-semibold text-balance",
+                      isActive ? "text-foreground" : "text-foreground/80",
+                    ].join(" ")}
+                  >
+                    {t.title}
+                  </p>
+                  <div className="mt-1.5 md:mt-1.5 h-[1.5px] w-full rounded-full bg-foreground/10 overflow-hidden">
+                    {isActive && (
+                      <motion.span
+                        key={`underline-${idx}-${active}`}
+                        initial={{ width: 0 }}
+                        animate={{ width: "100%" }}
+                        transition={{ duration: durationSec, ease: "easeInOut" }}
+                        className="block h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-500"
+                      />
+                    )}
+                  </div>
+                </div>
+              </div>
+              {t.comingSoon && (
+                <span className="absolute right-3 top-3 rounded-full bg-foreground/5 px-2 py-0.5 text-[11px] font-medium text-foreground/70">
+                  Coming soon
+                </span>
+              )}
+            </motion.button>
+          )
+        })}
       </div>
 
-      {/* Content */}
-      <div className="relative w-full max-w-6xl">
+      <div className="mx-auto mt-5 md:mt-6 max-w-6xl">
         <AnimatePresence mode="wait">
           <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 30 }}
+            key={active}
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -30 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="grid md:grid-cols-2 gap-4 bg-white/80 backdrop-blur-lg rounded-2xl shadow-md p-5 border border-gray-100"
+            exit={{ opacity: 0, y: -18 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="relative grid md:grid-cols-2 items-stretch gap-3.5 md:gap-5 rounded-3xl border border-foreground/10 bg-foreground/[0.03] p-4 md:p-5 shadow-sm min-h-[320px] md:min-h-[380px]"
           >
-            <div className="flex flex-col justify-start space-y-2 overflow-y-auto max-h-[400px] pr-1 scrollbar-thin scrollbar-thumb-blue-300">
-              {activeTab === 0 && <TeamBuilding />}
-              {activeTab === 1 && <MentoringPrograms />}
-              {activeTab === 2 && <LeadershipProgram />}
+            <div className="pointer-events-none absolute -inset-1 rounded-[1.6rem] bg-[radial-gradient(45%_60%_at_10%_0%,rgba(99,102,241,0.16),transparent_70%)]" />
+            {/* Left copy (re-using content from original) */}
+            <div
+              id={`tab-panel-${active}`}
+              role="tabpanel"
+              aria-labelledby={`tab-${active}`}
+              className="flex h-full flex-col justify-start"
+            >
+              {active === 0 && <TeamBuilding />}
+              {active === 1 && <MentoringPrograms />}
+              {active === 2 && <LeadershipProgram />}
+              {active === 3 && <LDStructure />}
+              <div className="mt-4 md:mt-5">
+                <button
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                  className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-400"
+                >
+                  <CheckCircleIcon fontSize="small" />
+                  {"Schedule a demo"}
+                </button>
+              </div>
             </div>
 
-            <motion.img
-              key={tabs[activeTab].image}
-              src={tabs[activeTab].image}
-              alt={tabs[activeTab].title}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.6 }}
-              className="w-full h-64 md:h-72 object-contain rounded-xl shadow-sm"
-            />
+            {/* Right visual: chat mock like the demo */}
+            <div className="relative h-full flex items-center">
+              <ChatMock />
+              {/* soft side fades like the screenshot */}
+              <div className="pointer-events-none absolute -inset-6 md:-inset-10 bg-[radial-gradient(60%_50%_at_100%_10%,_rgba(99,102,241,0.18),_transparent_60%)]" />
+            </div>
           </motion.div>
         </AnimatePresence>
       </div>
@@ -105,90 +204,289 @@ export default function ServicesTabs() {
   )
 }
 
-/* ---------- CONTENT SECTIONS ---------- */
-function TeamBuilding() {
+/* ---------- CONTENT (adapted from the original file, JS only) ---------- */
+function Section({ title, children }) {
   return (
-    <div className="text-gray-700 text-[13.5px] leading-relaxed space-y-2">
-      <h2 className="text-lg font-semibold text-gray-800">Team-Building Solutions</h2>
+    <div className="mb-4 last:mb-0">
+      <h3 className="text-lg md:text-xl font-bold text-foreground mb-2">{title}</h3>
+      <div className="text-[13.5px] leading-relaxed text-foreground/80 space-y-2">{children}</div>
+    </div>
+  )
+}
 
-      <div>
-        <p className="font-medium">1. Smart Screening System – Hire Right, Every Time</p>
-        <p>Stop wasting time and salary on wrong hires. Our Screening Solution helps you evaluate real capabilities before hiring, so you make confident, data-backed hiring decisions — not guesses.</p>
-        <ul className="list-disc pl-5 text-blue-700 space-y-0.5">
-          <li><CheckCircleIcon fontSize="small" className="inline mr-1" /> Identify true performers early</li>
-          <li><CheckCircleIcon fontSize="small" className="inline mr-1" /> Avoid hiring mismatches</li>
-          <li><CheckCircleIcon fontSize="small" className="inline mr-1" /> Save time, cost, and effort in recruitment</li>
-        </ul>
-      </div>
+function Bullet({ icon: Icon, children }) {
+  return (
+    <li className="flex items-start gap-2">
+      <span className="mt-0.5 text-indigo-600/90">
+        <Icon fontSize="small" />
+      </span>
+      <span>{children}</span>
+    </li>
+  )
+}
 
-      <div>
-        <p className="font-medium">2. Revenue Team Continuity Service – Keep Your Sales Engine Running</p>
-        <p>We manage your sales team hiring, retention, motivation and quarterly performance audits (RCA) to ensure your revenue team stays consistent and accountable.</p>
-        <ul className="list-disc pl-5 text-blue-700 space-y-0.5">
-          <li><WorkIcon fontSize="small" className="inline mr-1" /> End hiring chaos & turnover</li>
-          <li><WorkIcon fontSize="small" className="inline mr-1" /> Build a stable, high-output sales team</li>
-          <li><WorkIcon fontSize="small" className="inline mr-1" /> Quarterly actionable insights & growth roadmap</li>
+function TeamBuilding() {
+  const [open, setOpen] = useState(false)
+  return (
+    <div>
+      <Section title="Team-Building Solutions">
+        <p className="font-medium">Smart Screening – Hire Right, Every Time</p>
+        <ul className="ml-4 list-disc space-y-1">
+          <Bullet icon={CheckCircleIcon}>Identify top performers early</Bullet>
+          <Bullet icon={CheckCircleIcon}>Eliminate hiring mismatches</Bullet>
+          <Bullet icon={CheckCircleIcon}>Save time, cost, and effort</Bullet>
         </ul>
-      </div>
+        <p className="mt-2 text-foreground/80">Outcome: Better hires, faster decisions, stronger teams.</p>
+        {!open && (
+          <button
+            onClick={() => setOpen(true)}
+            className="mt-3 inline-flex items-center gap-1 text-[13px] font-medium text-indigo-700 hover:underline"
+          >
+            <ExpandMoreRoundedIcon fontSize="small" /> More details
+          </button>
+        )}
+        {open && (
+          <>
+            <Section title="Pre‑Screened & Intent‑Verified Candidates">
+              <p>
+                Ready‑to‑interview candidates assessed on 50+ parameters with Role‑Specific Talent Intelligence Reports
+                and verified intent.
+              </p>
+              <p className="mt-2 font-semibold">Includes</p>
+              <ul className="ml-4 list-disc space-y-1">
+                <Bullet icon={WorkIcon}>50+ parameter competency assessment</Bullet>
+                <Bullet icon={WorkIcon}>Expert‑led screening</Bullet>
+                <Bullet icon={WorkIcon}>Standardized report</Bullet>
+                <Bullet icon={WorkIcon}>Verified interest</Bullet>
+              </ul>
+              <p className="mt-2 text-foreground/80">Impact: Faster closures and up to 70–80% cost savings.</p>
+            </Section>
 
-      <div>
-        <p className="font-medium">3. 30-Day Onboarding Program – Make New Hires Productive Fast</p>
-        <p>Most new sales hires take 3 months to become productive. Our Onboarding Process gets them market-ready in 30 days — saving 60+ days of salary per hire across levels.</p>
-        <ul className="list-disc pl-5 text-blue-700 space-y-0.5">
-          <li><GroupIcon fontSize="small" className="inline mr-1" /> Accelerated training on product, process & pitch</li>
-          <li><GroupIcon fontSize="small" className="inline mr-1" /> Structured assessments to ensure readiness</li>
-          <li><GroupIcon fontSize="small" className="inline mr-1" /> Proven framework for faster revenue contribution</li>
-        </ul>
-      </div>
+            <Section title="30‑Day Onboarding Accelerator">
+              <ul className="ml-4 list-disc space-y-1">
+                <Bullet icon={GroupIcon}>Product knowledge</Bullet>
+                <Bullet icon={GroupIcon}>Process mastery</Bullet>
+                <Bullet icon={GroupIcon}>Pitch & performance readiness</Bullet>
+              </ul>
+            </Section>
+
+            <button
+              onClick={() => setOpen(false)}
+              className="mt-3 inline-flex items-center gap-1 text-[13px] font-medium text-indigo-700 hover:underline"
+            >
+              <ExpandLessRoundedIcon fontSize="small" /> Show less
+            </button>
+          </>
+        )}
+      </Section>
     </div>
   )
 }
 
 function MentoringPrograms() {
+  const [open, setOpen] = useState(false)
   return (
-    <div className="text-gray-700 text-[13.5px] leading-relaxed space-y-2">
-      <h2 className="text-lg font-semibold text-gray-800">Mentoring & Capability-Building Programs</h2>
-
-      <p className="font-medium">Monthly Mentoring Sessions – Real Growth for Every Level</p>
-      <p>We mentor your team continuously so learning converts into performance.</p>
-
-      <p className="font-medium"><PuzzleIcon fontSize="small" className="inline mr-1" /> Junior Executives</p>
-      <ul className="list-disc pl-5 text-blue-700 space-y-0.5">
-        <li><WorkIcon fontSize="small" className="inline mr-1" /> Outbound lead generation & account management</li>
-        <li><WorkIcon fontSize="small" className="inline mr-1" /> Time planning & goal execution</li>
-        <li><WorkIcon fontSize="small" className="inline mr-1" /> Sales conversation building & decision-maker outreach</li>
-        <li><WorkIcon fontSize="small" className="inline mr-1" /> Email & content writing</li>
-        <li><WorkIcon fontSize="small" className="inline mr-1" /> Prospecting, probing & planning</li>
-      </ul>
-
-      <p className="font-medium"><TargetIcon fontSize="small" className="inline mr-1" /> Sales/Marketing Managers</p>
-      <ul className="list-disc pl-5 text-blue-700 space-y-0.5">
-        <li><AccountTreeIcon fontSize="small" className="inline mr-1" /> Team management & coaching skills</li>
-        <li><AccountTreeIcon fontSize="small" className="inline mr-1" /> Hiring & firing strategy</li>
-        <li><AccountTreeIcon fontSize="small" className="inline mr-1" /> Process and reporting system development</li>
-        <li><AccountTreeIcon fontSize="small" className="inline mr-1" /> Culture and motivation management</li>
-        <li><AccountTreeIcon fontSize="small" className="inline mr-1" /> Sales forecasting, pipeline management, and planning</li>
-      </ul>
+    <div>
+      <Section title="Mentoring & Capability-Building Programs">
+        <p className="font-medium">Monthly mentoring that converts learning into performance.</p>
+      </Section>
+      <Section title="For Junior Executives">
+        <ul className="ml-4 list-disc space-y-1">
+          <Bullet icon={WorkIcon}>Outbound & account management</Bullet>
+          <Bullet icon={WorkIcon}>Time planning & execution</Bullet>
+          <Bullet icon={WorkIcon}>Decision‑maker outreach</Bullet>
+        </ul>
+      </Section>
+      {!open && (
+        <button
+          onClick={() => setOpen(true)}
+          className="mt-1 inline-flex items-center gap-1 text-[13px] font-medium text-indigo-700 hover:underline"
+        >
+          <ExpandMoreRoundedIcon fontSize="small" /> More details
+        </button>
+      )}
+      {open && (
+        <>
+          <Section title="For Sales/Marketing Managers">
+            <ul className="ml-4 list-disc space-y-1">
+              <Bullet icon={AccountTreeIcon}>Team management & coaching</Bullet>
+              <Bullet icon={AccountTreeIcon}>Hiring strategy</Bullet>
+              <Bullet icon={AccountTreeIcon}>Process & reporting systems</Bullet>
+              <Bullet icon={AccountTreeIcon}>Culture & motivation</Bullet>
+              <Bullet icon={AccountTreeIcon}>Forecasting & pipeline planning</Bullet>
+            </ul>
+          </Section>
+          <button
+            onClick={() => setOpen(false)}
+            className="mt-1 inline-flex items-center gap-1 text-[13px] font-medium text-indigo-700 hover:underline"
+          >
+            <ExpandLessRoundedIcon fontSize="small" /> Show less
+          </button>
+        </>
+      )}
     </div>
   )
 }
 
 function LeadershipProgram() {
+  const [open, setOpen] = useState(false)
   return (
-    <div className="text-gray-700 text-[13.5px] leading-relaxed space-y-2">
-      <h2 className="text-lg font-semibold text-gray-800">Build Your Next Leaders Program</h2>
-      <p>Transform promising managers into future business leaders — in 12 months. Ideal for organizations between ₹15 Cr to ₹100 Cr aiming to create a self-sustaining growth engine.</p>
+    <div>
+      <Section title="Build Your Next Leaders">
+        <p>Transform managers into future business leaders in 12 months.</p>
+      </Section>
+      {!open && (
+        <button
+          onClick={() => setOpen(true)}
+          className="mt-1 inline-flex items-center gap-1 text-[13px] font-medium text-indigo-700 hover:underline"
+        >
+          <ExpandMoreRoundedIcon fontSize="small" /> View deliverables
+        </button>
+      )}
+      {open && (
+        <>
+          <Section title="Program Deliverables">
+            <ul className="ml-4 list-disc space-y-1">
+              <Bullet icon={LeaderboardIcon}>Leadership audit (identify 2–3 HiPos)</Bullet>
+              <Bullet icon={SchoolIcon}>Capability dev: strategy, P&amp;L, negotiation</Bullet>
+              <Bullet icon={WorkIcon}>Quarterly on‑the‑job projects</Bullet>
+              <Bullet icon={GroupIcon}>Monthly 1:1 & group mentoring</Bullet>
+              <Bullet icon={EmojiObjectsIcon}>Founder alignment & ownership transfer</Bullet>
+            </ul>
+            <p className="mt-2 flex items-start gap-2">
+              <EmojiObjectsIcon fontSize="small" className="text-indigo-600/90" />
+              <span>Outcome: Scale even without being in every meeting.</span>
+            </p>
+          </Section>
+          <button
+            onClick={() => setOpen(false)}
+            className="mt-1 inline-flex items-center gap-1 text-[13px] font-medium text-indigo-700 hover:underline"
+          >
+            <ExpandLessRoundedIcon fontSize="small" /> Show less
+          </button>
+        </>
+      )}
+    </div>
+  )
+}
 
-      <p className="font-medium">Deliverables (12-Month Leadership Program):</p>
-      <ul className="list-disc pl-5 text-blue-700 space-y-0.5">
-        <li><LeaderboardIcon fontSize="small" className="inline mr-1" /> Leadership Audit: Identify 2–3 high-potential team members.</li>
-        <li><SchoolIcon fontSize="small" className="inline mr-1" /> Capability Development: Structured curriculum covering strategy, P&L, negotiation, and growth mindset.</li>
-        <li><WorkIcon fontSize="small" className="inline mr-1" /> On-the-Job Projects: Quarterly revenue-focused assignments to test leadership skills.</li>
-        <li><GroupIcon fontSize="small" className="inline mr-1" /> Mentorship & Coaching: Monthly 1:1 & group mentoring.</li>
-        <li><EmojiObjectsIcon fontSize="small" className="inline mr-1" /> Founder Alignment: Quarterly reviews to ensure delegation & ownership transfer.</li>
-      </ul>
+function LDStructure() {
+  const [open, setOpen] = useState(false)
+  return (
+    <div>
+      <Section title="Learning & Development Structure">
+        <p className="font-medium">Sustain performance beyond hiring.</p>
+        <ul className="ml-4 list-disc space-y-1">
+          <Bullet icon={PeopleIcon}>Right talent in</Bullet>
+          <Bullet icon={AccountTreeIcon}>Accountability via tracking</Bullet>
+          <Bullet icon={SchoolIcon}>Continuous capability growth</Bullet>
+        </ul>
+        {!open && (
+          <button
+            onClick={() => setOpen(true)}
+            className="mt-2 inline-flex items-center gap-1 text-[13px] font-medium text-indigo-700 hover:underline"
+          >
+            <ExpandMoreRoundedIcon fontSize="small" /> More details
+          </button>
+        )}
+        {open && (
+          <>
+            <p className="mt-2">
+              A strong L&amp;D structure translates potential into performance across sales and marketing.
+            </p>
+            <p className="mt-2 text-foreground/80">
+              Without continuous learning and clear performance management, momentum fades. Align people, managers, and
+              systems for consistent growth.
+            </p>
+            <button
+              onClick={() => setOpen(false)}
+              className="mt-2 inline-flex items-center gap-1 text-[13px] font-medium text-indigo-700 hover:underline"
+            >
+              <ExpandLessRoundedIcon fontSize="small" /> Show less
+            </button>
+          </>
+        )}
+      </Section>
+    </div>
+  )
+}
 
-      <p><EmojiObjectsIcon fontSize="small" className="inline mr-1" /> Outcome: Your business can scale — even when you’re not in every meeting.</p>
+/* ---------- Right column chat mock to resemble the demo ---------- */
+function ChatMock() {
+  return (
+    <motion.div
+      initial={{ y: 0 }}
+      animate={{ y: [0, -4, 0] }}
+      transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+      className="relative w-full"
+    >
+      <div className="relative mx-auto w-full max-w-md rounded-2xl border border-foreground/10 bg-background shadow-[0_20px_60px_rgba(99,102,241,0.12)]">
+        {/* Header */}
+        <div className="flex items-center gap-3 border-b border-foreground/10 px-4 py-3">
+          <img
+            src={"/placeholder.svg?height=32&width=32&query=profile_pic"}
+            alt="Melissa Hammond"
+            className="h-8 w-8 rounded-full object-cover"
+          />
+          <p className="font-semibold text-foreground">Melissa Hammond</p>
+        </div>
+        {/* Messages */}
+        <div className="space-y-2.5 px-4 py-4">
+          <Bubble who="them">Hi, Melissa! Thanks for taking the time to chat with me.</Bubble>
+          <Bubble who="me">Hi Alex! I&apos;m doing well, thanks. How can I help?</Bubble>
+          <Bubble who="them">
+            Glad to hear! I wanted to connect because I saw your team has been expanding lately.
+          </Bubble>
+        </div>
+        {/* Footer composer */}
+        <div className="flex items-center gap-2 border-t border-foreground/10 bg-foreground/[0.02] px-3 py-2">
+          <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-indigo-600 text-white">
+            <SmsIcon fontSize="inherit" />
+          </span>
+          <div className="flex-1">
+            <div className="rounded-lg bg-background px-3 py-2 text-sm text-foreground/70 shadow-inner">
+              {"Hi, Melissa! Thanks for taking the time to chat..."}
+            </div>
+          </div>
+          <div className="flex -space-x-2">
+            <img
+              src="/avatar-1.jpg"
+              alt="avatar"
+              className="h-6 w-6 rounded-full border border-background"
+            />
+            <img
+              src="/avatar-2.jpg"
+              alt="avatar"
+              className="h-6 w-6 rounded-full border border-background"
+            />
+            <img
+              src="/avatar-3.jpg"
+              alt="avatar"
+              className="h-6 w-6 rounded-full border border-background"
+            />
+          </div>
+        </div>
+      </div>
+      {/* soft side/floor light */}
+      <div className="pointer-events-none absolute -inset-6 md:-inset-10 bg-[radial-gradient(60%_50%_at_100%_10%,_rgba(99,102,241,0.18),_transparent_60%)]" />
+    </motion.div>
+  )
+}
+
+function Bubble({ who = "them", children }) {
+  const isMe = who === "me"
+  return (
+    <div className={["flex", isMe ? "justify-end" : "justify-start"].join(" ")}>
+      <div
+        className={[
+          "max-w-[80%] rounded-xl px-3 py-2 text-sm",
+          isMe
+            ? "bg-background border border-foreground/10 text-foreground shadow-sm"
+            : "bg-indigo-50 text-indigo-900 border border-indigo-100",
+        ].join(" ")}
+      >
+        {children}
+      </div>
     </div>
   )
 }
