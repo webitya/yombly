@@ -40,28 +40,42 @@ export default function Footer() {
     { href: "/team-building", label: "Team Building" },
   ];
 
+  const companyLinks = [
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" },
+    { href: "/admin", label: "Admin" },
+  ];
+
+  const supportLinks = [
+    { href: "/blogs", label: "Blogs" },
+    { href: "/resources", label: "Resources" },
+    { href: "/case-studies", label: "Case Studies" },
+    { href: "/tickets/track", label: "Track Ticket" },
+    { href: "/tickets/raise", label: "Raise Ticket" },
+  ];
+
   return (
-    <footer className="bg-gray-900 text-gray-200">
-      <div className="mx-auto max-w-7xl px-6 py-12">
+    <footer className="bg-gray-50 text-gray-800 border-t border-gray-200">
+      <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid md:grid-cols-5 gap-10">
 
           {/* Column 1: Logo & About */}
           <div className="flex flex-col gap-4">
             <Logo />
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-gray-500">
               Unifying hiring, training, and market intelligence for revenue productivity.
             </p>
           </div>
 
           {/* Column 2: Services */}
           <div>
-            <h4 className="font-semibold mb-4 text-gray-100">Services</h4>
+            <h4 className="font-semibold mb-4 text-gray-900">Services</h4>
             <ul className="space-y-2">
               {servicesLinks.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-gray-400 hover:text-green-400 transition-colors duration-200"
+                    className="text-gray-600 hover:text-blue-500 transition-colors duration-200"
                   >
                     {item.label}
                   </Link>
@@ -72,17 +86,13 @@ export default function Footer() {
 
           {/* Column 3: Company */}
           <div>
-            <h4 className="font-semibold mb-4 text-gray-100">Company</h4>
+            <h4 className="font-semibold mb-4 text-gray-900">Company</h4>
             <ul className="space-y-2">
-              {[
-                { href: "/about", label: "About" },
-                { href: "/contact", label: "Contact" },
-                { href: "/admin", label: "Admin" },
-              ].map((item) => (
+              {companyLinks.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-gray-400 hover:text-green-400 transition-colors duration-200"
+                    className="text-gray-600 hover:text-blue-500 transition-colors duration-200"
                   >
                     {item.label}
                   </Link>
@@ -93,19 +103,13 @@ export default function Footer() {
 
           {/* Column 4: Learn & Support */}
           <div>
-            <h4 className="font-semibold mb-4 text-gray-100">Learn & Support</h4>
+            <h4 className="font-semibold mb-4 text-gray-900">Learn & Support</h4>
             <ul className="space-y-2">
-              {[
-                { href: "/blogs", label: "Blogs" },
-                { href: "/resources", label: "Resources" },
-                { href: "/case-studies", label: "Case Studies" },
-                { href: "/tickets/track", label: "Track Ticket" },
-                { href: "/tickets/raise", label: "Raise Ticket" },
-              ].map((item) => (
+              {supportLinks.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-gray-400 hover:text-green-400 transition-colors duration-200"
+                    className="text-gray-600 hover:text-blue-500 transition-colors duration-200"
                   >
                     {item.label}
                   </Link>
@@ -116,7 +120,7 @@ export default function Footer() {
 
           {/* Column 5: Newsletter */}
           <div>
-            <h4 className="font-semibold mb-4 text-gray-100">Newsletter</h4>
+            <h4 className="font-semibold mb-4 text-gray-900">Newsletter</h4>
             <form onSubmit={handleSubscribe} className="flex flex-col gap-2">
               <input
                 type="email"
@@ -124,15 +128,16 @@ export default function Footer() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="px-3 py-2 rounded-md border border-gray-700 bg-gray-800 text-gray-200 focus:outline-none focus:ring-2 focus:ring-green-400 placeholder-gray-400 shadow-sm transition"
+                className="px-3 py-2 rounded-md border border-gray-300 bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-400 shadow-sm transition"
               />
               <button
                 type="submit"
                 disabled={status === "loading" || status === "success"}
-                className={`px-4 py-2 rounded-md bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white shadow-lg font-semibold text-sm uppercase tracking-wide transition-all duration-300
+                className={`px-4 py-2 rounded-md bg-gradient-to-r from-blue-500 via-cyan-400 to-green-400 text-white shadow-lg font-semibold text-sm uppercase tracking-wide transition-all duration-300
                   ${status === "loading" || status === "success"
                     ? "opacity-70 cursor-not-allowed"
-                    : "hover:scale-105 hover:shadow-2xl hover:from-purple-600 hover:via-pink-600 hover:to-red-600"}`}
+                    : "hover:scale-105 hover:shadow-2xl hover:from-blue-600 hover:via-cyan-500 hover:to-green-500"
+                  }`}
               >
                 {getButtonText()}
               </button>
@@ -141,6 +146,7 @@ export default function Footer() {
               <p className="text-xs text-red-500 mt-2">Subscription failed. Try again.</p>
             )}
           </div>
+
         </div>
 
         {/* Footer Note */}
