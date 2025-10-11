@@ -6,7 +6,6 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft"
 import ChevronRightIcon from "@mui/icons-material/ChevronRight"
 import { motion, AnimatePresence } from "framer-motion"
 
-// Testimonials array
 const testimonials = [
   {
     quote:
@@ -25,12 +24,11 @@ const testimonials = [
   },
 ]
 
-// Logos array of objects
 const logos = [
-  { src: "/logos/logo1.png", alt: "Logo 1", width: 120, height: 50 },
-  { src: "/logos/logo2.png", alt: "Logo 2", width: 120, height: 50 },
-  { src: "/logos/logo3.png", alt: "Logo 3", width: 120, height: 50 },
-  { src: "/logos/logo4.png", alt: "Logo 4", width: 120, height: 50 },
+  { src: "/logos/logo1.png", alt: "Logo 1", width: 100, height: 40 },
+  { src: "/logos/logo2.png", alt: "Logo 2", width: 100, height: 40 },
+  { src: "/logos/logo3.png", alt: "Logo 3", width: 100, height: 40 },
+  { src: "/logos/logo4.png", alt: "Logo 4", width: 100, height: 40 },
 ]
 
 export default function HomeTestimonialsSection() {
@@ -41,7 +39,6 @@ export default function HomeTestimonialsSection() {
   const next = () =>
     setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))
 
-  // Keyboard controls
   useEffect(() => {
     const handleKey = (e) => {
       if (e.key === "ArrowLeft") prev()
@@ -52,65 +49,83 @@ export default function HomeTestimonialsSection() {
   }, [])
 
   return (
-    <section className="relative py-16 bg-white text-gray-800 overflow-hidden">
-      <div className="container mx-auto px-6 space-y-12">
-        {/* Infinite Moving Logos */}
-        <div className="overflow-hidden">
-          <motion.div
-            className="flex gap-12 justify-center"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 25,
-              ease: "linear",
-            }}
-          >
-            {[...logos, ...logos].map((logo, i) => (
-              <div key={i} className="flex-shrink-0">
-                <Image
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={logo.width}
-                  height={logo.height}
-                  className="opacity-70 hover:opacity-100 transition-opacity duration-300"
-                />
-              </div>
-            ))}
-          </motion.div>
-        </div>
+    <section className="relative py-12 bg-gray-50 text-gray-800 overflow-hidden w-full">
+      {/* Logos - full width */}
+      <div className="overflow-hidden">
+        <motion.div
+          className="flex gap-12 justify-center w-full"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: 25,
+            ease: "linear",
+          }}
+        >
+          {[...logos, ...logos].map((logo, i) => (
+            <div key={i} className="flex-shrink-0 transform transition-transform duration-300 hover:scale-110">
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                width={logo.width}
+                height={logo.height}
+                className="opacity-70 hover:opacity-100 transition-opacity duration-300"
+              />
+            </div>
+          ))}
+        </motion.div>
+      </div>
 
-        {/* Testimonial Carousel */}
-        <div className="relative max-w-3xl mx-auto">
-          <AnimatePresence mode="wait">
-            <motion.blockquote
-              key={current}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="bg-white bg-gradient-to-r from-white/90 to-gray-50 rounded-3xl shadow-lg border border-gray-100 p-8 text-lg italic leading-relaxed relative"
-            >
+      {/* Testimonials */}
+      <div className="relative max-w-5xl mx-auto mt-10">
+        <AnimatePresence mode="wait">
+          <motion.blockquote
+            key={current}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 md:p-8 text-base md:text-lg italic leading-relaxed relative flex flex-col md:flex-row justify-between items-center gap-4"
+          >
+            <div className="flex-1 text-center md:text-left">
               “{testimonials[current].quote}”
-              <footer className="mt-4 text-gray-700 font-medium">
+              <footer className="mt-3 text-gray-600 font-medium text-sm md:text-base">
                 – {testimonials[current].author}
               </footer>
+            </div>
 
-              {/* Arrows */}
+            {/* Arrows */}
+            <div className="flex gap-2 mt-4 md:mt-0">
               <button
                 onClick={prev}
-                className="absolute -left-12 top-1/2 -translate-y-1/2 bg-white text-gray-600 border border-gray-200 rounded-full p-3 shadow hover:bg-gray-50 transition"
+                className="bg-white text-gray-600 border border-gray-200 rounded-full p-2 shadow hover:bg-gray-50 transition-transform hover:scale-110"
+                aria-label="Previous testimonial"
               >
-                <ChevronLeftIcon fontSize="large" />
+                <ChevronLeftIcon fontSize="small" />
               </button>
               <button
                 onClick={next}
-                className="absolute -right-12 top-1/2 -translate-y-1/2 bg-white text-gray-600 border border-gray-200 rounded-full p-3 shadow hover:bg-gray-50 transition"
+                className="bg-white text-gray-600 border border-gray-200 rounded-full p-2 shadow hover:bg-gray-50 transition-transform hover:scale-110"
+                aria-label="Next testimonial"
               >
-                <ChevronRightIcon fontSize="large" />
+                <ChevronRightIcon fontSize="small" />
               </button>
-            </motion.blockquote>
-          </AnimatePresence>
+            </div>
+          </motion.blockquote>
+        </AnimatePresence>
+
+        {/* Pagination Dots */}
+        <div className="flex justify-center mt-4 gap-2">
+          {testimonials.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrent(idx)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                idx === current ? "bg-blue-600" : "bg-gray-300 hover:bg-blue-400"
+              }`}
+              aria-label={`Go to testimonial ${idx + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>
