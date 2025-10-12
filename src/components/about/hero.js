@@ -1,64 +1,86 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { ArrowForward } from "@mui/icons-material";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden px-4 md:px-16 bg-gradient-to-br from-indigo-100/20 via-purple-50/10 to-blue-100/10">
-      {/* Background gradient blobs with more colors */}
-      <div className="absolute top-[-10%] left-[-5%] w-[30vw] h-[30vw] rounded-full blur-[120px] opacity-50 -z-10 
-                      bg-gradient-to-tr from-purple-400/40 via-pink-300/30 to-indigo-400/40" />
-      <div className="absolute bottom-[-10%] right-[-5%] w-[35vw] h-[35vw] rounded-full blur-[120px] opacity-50 -z-10 
-                      bg-gradient-to-br from-blue-300/40 via-cyan-200/30 to-purple-400/40" />
-      <div className="absolute top-1/2 left-1/4 w-[20vw] h-[20vw] rounded-full blur-[100px] opacity-30 -z-10 
-                      bg-gradient-to-r from-yellow-200/30 via-green-200/20 to-pink-200/30" />
+    <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden px-6 md:px-16 bg-gradient-to-br from-[#e9f2ff] via-[#f8fbff] to-[#ffffff]">
+      {/* 🔵 Animated Gradient Blobs */}
+      <motion.div
+        className="absolute top-[-15%] left-[-10%] w-[35vw] h-[35vw] rounded-full bg-gradient-to-tr from-blue-400/30 via-sky-300/20 to-cyan-400/30 blur-[120px] -z-10"
+        animate={{ x: [0, 20, 0], y: [0, 15, 0], scale: [1, 1.05, 1] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute bottom-[-15%] right-[-10%] w-[35vw] h-[35vw] rounded-full bg-gradient-to-br from-sky-200/30 via-blue-300/30 to-indigo-300/20 blur-[120px] -z-10"
+        animate={{ x: [0, -15, 0], y: [0, -20, 0], scale: [1, 1.03, 1] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+      />
 
-      {/* Content */}
-      <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center overflow-hidden">
-        {/* Left Text Content */}
-        <div className="space-y-6 bg-white/20 backdrop-blur-md rounded-2xl p-6 md:p-10 w-full">
-          <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
-            We exist to make revenue success predictable.
+      {/* ✅ Main Grid */}
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 items-center gap-8 w-full max-w-7xl">
+        {/* LEFT SIDE CONTENT */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="space-y-5 text-center md:text-left"
+        >
+          <h1 className="text-3xl md:text-5xl font-bold leading-tight text-gray-900 tracking-tight">
+            Unifying teams for predictable <span className="text-blue-600">revenue growth</span>.
           </h1>
 
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-            Hiring, training, and market intelligence are fragmented. Organizations juggle multiple vendors, chaotic
-            systems, and scattered truths—leading to wasted effort, low productivity, and slow growth.
-            <br className="hidden md:block" />
-            <span className="block mt-3">
-              Yombly unifies these critical functions into one platform for revenue productivity.
-            </span>
+          <p className="text-base md:text-lg text-gray-600 leading-relaxed max-w-lg mx-auto md:mx-0">
+            Yombly integrates hiring, learning, and intelligence into one streamlined ecosystem — designed to boost
+            performance, clarity, and measurable results.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 w-full">
-            <a
+          {/* Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start pt-2">
+            <motion.a
               href="#contact"
-              className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 w-full sm:w-auto"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center justify-center rounded-md bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-blue-700 transition-all"
             >
-              Talk to Us
-            </a>
-            <a
+              Talk to Us <ArrowForward className="ml-2" fontSize="small" />
+            </motion.a>
+            <motion.a
               href="#contact"
-              className="inline-flex items-center justify-center rounded-md border border-border bg-secondary px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted w-full sm:w-auto"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center justify-center rounded-md border border-blue-600 text-blue-700 hover:bg-blue-50 px-6 py-2.5 text-sm font-medium transition-all"
             >
               Book a Consultation
-            </a>
+            </motion.a>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Right Image */}
-        <div className="relative flex justify-center md:justify-end w-full overflow-hidden">
-          <div className="absolute -top-8 -left-4 w-[100%] h-[100%] bg-gradient-to-tr from-indigo-200 via-white to-purple-200 rounded-full blur-3xl opacity-50 -z-10" />
-          <Image
-            src="/abstract-dashboard-showing-unified-modules-hiring-.jpg"
-            alt="Revenue Platform Dashboard"
-            width={420}
-            height={360}
-            className="rounded-xl border border-white/20 backdrop-blur-sm"
-            priority
-          />
-        </div>
+        {/* RIGHT SIDE IMAGE */}
+        <motion.div
+          initial={{ opacity: 0, x: 60 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="relative flex justify-center md:justify-end"
+        >
+          <div className="relative rounded-xl overflow-hidden border border-blue-100 bg-white shadow-md">
+            <Image
+              src="/abstract-dashboard-showing-unified-modules-hiring-.jpg"
+              alt="Unified Revenue Platform"
+              width={440}
+              height={340}
+              className="rounded-xl"
+              priority
+            />
+            <motion.div
+              className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-blue-500 via-sky-400 to-cyan-400"
+              animate={{ opacity: [0.6, 1, 0.6] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </div>
+        </motion.div>
       </div>
     </section>
   );
