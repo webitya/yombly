@@ -8,7 +8,6 @@ import Image from "next/image";
 const logos = [
   { src: "/team2.png", alt: "Team 2" },
   { src: "/team3.png", alt: "Team 3" },
-  // { src: "/team4.png", alt: "Team 4" },
   { src: "/team6.png", alt: "Team 6" },
   { src: "/team7.png", alt: "Team 7" },
   { src: "/team8.png", alt: "Team 8" },
@@ -17,15 +16,13 @@ const logos = [
   { src: "/team11.png", alt: "Team 11" },
   { src: "/team12.png", alt: "Team 12" },
   { src: "/team13.png", alt: "Team 13" },
-  // { src: "/team14.png", alt: "Team 14" },
-  // { src: "/team15.png", alt: "Team 15" },
   { src: "/team17.png", alt: "Team 17" },
 ];
 
 export default function Industries() {
   return (
     <section className="relative overflow-hidden py-12 md:py-16 bg-gradient-to-br from-[#f7fbff] via-[#eef5ff] to-[#ffffff]">
-      {/* 🌐 Subtle animated background gradient */}
+      {/* Subtle animated radial gradient background */}
       <motion.div
         className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(180,210,255,0.2),transparent_70%)] -z-10"
         animate={{ opacity: [0.5, 0.7, 0.5] }}
@@ -37,9 +34,9 @@ export default function Industries() {
         title="Industries We Serve"
         subtitle="Powering growth for SaaS, Manufacturing, FMCG, Tech, and B2B organizations."
       >
-        <div className="overflow-hidden relative w-full">
+        <div className="overflow-hidden relative w-full flex justify-center">
           <motion.div
-            className="flex gap-8"
+            className="flex gap-6 justify-center"
             animate={{ x: ["0%", "-50%"] }}
             transition={{
               repeat: Infinity,
@@ -48,26 +45,26 @@ export default function Industries() {
               ease: "linear",
             }}
           >
-            {/* Duplicate logos for infinite scroll */}
             {[...logos, ...logos].map((logo, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="flex-shrink-0 w-32 h-16 flex items-center justify-center rounded-lg border border-blue-100/60 bg-white/70 backdrop-blur-sm shadow-sm hover:shadow-md transition-all relative"
+                className="flex-shrink-0 w-32 h-20 flex items-center justify-center rounded-lg border border-blue-100/60 bg-white/70 backdrop-blur-sm shadow-sm hover:shadow-md transition-all relative"
+                whileHover={{ scale: 1.05 }}
               >
                 <Image
                   src={logo.src}
                   alt={logo.alt}
-                  width={120}
-                  height={40}
-                  className="opacity-80 hover:opacity-100 transition-opacity duration-300"
+                  width={100}
+                  height={100}
+                  className="object-contain w-24 h-16 opacity-80 hover:opacity-100 transition-opacity duration-300 mx-auto"
                 />
-                {/* Glow effect on hover */}
+                {/* Subtle glow effect */}
                 <motion.div
-                  className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-200/20 via-sky-200/10 to-indigo-200/20 blur-2xl opacity-0 hover:opacity-80 transition-all duration-500"
-                  animate={{ opacity: [0.3, 0.6, 0.3] }}
+                  className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-200/20 via-sky-200/10 to-indigo-200/20 blur-2xl opacity-0 hover:opacity-70 transition-all duration-500"
+                  animate={{ opacity: [0.2, 0.5, 0.2] }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                 />
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         </div>
