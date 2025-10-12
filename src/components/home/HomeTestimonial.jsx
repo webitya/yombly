@@ -6,6 +6,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft"
 import ChevronRightIcon from "@mui/icons-material/ChevronRight"
 import { motion, AnimatePresence } from "framer-motion"
 
+// Testimonials array
 const testimonials = [
   {
     quote:
@@ -24,11 +25,22 @@ const testimonials = [
   },
 ]
 
+// Logos array excluding team5.png and team16.png
 const logos = [
-  { src: "/logos/logo1.png", alt: "Logo 1", width: 100, height: 40 },
-  { src: "/logos/logo2.png", alt: "Logo 2", width: 100, height: 40 },
-  { src: "/logos/logo3.png", alt: "Logo 3", width: 100, height: 40 },
-  { src: "/logos/logo4.png", alt: "Logo 4", width: 100, height: 40 },
+  { src: "/team2.png", alt: "Team 2", width: 100, height: 40 },
+  { src: "/team3.png", alt: "Team 3", width: 100, height: 40 },
+  { src: "/team4.png", alt: "Team 4", width: 100, height: 40 },
+  { src: "/team6.png", alt: "Team 6", width: 100, height: 40 },
+  { src: "/team7.png", alt: "Team 7", width: 100, height: 40 },
+  { src: "/team8.png", alt: "Team 8", width: 100, height: 40 },
+  { src: "/team9.png", alt: "Team 9", width: 100, height: 40 },
+  { src: "/team10.png", alt: "Team 10", width: 100, height: 40 },
+  { src: "/team11.png", alt: "Team 11", width: 100, height: 40 },
+  { src: "/team12.png", alt: "Team 12", width: 100, height: 40 },
+  { src: "/team13.png", alt: "Team 13", width: 100, height: 40 },
+  { src: "/team14.png", alt: "Team 14", width: 100, height: 40 },
+  { src: "/team15.png", alt: "Team 15", width: 100, height: 40 },
+  { src: "/team17.png", alt: "Team 17", width: 100, height: 40 },
 ]
 
 export default function HomeTestimonialsSection() {
@@ -50,7 +62,7 @@ export default function HomeTestimonialsSection() {
 
   return (
     <section className="relative py-12 bg-gray-50 text-gray-800 overflow-hidden w-full">
-      {/* Logos - full width */}
+      {/* Logos - infinite scroll */}
       <div className="overflow-hidden">
         <motion.div
           className="flex gap-12 justify-center w-full"
@@ -63,7 +75,10 @@ export default function HomeTestimonialsSection() {
           }}
         >
           {[...logos, ...logos].map((logo, i) => (
-            <div key={i} className="flex-shrink-0 transform transition-transform duration-300 hover:scale-110">
+            <div
+              key={i}
+              className="flex-shrink-0 transform transition-transform duration-300 hover:scale-110"
+            >
               <Image
                 src={logo.src}
                 alt={logo.alt}
