@@ -40,7 +40,7 @@ export default function Hero() {
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start pt-2">
             <motion.a
-              href="#contact"
+              href="/contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
               className="inline-flex items-center justify-center rounded-md bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-blue-700 transition-all"
@@ -48,7 +48,7 @@ export default function Hero() {
               Talk to Us <ArrowForward className="ml-2" fontSize="small" />
             </motion.a>
             <motion.a
-              href="#contact"
+              href="/contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
               className="inline-flex items-center justify-center rounded-md border border-blue-600 text-blue-700 hover:bg-blue-50 px-6 py-2.5 text-sm font-medium transition-all"
