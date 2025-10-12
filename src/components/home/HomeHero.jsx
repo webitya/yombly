@@ -68,26 +68,80 @@ export default function HeroSection() {
           </p>
 
           {/* Feature Pills - compact */}
-          <div className="flex flex-wrap gap-2.5 justify-center lg:justify-start">
-            <div className="flex items-center gap-1.5 px-3.5 py-1.5 bg-secondary border border-border rounded-full text-[13px] font-medium text-foreground shadow-sm hover:bg-accent transition-colors duration-200">
-              <span className="text-blue-600 text-[16px] leading-none">
-                <CloudIcon fontSize="inherit" />
-              </span>
-              Cloud Native
-            </div>
-            <div className="flex items-center gap-1.5 px-3.5 py-1.5 bg-secondary border border-border rounded-full text-[13px] font-medium text-foreground shadow-sm hover:bg-accent transition-colors duration-200">
-              <span className="text-blue-600 text-[16px] leading-none">
-                <ShieldIcon fontSize="inherit" />
-              </span>
-              Enterprise Security
-            </div>
-            <div className="flex items-center gap-1.5 px-3.5 py-1.5 bg-secondary border border-border rounded-full text-[13px] font-medium text-foreground shadow-sm hover:bg-accent transition-colors duration-200">
-              <span className="text-blue-600 text-[16px] leading-none">
-                <QueryStatsIcon fontSize="inherit" />
-              </span>
-              Real-time Analytics
-            </div>
-          </div>
+       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', justifyContent: 'start' }}>
+  {/* Pill 1 */}
+  <div
+    style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: '6px',
+      padding: '6px 14px',
+      borderRadius: '9999px',
+      fontSize: '13px',
+      fontWeight: 500,
+      color: '#1a1a1a',
+      background: 'linear-gradient(135deg, #e3f2ff, #f8fbff)',
+      border: '1px solid #b3d4fc',
+      boxShadow: '0 2px 6px rgba(179, 212, 252, 0.4)',
+      transform: 'translateY(0px)',
+      animation: 'pulse1 4s ease-in-out infinite',
+    }}
+  >
+    <span style={{ color: '#0070f3', fontSize: '16px', lineHeight: 1 }}>
+      <CloudIcon fontSize="inherit" />
+    </span>
+    Cloud Native
+  </div>
+
+  {/* Pill 2 */}
+  <div
+    style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: '6px',
+      padding: '6px 14px',
+      borderRadius: '9999px',
+      fontSize: '13px',
+      fontWeight: 500,
+      color: '#1a1a1a',
+      background: 'linear-gradient(135deg, #fff6e5, #fffaf1)',
+      border: '1px solid #ffe4b5',
+      boxShadow: '0 2px 6px rgba(255, 228, 181, 0.4)',
+      transform: 'translateY(0px)',
+      animation: 'pulse2 4s ease-in-out infinite 0.3s',
+    }}
+  >
+    <span style={{ color: '#ff8a00', fontSize: '16px', lineHeight: 1 }}>
+      <ShieldIcon fontSize="inherit" />
+    </span>
+    Enterprise Security
+  </div>
+
+  {/* Pill 3 */}
+  <div
+    style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: '6px',
+      padding: '6px 14px',
+      borderRadius: '9999px',
+      fontSize: '13px',
+      fontWeight: 500,
+      color: '#1a1a1a',
+      background: 'linear-gradient(135deg, #f3e8ff, #faf5ff)',
+      border: '1px solid #d8b6ff',
+      boxShadow: '0 2px 6px rgba(216, 182, 255, 0.4)',
+      transform: 'translateY(0px)',
+      animation: 'pulse3 4s ease-in-out infinite 0.6s',
+    }}
+  >
+    <span style={{ color: '#9b51e0', fontSize: '16px', lineHeight: 1 }}>
+      <QueryStatsIcon fontSize="inherit" />
+    </span>
+    Real-time Analytics
+  </div>
+</div>
+
 
           {/* CTAs - compact */}
           <div className="flex flex-wrap justify-center lg:justify-start gap-2.5 pt-1">
@@ -218,61 +272,65 @@ export default function HeroSection() {
               />
             </div>
             {/* Floating feature chips remain */}
-            <div
-              className="absolute z-20 top-[-14px] right-[-32px] hidden lg:block"
-              style={{ animation: "floatCard 4s ease-in-out 0s infinite" }}
-            >
-              <div className="flex items-center gap-2.5 px-3.5 py-2.5 bg-[#0a1b45]/90 border border-[#0070F3]/40 rounded-lg text-sm font-semibold text-white shadow-2xl shadow-[#0070F3]/25 backdrop-blur-md hover:scale-[1.06] transition-transform duration-300 whitespace-nowrap">
-                <span className="text-blue-600">
-                  <EmailIcon fontSize="small" />
-                </span>
-                <span>Automated Emails</span>
-              </div>
-            </div>
-            <div
-              className="absolute z-20 bottom-[-14px] right-[-32px] hidden lg:block"
-              style={{ animation: "floatCard 4s ease-in-out 0.25s infinite" }}
-            >
-              <div className="flex items-center gap-2.5 px-3.5 py-2.5 bg-[#0a1b45]/90 border border-[#0070F3]/40 rounded-lg text-sm font-semibold text-white shadow-2xl shadow-[#0070F3]/25 backdrop-blur-md hover:scale-[1.06] transition-transform duration-300 whitespace-nowrap">
-                <span className="text-blue-600">
-                  <PsychologyIcon fontSize="small" />
-                </span>
-                <span>Smart Insights</span>
-              </div>
-            </div>
-            <div
-              className="absolute z-20 top-[36%] left-[-56px] hidden lg:block"
-              style={{ animation: "floatCard 4s ease-in-out 0.5s infinite" }}
-            >
-              <div className="flex items-center gap-2.5 px-3.5 py-2.5 bg-[#0a1b45]/90 border border-[#0070F3]/40 rounded-lg text-sm font-semibold text-white shadow-2xl shadow-[#0070F3]/25 backdrop-blur-md hover:scale-[1.06] transition-transform duration-300 whitespace-nowrap">
-                <span className="text-blue-600">
-                  <GroupsIcon fontSize="small" />
-                </span>
-                <span>AI Matchmaking</span>
-              </div>
-            </div>
-            <div
-              className="absolute z-20 bottom-[-20px] left-[16%] hidden lg:block"
-              style={{ animation: "floatCard 4s ease-in-out 0.75s infinite" }}
-            >
-              <div className="flex items-center gap-2.5 px-3.5 py-2.5 bg-[#0a1b45]/90 border border-[#0070F3]/40 rounded-lg text-sm font-semibold text-white shadow-2xl shadow-[#0070F3]/25 backdrop-blur-md hover:scale-[1.06] transition-transform duration-300 whitespace-nowrap">
-                <span className="text-blue-600">
-                  <QueryStatsIcon fontSize="small" />
-                </span>
-                <span>Data Analytics</span>
-              </div>
-            </div>
-            <div
-              className="absolute z-20 top-[-8px] left-[26%] hidden lg:block"
-              style={{ animation: "floatCard 4s ease-in-out 1s infinite" }}
-            >
-              <div className="flex items-center gap-2.5 px-3.5 py-2.5 bg-[#0a1b45]/90 border border-[#0070F3]/40 rounded-lg text-sm font-semibold text-white shadow-2xl shadow-[#0070F3]/25 backdrop-blur-md hover:scale-[1.06] transition-transform duration-300 whitespace-nowrap">
-                <span className="text-blue-600">
-                  <RocketLaunchIcon fontSize="small" />
-                </span>
-                <span>Growth Sync</span>
-              </div>
-            </div>
+        <div
+  className="absolute z-20 top-[-14px] right-[-32px] hidden lg:block"
+  style={{ animation: "floatCard 4s ease-in-out 0s infinite" }}
+>
+  <div className="flex items-center gap-2 px-3 py-2 bg-white/70 border border-blue-200 rounded-full text-xs font-medium text-gray-700 shadow-md shadow-blue-100 backdrop-blur-sm hover:scale-[1.05] transition-transform duration-300 whitespace-nowrap">
+    <span className="text-blue-500">
+      <EmailIcon fontSize="small" />
+    </span>
+    <span>Automated Emails</span>
+  </div>
+</div>
+
+          <div
+  className="absolute z-20 bottom-[-14px] right-[-32px] hidden lg:block"
+  style={{ animation: "floatCard 4s ease-in-out 0.25s infinite" }}
+>
+  <div className="flex items-center gap-2 px-3 py-2 bg-white/70 border border-blue-200 rounded-full text-xs font-medium text-gray-700 shadow-md shadow-blue-100 backdrop-blur-sm hover:scale-[1.05] transition-transform duration-300 whitespace-nowrap">
+    <span className="text-blue-500">
+      <PsychologyIcon fontSize="small" />
+    </span>
+    <span>Smart Insights</span>
+  </div>
+</div>
+
+           <div
+  className="absolute z-20 top-[36%] left-[-56px] hidden lg:block"
+  style={{ animation: "floatCard 4s ease-in-out 0.5s infinite" }}
+>
+  <div className="flex items-center gap-2 px-3 py-2 bg-white/70 border border-blue-200 rounded-full text-xs font-medium text-gray-700 shadow-md shadow-blue-100 backdrop-blur-sm hover:scale-[1.05] transition-transform duration-300 whitespace-nowrap">
+    <span className="text-blue-500">
+      <GroupsIcon fontSize="small" />
+    </span>
+    <span>AI Matchmaking</span>
+  </div>
+</div>
+<div
+  className="absolute z-20 bottom-[-20px] left-[16%] hidden lg:block"
+  style={{ animation: "floatCard 4s ease-in-out 0.75s infinite" }}
+>
+  <div className="flex items-center gap-2 px-3 py-2 bg-white/70 border border-blue-200 rounded-full text-xs font-medium text-gray-700 shadow-md shadow-blue-100 backdrop-blur-sm hover:scale-[1.05] transition-transform duration-300 whitespace-nowrap">
+    <span className="text-blue-500">
+      <QueryStatsIcon fontSize="small" />
+    </span>
+    <span>Data Analytics</span>
+  </div>
+</div>
+
+          <div
+  className="absolute z-20 top-[-8px] left-[26%] hidden lg:block"
+  style={{ animation: "floatCard 4s ease-in-out 1s infinite" }}
+>
+  <div className="flex items-center gap-2 px-3 py-2 bg-white/70 border border-blue-200 rounded-full text-xs font-medium text-gray-700 shadow-md shadow-blue-100 backdrop-blur-sm hover:scale-[1.05] transition-transform duration-300 whitespace-nowrap">
+    <span className="text-blue-500">
+      <RocketLaunchIcon fontSize="small" />
+    </span>
+    <span>Growth Sync</span>
+  </div>
+</div>
+
           </div>
         </div>
       </div>
