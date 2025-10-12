@@ -146,7 +146,7 @@ export default function HeroSection() {
           {/* CTAs - compact */}
           <div className="flex flex-wrap justify-center lg:justify-start gap-2.5 pt-1">
             <Link
-              href="/start-revenue"
+              href="/contact"
               className="group relative px-6 py-2.5 text-sm md:text-base font-semibold rounded-md bg-gradient-to-r from-[#0A66C2] to-[#2F8AF5] hover:from-[#004182] hover:to-[#0A66C2] text-white shadow-lg shadow-[#0A66C2]/35 transition-all duration-300 transform hover:scale-[1.03] hover:shadow-xl hover:shadow-[#0A66C2]/45"
             >
               <span className="flex items-center gap-2">
@@ -155,7 +155,7 @@ export default function HeroSection() {
               </span>
             </Link>
             <Link
-              href="/raise-ticket"
+              href="/tickets/raise"
               className="group relative px-6 py-2.5 text-sm md:text-base font-semibold rounded-md border-2 border-[#0A66C2]/50 text-[#2F8AF5] hover:bg-[#0A66C2]/10 hover:border-[#0A66C2] transition-all duration-300 transform hover:scale-[1.03]"
             >
               <span className="flex items-center gap-2">
