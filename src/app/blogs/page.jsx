@@ -1,54 +1,48 @@
-import Header from "../../components/header"
-import BlogList from "../../components/blogs/BlogList"
-import Footer from "../../components/footer"
+"use client";
 
-export const metadata = {
-  title: "Blog | Yombly",
-  description: "Insights, case notes, and news from Yombly.",
-  openGraph: {
-    title: "Blog | Yombly",
-    description: "Insights, case notes, and news from Yombly.",
-    url: "/blogs",
-    images: ["/images/yombly-logo.png"],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Blog | Yombly",
-    description: "Insights, case notes, and news from Yombly.",
-    images: ["/images/yombly-logo.png"],
-  },
-  alternates: { canonical: "/blogs" },
-  robots: { index: true, follow: true },
-}
-
-export const revalidate = 60
+import Header from "../../components/header";
+import BlogList from "../../components/blogs/BlogList";
+import Footer from "../../components/footer";
 
 export default function BlogsPage() {
-  const site = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+  const site = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
   return (
-  <>
-  <Header/>
-    <main className="mx-auto max-w-6xl px-4 py-10">
-      <header className="mb-6">
-        <h1 className="text-3xl font-bold text-balance">Our Blog</h1>
-        <p className="text-foreground/70 mt-2">Explore our latest articles, insights, and updates.</p>
-      </header>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "CollectionPage",
-            name: "Yombly Blog",
-            description: "Insights, case notes, and news from Yombly.",
-            url: `${site}/blogs`,
-          }),
-        }}
-      />
-      <BlogList />
-    </main>
-    <Footer/>
-  </>
-  )
+    <>
+      <Header />
+
+      <main className="mx-auto max-w-6xl px-4 py-12">
+        {/* Page Header */}
+        <header className="mb-8 text-center md:text-left">
+          <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight">
+            Our Blog
+          </h1>
+          <p className="mt-2 text-gray-600 text-base md:text-lg">
+            Explore our latest articles, insights, and updates.
+          </p>
+        </header>
+
+        {/* Structured Data for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "CollectionPage",
+              name: "Yombly Blog",
+              description: "Insights, case notes, and news from Yombly.",
+              url: `${site}/blogs`,
+            }),
+          }}
+        />
+
+        {/* Blog List */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <BlogList />
+        </div>
+      </main>
+
+      <Footer />
+    </>
+  );
 }
