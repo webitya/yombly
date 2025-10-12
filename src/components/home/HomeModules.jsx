@@ -18,7 +18,7 @@ const TABS = [
   { id: 0, title: "Team-Building", icon: PeopleIcon },
   { id: 1, title: "Mentoring", icon: SchoolIcon },
   { id: 2, title: "Leadership", icon: LeaderboardIcon },
-  { id: 3, title: "Learning & Development Structure", icon: EmojiObjectsIcon },
+  { id: 3, title: "Revenue performance enablement", icon: EmojiObjectsIcon },
 ]
 
 export default function ServicesTabs() {
@@ -369,18 +369,18 @@ function LeadershipProgram() {
     </div>
   )
 }
-
 function LDStructure() {
   const [open, setOpen] = useState(false)
   return (
     <div>
-      <Section title="Learning & Development Structure">
-        <p className="font-medium">Sustain performance beyond hiring.</p>
-        <ul className="ml-4 list-disc space-y-1">
-          <Bullet icon={PeopleIcon}>Right talent in</Bullet>
-          <Bullet icon={AccountTreeIcon}>Accountability via tracking</Bullet>
-          <Bullet icon={SchoolIcon}>Continuous capability growth</Bullet>
-        </ul>
+      <Section title="Revenue performance enablement">
+        <p className="font-medium">We help your sales and revenue teams sustain performance through a Performance 
+Enablement System — it tracks performance, identifies capability gaps, and provides timely 
+skill interventions to keep revenue growth on track</p>
+  <p className="mt-2">
+              Recruiting top talent is only the first step.The real test begins after hiring — sustaining performance over time.
+            </p>
+       
         {!open && (
           <button
             onClick={() => setOpen(true)}
@@ -391,13 +391,15 @@ function LDStructure() {
         )}
         {open && (
           <>
-            <p className="mt-2">
-              A strong L&amp;D structure translates potential into performance across sales and marketing.
-            </p>
+          
             <p className="mt-2 text-foreground/80">
-              Without continuous learning and clear performance management, momentum fades. Align people, managers, and
-              systems for consistent growth.
+              Revenue Performance enablement/System includes:-
             </p>
+             <ul className="ml-4 list-disc space-y-1">
+          <Bullet icon={PeopleIcon}>Right talent in</Bullet>
+          <Bullet icon={AccountTreeIcon}>Accountability via tracking</Bullet>
+          <Bullet icon={SchoolIcon}>Continuous capability growth</Bullet>
+        </ul>
             <button
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex items-center gap-1 text-[13px] font-medium text-indigo-700 hover:underline"
