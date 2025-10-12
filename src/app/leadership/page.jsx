@@ -81,13 +81,13 @@ export default function Page() {
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
-              href="#cta"
+              href="/contact"
               className="inline-flex items-center justify-center rounded-md bg-white px-5 py-3 text-sm font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
             >
               Request Program Brochure
             </a>
             <a
-              href="#leadership-audit"
+              href="/contact"
               className="inline-flex items-center justify-center rounded-md bg-sky-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
             >
               Schedule a Leadership Audit
@@ -331,14 +331,14 @@ export default function Page() {
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <a
-              href="#"
+              href="/contact"
               className="inline-flex items-center justify-center rounded-md bg-white px-5 py-3 text-sm font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
             >
               Request Program Brochure
             </a>
             <a
               id="leadership-audit"
-              href="#"
+              href="/contact"
               className="inline-flex items-center justify-center rounded-md bg-sky-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
             >
               Schedule a Leadership Audit
