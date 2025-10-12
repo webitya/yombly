@@ -38,6 +38,7 @@ export default function Footer() {
     { href: "/leadership", label: "Leadership" },
     { href: "/mentoring", label: "Mentoring" },
     { href: "/team-building", label: "Team Building" },
+     { href: "/revenue-performance-enablement", label: "Revenue Performance Enablement" },
   ];
 
   const companyLinks = [
