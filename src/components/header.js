@@ -136,7 +136,7 @@ export default function Header() {
               Track Ticket
             </Link>
             <Link
-              href="/free-question"
+              href="/tickets/raise"
               className="px-4 py-2 rounded-lg bg-gradient-to-r from-sky-500 to-teal-400 text-white hover:shadow-md hover:shadow-sky-200/70 transition-all font-semibold"
             >
               Ask 1 Free Question

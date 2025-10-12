@@ -179,7 +179,7 @@ export default function MobileDrawer({ open, setOpen, navLinks = [], servicesLin
             </li>
             <li>
               <Link
-                href="/free-question"
+                href="/tickets/raise"
                 onClick={() => setOpen(false)}
                 className="block px-3 py-2 rounded-md bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold shadow-sm hover:opacity-90 transition text-center"
               >
