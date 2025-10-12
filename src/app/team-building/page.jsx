@@ -1,141 +1,235 @@
-"use client"
 
-import TechBackground from "../../components/tech/tech-background"
-import ServiceCard from "../../components/services/service-card"
-
-// MUI Icons
-import GroupsIcon from "@mui/icons-material/Groups"
-import RocketLaunchIcon from "@mui/icons-material/RocketLaunch"
-import VerifiedIcon from "@mui/icons-material/Verified"
-import SpeedIcon from "@mui/icons-material/Speed"
 import PsychologyIcon from "@mui/icons-material/Psychology"
-import SecurityIcon from "@mui/icons-material/Security"
-import InsightsIcon from "@mui/icons-material/Insights"
-import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome"
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline"
-import FactCheckIcon from "@mui/icons-material/FactCheck"
+import TimelineIcon from "@mui/icons-material/Timeline"
+import AssessmentIcon from "@mui/icons-material/Assessment"
+import CheckCircleIcon from "@mui/icons-material/CheckCircle"
+import SpeedIcon from "@mui/icons-material/Speed"
+import DashboardIcon from "@mui/icons-material/Dashboard"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 
 export default function TeamBuildingPage() {
   return (
-  <>
-  
-  <Header/>
-  <main className="mx-auto max-w-6xl px-4 py-12 md:py-16 overflow-x-hidden">
-      {/* Hero */}
-      <section className="grid gap-10 md:grid-cols-2 md:gap-12">
-        <div className="flex flex-col justify-center">
-          <p className="text-xs uppercase tracking-wider text-muted-foreground">Team-Building</p>
-          <h1 className="mt-2 text-pretty text-3xl font-semibold text-foreground sm:text-4xl">
-            Team-Building that Scales: Clarity, Autonomy, and Delivery
+    <main className="bg-white">
+      <Header />
+      <section className="w-full bg-blue-700 text-white">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <p className="text-sm uppercase tracking-wide text-blue-100">Services</p>
+          <h1 className="mt-3 text-balance text-4xl font-bold sm:text-5xl">
+            Build High-Performing Revenue Teams — Powered by AI & Real Intelligence
           </h1>
-          <p className="mt-4 text-pretty text-base text-muted-foreground sm:text-lg">
-            We design operating models that align teams around outcomes. Clear priorities, fast feedback, and simple
-            rituals that keep momentum high and rework low.
+          <p className="mt-4 max-w-3xl text-pretty text-base leading-7 text-blue-100">
+            From first interview to first sale — optimize every step with AI-powered screening, intent verification, and
+            productivity acceleration.
           </p>
-          <div className="mt-6 flex flex-wrap items-center gap-3">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
-              href="mailto:?subject=Ask%201%20Free%20Question%20-%20Team%20Building&body=Hi%2C%20I%20have%20a%20question%20about%20your%20Team-Building%20services..."
-              className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition hover:opacity-90"
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-md bg-white px-5 py-3 text-sm font-medium text-blue-700 shadow-sm transition hover:bg-blue-50"
             >
-              <HelpOutlineIcon fontSize="small" />
-              <span>Ask 1 Free Question</span>
+              Request Demo
             </a>
             <a
-              href="#operating-model"
-              className="inline-flex items-center gap-2 rounded-md border border-border bg-card/60 px-4 py-2.5 text-sm font-medium text-foreground hover:bg-card"
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-md border border-white/30 bg-transparent px-5 py-3 text-sm font-medium text-white transition hover:bg-white/10"
             >
-              <FactCheckIcon fontSize="small" />
-              <span>Operating Model</span>
+              Talk to an Expert
             </a>
           </div>
+        </div>
+      </section>
 
-          {/* Stats */}
-          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
-            <div className="rounded-lg border border-border bg-card/50 p-3 text-center">
-              <span className="text-2xl font-semibold text-foreground">4–6 wks</span>
-              <p className="text-xs text-muted-foreground">Initial rollout</p>
+      <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <div className="text-3xl font-bold text-slate-900">70–80%</div>
+            <p className="mt-1 text-sm text-slate-600">Reduction in hiring costs</p>
+          </div>
+          <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <div className="text-3xl font-bold text-slate-900">60+ days</div>
+            <p className="mt-1 text-sm text-slate-600">Productivity time saved</p>
+          </div>
+          <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <div className="text-3xl font-bold text-slate-900">30 days</div>
+            <p className="mt-1 text-sm text-slate-600">Ramp-up to productivity</p>
+          </div>
+          <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <div className="text-3xl font-bold text-slate-900">50+</div>
+            <p className="mt-1 text-sm text-slate-600">Capability & behavior parameters</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
+        <div className="grid gap-6 lg:grid-cols-3">
+          {/* Smart Screening */}
+          <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-700">
+                <PsychologyIcon fontSize="small" />
+              </div>
+              <h2 className="text-lg font-semibold text-slate-900">Smart Screening System</h2>
             </div>
-            <div className="rounded-lg border border-border bg-card/50 p-3 text-center">
-              <span className="text-2xl font-semibold text-foreground">20–40%</span>
-              <p className="text-xs text-muted-foreground">Cycle time gain</p>
+            <p className="mt-3 text-sm leading-6 text-slate-600">
+              AI Capability Mapping across 50+ skill, behavioral, and cognitive parameters with role‑specific predictive
+              fit and behavioral intelligence.
+            </p>
+            <ul className="mt-4 space-y-2">
+              {["Identify top performers early", "Eliminate hiring mismatches", "Save time, cost, and effort"].map(
+                (item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <CheckCircleIcon className="mt-0.5 h-5 w-5 text-blue-600" />
+                    <span className="text-sm text-slate-700">{item}</span>
+                  </li>
+                ),
+              )}
+            </ul>
+            <div className="mt-4 flex items-center gap-2 text-sm text-slate-600">
+              <SpeedIcon className="h-5 w-5 text-blue-600" />
+              <span>Outcome: Better hires. Faster decisions. Stronger teams.</span>
             </div>
-            <div className="rounded-lg border border-border bg-card/50 p-3 text-center">
-              <span className="text-2xl font-semibold text-foreground">-30%</span>
-              <p className="text-xs text-muted-foreground">Meeting time</p>
+          </div>
+
+          {/* Intent-Verified Candidates */}
+          <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-700">
+                <AssessmentIcon fontSize="small" />
+              </div>
+              <h2 className="text-lg font-semibold text-slate-900">Pre‑Screened & Intent‑Verified Candidates</h2>
+            </div>
+            <p className="mt-3 text-sm leading-6 text-slate-600">
+              Every candidate is expert‑screened, assessed on 50+ parameters, intent‑verified via AI, and backed by a
+              role‑specific Talent Intelligence Report.
+            </p>
+            <ul className="mt-4 space-y-2">
+              {[
+                "Digital interaction tracking (response speed, tone analysis, clarity)",
+                "Cross‑channel behavior scoring",
+                "Email & platform‑confirmed interest",
+                "AI-driven intent analysis on engagement cues",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <CheckCircleIcon className="mt-0.5 h-5 w-5 text-blue-600" />
+                  <span className="text-sm text-slate-700">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-4 flex items-center gap-2 text-sm text-slate-600">
+              <DashboardIcon className="h-5 w-5 text-blue-600" />
+              <span>Impact: Interview only the most serious and aligned candidates.</span>
+            </div>
+          </div>
+
+          {/* 30-Day Onboarding */}
+          <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-700">
+                <TimelineIcon fontSize="small" />
+              </div>
+              <h2 className="text-lg font-semibold text-slate-900">30‑Day AI Onboarding Accelerator</h2>
+            </div>
+            <p className="mt-3 text-sm leading-6 text-slate-600">
+              Compress 90‑day productivity to 30 days with role‑specific simulation, pitch readiness, and manager
+              dashboards that predict performance and time‑to‑readiness.
+            </p>
+            <ul className="mt-4 space-y-2">
+              {[
+                "Product knowledge & process familiarity",
+                "Role‑specific skill simulation",
+                "Pitch, objection handling & communication readiness",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <CheckCircleIcon className="mt-0.5 h-5 w-5 text-blue-600" />
+                  <span className="text-sm text-slate-700">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-4 flex items-center gap-2 text-sm text-slate-600">
+              <SpeedIcon className="h-5 w-5 text-blue-600" />
+              <span>Outcome: Faster ramp‑up, quicker results, stronger ROI per hire.</span>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Visual with tech background */}
-        <div className="relative min-h-[380px] overflow-hidden rounded-xl border border-border bg-card/50">
-          <TechBackground />
-          <img
-            src="/team-operating-model-diagram.jpg"
-            alt="Team building operating model visualization"
-            className="relative z-10 h-full w-full rounded-xl object-cover"
-          />
+      <section className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 className="text-xl font-semibold text-slate-900">How It Works</h3>
+          <div className="mt-5 grid gap-6 md:grid-cols-3">
+            <div className="flex flex-col gap-2">
+              <div className="text-sm font-medium text-blue-700">01. AI Capability Mapping</div>
+              <p className="text-sm leading-6 text-slate-600">
+                Assess 50+ skill, behavioral, and cognitive parameters. Benchmark against your industry’s top
+                performers.
+              </p>
+            </div>
+            <div className="flex flex-col gap-2">
+              <div className="text-sm font-medium text-blue-700">02. Intent Verification</div>
+              <p className="text-sm leading-6 text-slate-600">
+                Track digital interactions, response speed, tone, and cross‑channel behavior to verify real interest.
+              </p>
+            </div>
+            <div className="flex flex-col gap-2">
+              <div className="text-sm font-medium text-blue-700">03. 30‑Day Onboarding</div>
+              <p className="text-sm leading-6 text-slate-600">
+                Personalized paths adapt to individual pace; managers get dashboards for progress and capability gaps.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Pillars */}
-      <section id="operating-model" className="mt-14 grid gap-6 md:grid-cols-3">
-        <ServiceCard
-          title="Clarity"
-          description="Define outcomes, priorities, and decision rights for every team."
-          Icon={VerifiedIcon}
-          href="mailto:?subject=Ask%201%20Free%20Question%20-%20Clarity"
-        />
-        <ServiceCard
-          title="Autonomy"
-          description="Reduce dependency drag with sensible interfaces and guardrails."
-          Icon={SecurityIcon}
-          href="mailto:?subject=Ask%201%20Free%20Question%20-%20Autonomy"
-        />
-        <ServiceCard
-          title="Delivery"
-          description="Shorten cycles, increase feedback, and remove friction."
-          Icon={SpeedIcon}
-          href="mailto:?subject=Ask%201%20Free%20Question%20-%20Delivery"
-        />
-      </section>
-
-      {/* Deliverables */}
-      <section className="mt-14 rounded-xl border border-border bg-card/40 p-6 sm:p-8">
-        <h2 className="text-balance text-2xl font-semibold text-foreground">Deliverables</h2>
-        <div className="mt-6 grid gap-6 md:grid-cols-2">
-          <ul className="grid gap-3 text-foreground/90">
-            {[
-              { icon: GroupsIcon, text: "Team topology, interfaces, and ownership maps" },
-              { icon: InsightsIcon, text: "Flow metrics (cycle time, throughput, WIP) and dashboards" },
-              { icon: PsychologyIcon, text: "Decision logs and post-mortem templates" },
-              { icon: AutoAwesomeIcon, text: "Communication templates for async updates" },
-            ].map((item, i) => (
-              <li key={i} className="flex items-start gap-3">
-                <item.icon fontSize="small" className="mt-0.5 text-primary" />
-                <span>{item.text}</span>
-              </li>
-            ))}
-          </ul>
-          <ul className="grid gap-3 text-foreground/90">
-            {[
-              { icon: RocketLaunchIcon, text: "30–60–90 day rollout plan with milestones" },
-              { icon: VerifiedIcon, text: "Operating model playbook and ownership charter" },
-              { icon: SpeedIcon, text: "Rituals: planning, review, retro, and escalation cadence" },
-              { icon: SecurityIcon, text: "Risk register with thresholds and mitigation playbooks" },
-            ].map((item, i) => (
-              <li key={i} className="flex items-start gap-3">
-                <item.icon fontSize="small" className="mt-0.5 text-primary" />
-                <span>{item.text}</span>
-              </li>
-            ))}
-          </ul>
+      <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        <h3 className="text-center text-2xl font-semibold text-slate-900">Why Choose Our AI Team‑Building System</h3>
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {[
+            ["AI‑Powered Screening", "Objective and scalable evaluation of real capability"],
+            ["Intent Verification Engine", "Engage only with genuinely interested candidates"],
+            ["Productivity Intelligence", "Predict and accelerate performance outcomes"],
+            ["Unified Dashboard", "Full control from hiring to ramp‑up"],
+            ["Faster ROI", "Save up to 70% hiring cost and 60+ days of productivity time"],
+          ].map(([title, desc]) => (
+            <div key={title} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+              <div className="flex items-start gap-3">
+                <CheckCircleIcon className="mt-0.5 h-5 w-5 text-blue-600" />
+                <div>
+                  <div className="text-sm font-semibold text-slate-900">{title}</div>
+                  <p className="mt-1 text-sm text-slate-600">{desc}</p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
+
+      <section className="w-full bg-blue-700">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+          <div className="rounded-xl bg-blue-600 p-8 shadow-sm">
+            <h4 className="text-pretty text-2xl font-semibold text-white">Transform Hiring into Performance</h4>
+            <p className="mt-2 max-w-3xl text-sm leading-6 text-blue-100">
+              From first interview to first sale — every step optimized by AI. Build your next winning revenue team with
+              data, intelligence, and speed — not guesswork.
+            </p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-md bg-white px-5 py-3 text-sm font-medium text-blue-700 shadow-sm transition hover:bg-blue-50"
+              >
+                Get Started
+              </a>
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-md border border-white/30 bg-transparent px-5 py-3 text-sm font-medium text-white transition hover:bg-white/10"
+              >
+                Book a Strategy Call
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer/>
     </main>
-
-  <Footer/>
-  </>
   )
 }

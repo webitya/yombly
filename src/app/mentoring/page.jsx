@@ -1,142 +1,382 @@
-"use client"
 
-import TechBackground from "../../components/tech/tech-background"
-import ServiceCard from "../../components/services/service-card"
-
-// MUI Icons
-import SupportAgentIcon from "@mui/icons-material/SupportAgent"
-import PsychologyIcon from "@mui/icons-material/Psychology"
-import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome"
-import VerifiedIcon from "@mui/icons-material/Verified"
-import RocketLaunchIcon from "@mui/icons-material/RocketLaunch"
-import InsightsIcon from "@mui/icons-material/Insights"
-import SpeedIcon from "@mui/icons-material/Speed"
+import GroupIcon from "@mui/icons-material/Group"
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts"
 import SchoolIcon from "@mui/icons-material/School"
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline"
-import MenuBookIcon from "@mui/icons-material/MenuBook"
+import CheckCircleIcon from "@mui/icons-material/CheckCircle"
+import TimelineIcon from "@mui/icons-material/Timeline"
+import TrendingUpIcon from "@mui/icons-material/TrendingUp"
+import ScheduleIcon from "@mui/icons-material/Schedule"
+import TrackChangesIcon from "@mui/icons-material/TrackChanges"
+import VerifiedIcon from "@mui/icons-material/Verified"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 
 export default function MentoringPage() {
   return (
-<>
+    <main className="bg-white">
+      <Header />
 
-<Header/>
-    <main className="mx-auto max-w-6xl px-4 py-12 md:py-16 overflow-x-hidden">
       {/* Hero */}
-      <section className="grid gap-10 md:grid-cols-2 md:gap-12">
-        <div className="flex flex-col justify-center">
-          <p className="text-xs uppercase tracking-wider text-muted-foreground">Mentoring & Capability</p>
-          <h1 className="mt-2 text-pretty text-3xl font-semibold text-foreground sm:text-4xl">
-            Mentoring that Compounds: Clarity, Confidence, and Better Decisions
-          </h1>
-          <p className="mt-4 text-pretty text-base text-muted-foreground sm:text-lg">
-            1:1 and small-cohort mentoring with practical reps. We focus on decision quality, communication precision,
-            and leadership behaviors that scale your impact quickly.
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="rounded-2xl bg-blue-600 px-6 py-10 text-white md:px-10">
+          <div className="max-w-3xl">
+            <p className="text-xs uppercase tracking-wider text-blue-100">Mentoring & Capability-Building</p>
+            <h1 className="mt-2 text-pretty text-3xl font-bold sm:text-4xl lg:text-5xl">
+              Continuous Learning. Real Growth. Measurable Performance.
+            </h1>
+            <p className="mt-4 text-pretty text-base text-blue-100 sm:text-lg">
+              Mentoring isn’t a one-time event — it’s a continuous journey. Our monthly, role-specific programs turn
+              learning into measurable performance across your teams.
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <a
+                href="mailto:?subject=Schedule%20Intro%20Call%20-%20Mentoring%20Programs"
+                className="inline-flex items-center justify-center rounded-md bg-white px-4 py-2.5 text-sm font-semibold text-blue-700 shadow-sm transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
+              >
+                Schedule Intro Call
+              </a>
+              <a
+                href="mailto:?subject=Ask%201%20Free%20Question%20-%20Mentoring"
+                className="inline-flex items-center justify-center rounded-md border border-white/80 bg-transparent px-4 py-2.5 text-sm font-medium text-white transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
+              >
+                Ask 1 Free Question
+              </a>
+            </div>
+
+            <div className="mt-5 flex flex-wrap items-center gap-2">
+              <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs font-medium">
+                <VerifiedIcon fontSize="inherit" className="text-white" />
+                Role-based
+              </span>
+              <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs font-medium">
+                <ScheduleIcon fontSize="inherit" className="text-white" />
+                Monthly cadence
+              </span>
+              <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs font-medium">
+                <TrendingUpIcon fontSize="inherit" className="text-white" />
+                KPI-linked outcomes
+              </span>
+            </div>
+          </div>
+
+          {/* Quick KPIs */}
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            <div className="rounded-lg bg-white/10 p-4">
+              <div className="flex items-center gap-2">
+                <ScheduleIcon fontSize="small" />
+                <p className="text-sm font-semibold">Monthly Mentoring</p>
+              </div>
+              <p className="mt-1 text-sm text-blue-100">Role-specific sessions to build real capability</p>
+            </div>
+            <div className="rounded-lg bg-white/10 p-4">
+              <div className="flex items-center gap-2">
+                <TrackChangesIcon fontSize="small" />
+                <p className="text-sm font-semibold">Applied Learning</p>
+              </div>
+              <p className="mt-1 text-sm text-blue-100">Exercises, reps, and live project application</p>
+            </div>
+            <div className="rounded-lg bg-white/10 p-4">
+              <div className="flex items-center gap-2">
+                <TrendingUpIcon fontSize="small" />
+                <p className="text-sm font-semibold">Measured Outcomes</p>
+              </div>
+              <p className="mt-1 text-sm text-blue-100">Progress tracking and performance KPIs</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        <div className="rounded-xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
+          <h2 className="text-2xl font-semibold text-slate-900">How It Works</h2>
+          <p className="mt-2 text-slate-600">
+            We deliver ongoing mentoring to ensure knowledge is applied, skills are honed, and business results improve.
           </p>
-          <div className="mt-6 flex flex-wrap items-center gap-3">
-            <a
-              href="mailto:?subject=Ask%201%20Free%20Question%20-%20Mentoring&body=Hi%2C%20I%20have%20a%20question%20about%20your%20Mentoring%20services..."
-              className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition hover:opacity-90"
-            >
-              <HelpOutlineIcon fontSize="small" />
-              <span>Ask 1 Free Question</span>
-            </a>
-            <a
-              href="#tracks"
-              className="inline-flex items-center gap-2 rounded-md border border-border bg-card/60 px-4 py-2.5 text-sm font-medium text-foreground hover:bg-card"
-            >
-              <MenuBookIcon fontSize="small" />
-              <span>View Tracks</span>
-            </a>
-          </div>
-
-          {/* Stats */}
-          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
-            <div className="rounded-lg border border-border bg-card/50 p-3 text-center">
-              <span className="text-2xl font-semibold text-foreground">6–8</span>
-              <p className="text-xs text-muted-foreground">Sessions / cohort</p>
-            </div>
-            <div className="rounded-lg border border-border bg-card/50 p-3 text-center">
-              <span className="text-2xl font-semibold text-foreground">2–3</span>
-              <p className="text-xs text-muted-foreground">Real projects</p>
-            </div>
-            <div className="rounded-lg border border-border bg-card/50 p-3 text-center">
-              <span className="text-2xl font-semibold text-foreground">{">80%"}</span>
-              <p className="text-xs text-muted-foreground">Skill retention</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Visual with tech background */}
-        <div className="relative min-h-[380px] overflow-hidden rounded-xl border border-border bg-card/50">
-          <TechBackground />
-          <img
-            src="/mentoring-coaching-illustration.jpg"
-            alt="Mentoring program visualization"
-            className="relative z-10 h-full w-full rounded-xl object-cover"
-          />
-        </div>
-      </section>
-
-      {/* Tracks */}
-      <section id="tracks" className="mt-14 grid gap-6 md:grid-cols-3">
-        <ServiceCard
-          title="Decision Quality"
-          description="Reduce rework and increase momentum with rigorous thinking frameworks."
-          Icon={PsychologyIcon}
-          href="mailto:?subject=Ask%201%20Free%20Question%20-%20Decision%20Quality"
-        />
-        <ServiceCard
-          title="Communication Precision"
-          description="Narratives that inform, align, and get buy-in faster."
-          Icon={AutoAwesomeIcon}
-          href="mailto:?subject=Ask%201%20Free%20Question%20-%20Communication"
-        />
-        <ServiceCard
-          title="Leadership Behaviors"
-          description="Signal clarity, set tempo, and lead through influence."
-          Icon={VerifiedIcon}
-          href="mailto:?subject=Ask%201%20Free%20Question%20-%20Leadership%20Behaviors"
-        />
-      </section>
-
-      {/* Program components */}
-      <section className="mt-14 rounded-xl border border-border bg-card/40 p-6 sm:p-8">
-        <h2 className="text-balance text-2xl font-semibold text-foreground">Program Components</h2>
-        <div className="mt-6 grid gap-6 md:grid-cols-2">
-          <ul className="grid gap-3 text-foreground/90">
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
             {[
-              { icon: SupportAgentIcon, text: "1:1 mentoring sessions and async support between calls" },
-              { icon: SchoolIcon, text: "Exercises, reps, and feedback loops to solidify behaviors" },
-              { icon: SpeedIcon, text: "Momentum: cadence, constraints, and scope management" },
-              { icon: InsightsIcon, text: "Progress signal and reflection prompts for compounding gains" },
+              "Role-specific mentoring sessions every month",
+              "Practical exercises, real-life problem-solving, and actionable takeaways",
+              "Progress tracking to measure skill improvement and business impact",
+            ].map((text, i) => (
+              <div key={i} className="flex items-start gap-3 rounded-lg bg-white p-4 shadow-sm">
+                <CheckCircleIcon className="mt-0.5 text-blue-600" fontSize="small" />
+                <p className="text-sm text-slate-800">{text}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-4 rounded-md bg-blue-50 p-4 text-blue-800">
+            <p className="text-sm">
+              Outcome: Continuous growth, stronger performance, and a durable culture of learning.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Role-Based Mentoring */}
+      <section className="mx-auto max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
+        <div className="grid gap-6 md:grid-cols-2">
+          {/* Junior Executives */}
+          <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="flex items-center gap-2">
+              <GroupIcon className="text-blue-600" />
+              <h3 className="text-lg font-semibold text-slate-900">Junior Executives Mentoring</h3>
+            </div>
+            <p className="mt-2 text-sm text-slate-600">
+              Build a solid foundation in sales & marketing. Learn fast, execute better, and deliver results.
+            </p>
+            <ul className="mt-4 grid gap-2">
+              {[
+                "Outbound lead generation & account management",
+                "Time management, goal execution & prioritization",
+                "Sales conversation building & decision-maker outreach",
+                "Email, content writing & effective communication",
+                "Prospecting, probing, and strategic planning",
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-2 text-slate-800">
+                  <CheckCircleIcon className="mt-0.5 text-blue-600" fontSize="small" />
+                  <span className="text-sm">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-4 rounded-md bg-blue-50 p-3 text-blue-800">
+              <p className="text-sm">Impact: Faster ramp-up, better execution, higher contribution to revenue.</p>
+            </div>
+          </div>
+
+          {/* Sales & Marketing Managers */}
+          <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="flex items-center gap-2">
+              <ManageAccountsIcon className="text-blue-600" />
+              <h3 className="text-lg font-semibold text-slate-900">Sales & Marketing Managers Mentoring</h3>
+            </div>
+            <p className="mt-2 text-sm text-slate-600">
+              Develop leaders who drive performance across teams with strategic, leadership, and operational
+              capabilities.
+            </p>
+            <ul className="mt-4 grid gap-2">
+              {[
+                "Team management & coaching skills",
+                "Hiring & firing strategy, role allocation, succession planning",
+                "Process design, reporting system, KPI tracking",
+                "Culture, motivation, and engagement management",
+                "Sales forecasting, pipeline management, strategic planning",
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-2 text-slate-800">
+                  <CheckCircleIcon className="mt-0.5 text-blue-600" fontSize="small" />
+                  <span className="text-sm">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-4 rounded-md bg-blue-50 p-3 text-blue-800">
+              <p className="text-sm">Impact: High-performing teams, better decisions, improved outcomes.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Cadence & Format */}
+      <section className="mx-auto max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
+        <div className="rounded-xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
+          <h2 className="text-2xl font-semibold text-slate-900">Cadence & Format</h2>
+          <p className="mt-2 text-slate-600">
+            Designed to fit your operating rhythm while maximizing skill adoption and measurable performance.
+          </p>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            <div className="rounded-lg bg-white p-4 shadow-sm">
+              <div className="flex items-center gap-2 text-slate-900">
+                <ScheduleIcon className="text-blue-600" />
+                <p className="text-sm font-semibold">Monthly Sessions</p>
+              </div>
+              <p className="mt-1 text-sm text-slate-600">60–90 minutes per session with focused practice blocks.</p>
+            </div>
+            <div className="rounded-lg bg-white p-4 shadow-sm">
+              <div className="flex items-center gap-2 text-slate-900">
+                <GroupIcon className="text-blue-600" />
+                <p className="text-sm font-semibold">1:1 & Small Groups</p>
+              </div>
+              <p className="mt-1 text-sm text-slate-600">Blend of individual coaching and role-based cohorts.</p>
+            </div>
+            <div className="rounded-lg bg-white p-4 shadow-sm">
+              <div className="flex items-center gap-2 text-slate-900">
+                <CheckCircleIcon className="text-blue-600" />
+                <p className="text-sm font-semibold">Actionable Artifacts</p>
+              </div>
+              <p className="mt-1 text-sm text-slate-600">Checklists, scripts, and templates for immediate use.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Capability-Building Beyond Role-Specific */}
+      <section className="mx-auto max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
+        <div className="rounded-xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
+          <div className="flex items-center gap-2">
+            <SchoolIcon className="text-blue-600" />
+            <h2 className="text-xl font-semibold text-slate-900">Capability-Building Beyond Role-Specific Skills</h2>
+          </div>
+          <p className="mt-2 text-sm text-slate-600">
+            From individual contributors to managers — we cover advanced modules that compound capability.
+          </p>
+          <div className="mt-4 grid gap-2 md:grid-cols-2">
+            {[
+              "Negotiation & influencing skills",
+              "Client relationship management",
+              "Presentation & storytelling for business impact",
+              "Analytical decision-making & problem-solving",
             ].map((item, i) => (
-              <li key={i} className="flex items-start gap-3">
-                <item.icon fontSize="small" className="mt-0.5 text-primary" />
-                <span>{item.text}</span>
+              <div key={i} className="flex items-start gap-2 rounded-md bg-white p-3 shadow-sm">
+                <CheckCircleIcon className="mt-0.5 text-blue-600" fontSize="small" />
+                <span className="text-sm text-slate-800">{item}</span>
+              </div>
+            ))}
+          </div>
+          <div className="mt-4 rounded-md bg-blue-50 p-3 text-blue-800">
+            <p className="text-sm">
+              Outcome: Teams that are skilled, strategically capable, adaptable, and ready for growth challenges.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Who It’s For */}
+      <section className="mx-auto max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
+        <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h2 className="text-xl font-semibold text-slate-900">Who It’s For</h2>
+          <div className="mt-4 grid gap-4 md:grid-cols-2">
+            <div className="rounded-lg border border-slate-200 p-4">
+              <div className="flex items-center gap-2">
+                <GroupIcon className="text-blue-600" />
+                <p className="text-sm font-semibold text-slate-900">Junior Executives & ICs</p>
+              </div>
+              <ul className="mt-3 grid gap-2">
+                {[
+                  "New hires ramping into sales or marketing roles",
+                  "ICs who need structure, accountability, and reps",
+                  "Teams building core communication and prospecting skills",
+                ].map((t, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-slate-700">
+                    <CheckCircleIcon className="mt-0.5 text-blue-600" fontSize="small" />
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded-lg border border-slate-200 p-4">
+              <div className="flex items-center gap-2">
+                <ManageAccountsIcon className="text-blue-600" />
+                <p className="text-sm font-semibold text-slate-900">Sales & Marketing Managers</p>
+              </div>
+              <ul className="mt-3 grid gap-2">
+                {[
+                  "Leaders scaling multi-role GTM teams",
+                  "Managers designing processes and reporting systems",
+                  "Teams aiming for consistent, measurable performance",
+                ].map((t, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-slate-700">
+                    <CheckCircleIcon className="mt-0.5 text-blue-600" fontSize="small" />
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tracking Progress & Measuring Success */}
+      <section className="mx-auto max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
+        <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div className="flex items-center gap-2">
+            <TimelineIcon className="text-blue-600" />
+            <h2 className="text-xl font-semibold text-slate-900">Tracking Progress & Measuring Success</h2>
+          </div>
+          <ul className="mt-4 grid gap-2">
+            {[
+              "Learning applied in real tasks",
+              "Improvement in individual performance metrics",
+              "Team contribution to revenue and targets",
+            ].map((item, i) => (
+              <li key={i} className="flex items-start gap-2 text-slate-800">
+                <CheckCircleIcon className="mt-0.5 text-blue-600" fontSize="small" />
+                <span className="text-sm">{item}</span>
               </li>
             ))}
           </ul>
-          <ul className="grid gap-3 text-foreground/90">
-            {[
-              { icon: RocketLaunchIcon, text: "Apply skills to live initiatives, not hypotheticals" },
-              { icon: VerifiedIcon, text: "Templates and checklists ready for your workflows" },
-              { icon: PsychologyIcon, text: "Decision coaching: from uncertainty to crisp action" },
-              { icon: AutoAwesomeIcon, text: "Narrative reviews for executive-ready comms" },
-            ].map((item, i) => (
-              <li key={i} className="flex items-start gap-3">
-                <item.icon fontSize="small" className="mt-0.5 text-primary" />
-                <span>{item.text}</span>
-              </li>
-            ))}
-          </ul>
+          <div className="mt-4 rounded-md bg-blue-50 p-3 text-blue-800">
+            <p className="text-sm">Result: Mentoring becomes a performance accelerator—not just a training exercise.</p>
+          </div>
         </div>
       </section>
+
+      {/* Testimonial Block */}
+      <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+        <div className="rounded-2xl bg-blue-50 p-6 sm:p-8">
+          <blockquote className="text-slate-800">
+            <p className="text-base leading-relaxed">
+              “Within three months, our junior team was driving qualified pipeline independently, and managers had a
+              reliable operating rhythm. The mentoring program directly lifted our conversion rates and forecast
+              accuracy.”
+            </p>
+            <footer className="mt-4 text-sm text-blue-800">VP Revenue Operations, B2B SaaS</footer>
+          </blockquote>
+        </div>
+      </section>
+
+      {/* Why Choose Our Mentoring Programs */}
+      <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+        <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
+          <h2 className="text-2xl font-semibold text-slate-900">Why Choose Our Mentoring Programs</h2>
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            {[
+              ["Role-Specific Guidance", "Tailored sessions for every level and function"],
+              ["Continuous Mentoring", "Skills reinforced every month for lasting impact"],
+              ["Performance-Linked Learning", "Clear connection between learning & results"],
+              ["Scalable Programs", "For teams of any size across locations"],
+              ["Strategic Leadership Development", "Prepares managers to lead high-performing teams"],
+            ].map(([title, desc], i) => (
+              <div key={i} className="flex items-start gap-3 rounded-lg bg-white p-4 shadow-sm">
+                <VerifiedIcon className="mt-0.5 text-blue-600" fontSize="small" />
+                <div>
+                  <p className="text-sm font-semibold text-slate-900">{title}</p>
+                  <p className="text-sm text-slate-600">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+        <div className="rounded-2xl bg-blue-700 px-6 py-8 text-white md:px-10">
+          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+            <div>
+              <h3 className="text-balance text-2xl font-semibold">Transform Learning into Measurable Growth</h3>
+              <p className="mt-1 text-blue-100">
+                From junior executives to managers, turn skills into performance and build a culture of continuous
+                improvement.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="mailto:?subject=Schedule%20Intro%20Call%20-%20Mentoring%20Programs"
+                className="inline-flex items-center justify-center rounded-md bg-white px-4 py-2.5 text-sm font-semibold text-blue-700 shadow-sm transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-700"
+              >
+                Schedule Intro Call
+              </a>
+              <a
+                href="mailto:?subject=Ask%201%20Free%20Question%20-%20Mentoring"
+                className="inline-flex items-center justify-center rounded-md border border-white/80 bg-transparent px-4 py-2.5 text-sm font-medium text-white transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-700"
+              >
+                Ask 1 Free Question
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </main>
-
-<Footer/>
-
-</>
   )
 }

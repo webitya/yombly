@@ -26,6 +26,7 @@ export default function Header() {
     { href: "/leadership", label: "Leadership" },
     { href: "/mentoring", label: "Mentoring" },
     { href: "/team-building", label: "Team Building" },
+     { href: "/learning-and-development", label: "Learning and development" },
   ]
 
   const resourcesLinks = [
