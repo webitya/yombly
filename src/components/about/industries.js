@@ -8,7 +8,7 @@ import Image from "next/image";
 const logos = [
   { src: "/team2.png", alt: "Team 2" },
   { src: "/team3.png", alt: "Team 3" },
-  { src: "/team4.png", alt: "Team 4" },
+  // { src: "/team4.png", alt: "Team 4" },
   { src: "/team6.png", alt: "Team 6" },
   { src: "/team7.png", alt: "Team 7" },
   { src: "/team8.png", alt: "Team 8" },
@@ -17,8 +17,8 @@ const logos = [
   { src: "/team11.png", alt: "Team 11" },
   { src: "/team12.png", alt: "Team 12" },
   { src: "/team13.png", alt: "Team 13" },
-  { src: "/team14.png", alt: "Team 14" },
-  { src: "/team15.png", alt: "Team 15" },
+  // { src: "/team14.png", alt: "Team 14" },
+  // { src: "/team15.png", alt: "Team 15" },
   { src: "/team17.png", alt: "Team 17" },
 ];
 
