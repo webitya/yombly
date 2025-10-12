@@ -15,76 +15,37 @@ export default function MentoringPage() {
   return (
     <main className="bg-white">
       <Header />
-
-      {/* Hero */}
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="rounded-2xl bg-blue-600 px-6 py-10 text-white md:px-10">
-          <div className="max-w-3xl">
-            <p className="text-xs uppercase tracking-wider text-blue-100">Mentoring & Capability-Building</p>
-            <h1 className="mt-2 text-pretty text-3xl font-bold sm:text-4xl lg:text-5xl">
-              Continuous Learning. Real Growth. Measurable Performance.
-            </h1>
-            <p className="mt-4 text-pretty text-base text-blue-100 sm:text-lg">
-              Mentoring isn’t a one-time event — it’s a continuous journey. Our monthly, role-specific programs turn
+       {/* Hero */}
+      <header className="bg-blue-600 text-white">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+       
+          <h1 className="mt-6 text-balance text-3xl font-bold leading-tight sm:text-4xl">
+          Mentoring & Capability-Building
+          </h1>
+            <h1 className="mt-6 text-balance text-3xl font-bold leading-tight sm:text-4xl">
+          Continuous Learning. Real Growth. Measurable Performance.
+          </h1>
+          <p className="mt-4 max-w-3xl text-pretty text-blue-100">
+             Mentoring isn’t a one-time event — it’s a continuous journey. Our monthly, role-specific programs turn
               learning into measurable performance across your teams.
-            </p>
-            <div className="mt-6 flex flex-wrap items-center gap-3">
-              <a
-                href="mailto:?subject=Schedule%20Intro%20Call%20-%20Mentoring%20Programs"
-                className="inline-flex items-center justify-center rounded-md bg-white px-4 py-2.5 text-sm font-semibold text-blue-700 shadow-sm transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
-              >
-                Schedule Intro Call
-              </a>
-              <a
-                href="mailto:?subject=Ask%201%20Free%20Question%20-%20Mentoring"
-                className="inline-flex items-center justify-center rounded-md border border-white/80 bg-transparent px-4 py-2.5 text-sm font-medium text-white transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
-              >
-                Ask 1 Free Question
-              </a>
-            </div>
-
-            <div className="mt-5 flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs font-medium">
-                <VerifiedIcon fontSize="inherit" className="text-white" />
-                Role-based
-              </span>
-              <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs font-medium">
-                <ScheduleIcon fontSize="inherit" className="text-white" />
-                Monthly cadence
-              </span>
-              <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs font-medium">
-                <TrendingUpIcon fontSize="inherit" className="text-white" />
-                KPI-linked outcomes
-              </span>
-            </div>
-          </div>
-
-          {/* Quick KPIs */}
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
-            <div className="rounded-lg bg-white/10 p-4">
-              <div className="flex items-center gap-2">
-                <ScheduleIcon fontSize="small" />
-                <p className="text-sm font-semibold">Monthly Mentoring</p>
-              </div>
-              <p className="mt-1 text-sm text-blue-100">Role-specific sessions to build real capability</p>
-            </div>
-            <div className="rounded-lg bg-white/10 p-4">
-              <div className="flex items-center gap-2">
-                <TrackChangesIcon fontSize="small" />
-                <p className="text-sm font-semibold">Applied Learning</p>
-              </div>
-              <p className="mt-1 text-sm text-blue-100">Exercises, reps, and live project application</p>
-            </div>
-            <div className="rounded-lg bg-white/10 p-4">
-              <div className="flex items-center gap-2">
-                <TrendingUpIcon fontSize="small" />
-                <p className="text-sm font-semibold">Measured Outcomes</p>
-              </div>
-              <p className="mt-1 text-sm text-blue-100">Progress tracking and performance KPIs</p>
-            </div>
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a
+              href="#cta"
+              className="inline-flex items-center justify-center rounded-md bg-white px-5 py-3 text-sm font-semibold text-blue-700 shadow-sm transition hover:bg-blue-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+            >
+              Schedule Intro Call
+            </a>
+            <a
+              href="#leadership-audit"
+              className="inline-flex items-center justify-center rounded-md bg-blue-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+            >
+               Ask 1 Free Question
+            </a>
           </div>
         </div>
-      </section>
+      </header>
+     
 
       {/* How It Works */}
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
