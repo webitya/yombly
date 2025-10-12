@@ -80,12 +80,12 @@ export default function MentoringPage() {
             learning into measurable performance across your teams.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-3">
-            <a href="#cta" className="inline-flex">
+            <a href="/contact" className="inline-flex">
               <button className="inline-flex items-center justify-center rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-purple-800 shadow-sm transition-transform hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
                 Schedule Intro Call
               </button>
             </a>
-            <a href="#leadership-audit" className="inline-flex">
+            <a href="/tickets/raise" className="inline-flex">
               <button className="inline-flex items-center justify-center rounded-lg border border-white/80 bg-transparent px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
                 Ask 1 Free Question
               </button>
@@ -341,12 +341,12 @@ export default function MentoringPage() {
                 </p>
               </div>
               <div className="flex flex-wrap items-center gap-3">
-                <a href="mailto:?subject=Schedule%20Intro%20Call%20-%20Mentoring%20Programs" className="inline-flex">
+                <a href="/contact" className="inline-flex">
                   <button className="inline-flex items-center justify-center rounded-md bg-white px-4 py-2.5 text-sm font-semibold text-purple-800 shadow-sm transition-transform hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-purple-800">
                     Schedule Intro Call
                   </button>
                 </a>
-                <a href="mailto:?subject=Ask%201%20Free%20Question%20-%20Mentoring" className="inline-flex">
+                <a href="/tickets/raise" className="inline-flex">
                   <button className="inline-flex items-center justify-center rounded-md border border-white/80 bg-transparent px-4 py-2.5 text-sm font-medium text-white transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-purple-800">
                     Ask 1 Free Question
                   </button>

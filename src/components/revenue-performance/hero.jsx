@@ -21,7 +21,7 @@ export default function Hero() {
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <a
-              href="#contact"
+              href="/contact"
               className="inline-flex items-center justify-center rounded-md bg-emerald-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
             >
               Book a discovery call
