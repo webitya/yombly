@@ -65,7 +65,7 @@ export default function Logo() {
       <div className="flex space-x-2 mt-1">
         <div
           className={`w-3 h-3 rounded-full transition-all duration-300 ${
-            isDarkBg ? "bg-cyan-400" : "bg-sky-500"
+            isDarkBg ? "bg-purple-400" : "bg-sky-500"
           }`}
         ></div>
         <div
@@ -75,7 +75,7 @@ export default function Logo() {
         ></div>
         <div
           className={`w-3 h-3 rounded-full transition-all duration-300 ${
-            isDarkBg ? "bg-gray-200" : "bg-gray-800"
+            isDarkBg ? "bg-yellow-400" : "bg-gray-800"
           }`}
         ></div>
       </div>

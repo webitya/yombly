@@ -50,7 +50,7 @@ export default function HeroSection() {
         <div className="text-center lg:text-left space-y-4" style={{ animation: "fadeUp 0.9s ease-out" }}>
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-[#0A66C2]/20 to-[#2F8AF5]/20 border border-[#0A66C2]/35 text-xs md:text-sm font-semibold text-[#2F8AF5] shadow-md shadow-[#0A66C2]/20">
             <TrendingUpIcon fontSize="small" />
-            Growth Platform
+            AI Revenue productivity platform 
           </div>
 
           <h1 className="text-[28px] md:text-[34px] lg:text-[38px] font-bold leading-tight text-balance">
@@ -75,9 +75,9 @@ export default function HeroSection() {
       display: 'flex',
       alignItems: 'center',
       gap: '6px',
-      padding: '6px 14px',
+      padding: '6px 4px',
       borderRadius: '9999px',
-      fontSize: '13px',
+      fontSize: '12px',
       fontWeight: 500,
       color: '#1a1a1a',
       background: 'linear-gradient(135deg, #e3f2ff, #f8fbff)',
@@ -90,7 +90,7 @@ export default function HeroSection() {
     <span style={{ color: '#0070f3', fontSize: '16px', lineHeight: 1 }}>
       <CloudIcon fontSize="inherit" />
     </span>
-    Cloud Native
+    Revenue team Building 
   </div>
 
   {/* Pill 2 */}
@@ -99,9 +99,9 @@ export default function HeroSection() {
       display: 'flex',
       alignItems: 'center',
       gap: '6px',
-      padding: '6px 14px',
+      padding: '6px 4px',
       borderRadius: '9999px',
-      fontSize: '13px',
+      fontSize: '12px',
       fontWeight: 500,
       color: '#1a1a1a',
       background: 'linear-gradient(135deg, #fff6e5, #fffaf1)',
@@ -114,7 +114,7 @@ export default function HeroSection() {
     <span style={{ color: '#ff8a00', fontSize: '16px', lineHeight: 1 }}>
       <ShieldIcon fontSize="inherit" />
     </span>
-    Enterprise Security
+    Training and mentoring 
   </div>
 
   {/* Pill 3 */}
@@ -123,9 +123,9 @@ export default function HeroSection() {
       display: 'flex',
       alignItems: 'center',
       gap: '6px',
-      padding: '6px 14px',
+      padding: '6px 4px',
       borderRadius: '9999px',
-      fontSize: '13px',
+      fontSize: '12px',
       fontWeight: 500,
       color: '#1a1a1a',
       background: 'linear-gradient(135deg, #f3e8ff, #faf5ff)',
@@ -138,7 +138,7 @@ export default function HeroSection() {
     <span style={{ color: '#9b51e0', fontSize: '16px', lineHeight: 1 }}>
       <QueryStatsIcon fontSize="inherit" />
     </span>
-    Real-time Analytics
+   Revenue performance Optimization 
   </div>
 </div>
 

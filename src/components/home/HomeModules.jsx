@@ -15,10 +15,17 @@ import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded"
 import ExpandLessRoundedIcon from "@mui/icons-material/ExpandLessRounded"
 
 const TABS = [
-  { id: 0, title: "Team-Building", icon: PeopleIcon },
+  { id: 0, title: "Team Building Solution", icon: PeopleIcon },
   { id: 1, title: "Mentoring", icon: SchoolIcon },
-  { id: 2, title: "Leadership", icon: LeaderboardIcon },
-  { id: 3, title: "Revenue performance enablement", icon: EmojiObjectsIcon },
+  { id: 2, title: "LeaderShip", icon: LeaderboardIcon },
+  { id: 3, title: "Revenue Performance Enablement", icon: EmojiObjectsIcon },
+]
+
+const TAB_MESSAGES = [
+  "Learning that doesn’t stay in the classroom.Our Monthly Mentoring & Capability-Building Programs turn knowledge into measurable performance — helping your teams execute better, lead stronger, and deliver results. From junior executives mastering outreach and time planning to sales managers driving teams, hiring right, and forecasting with precision — we build capability that compounds every month. Outcome: Sharper skills. Stronger teams. Sustainable growth.",
+  "Learning that doesn’t stay in the classroom.Our Monthly Mentoring & Capability-Building Programs turn knowledge into measurable performance — helping your teams execute better, lead stronger, and deliver results. From junior executives mastering outreach and time planning to sales managers driving teams, hiring right, and forecasting with precision — we build capability that compounds every month. Outcome: Sharper skills. Stronger teams. Sustainable growth",
+  "Turn your top managers into growth-driving leaders — in just 12 months. The “Build Your Next Leaders” Program helps ₹10–100 Cr organizations create a self-sustaining growth engine through leadership audits, capability development, real-world projects, and hands-on mentoring. While your team learns to think like owners, you gain time to focus on scaling — not supervising. Outcome: Your business grows — even when you’re not in every meeting",
+  "Hiring top talent isn’t the finish line — it’s just the start. We help your sales and revenue teams sustain performance through a Performance Enablement System that keeps growth on track. By combining Performance Intelligence, Skill Enablement, and Performance Acceleration Support, we don’t just track performance — we transform it. Outcome: Consistent results. Stronger teams. Predictable revenue growth.",
 ]
 
 export default function ServicesTabs() {
@@ -168,8 +175,8 @@ export default function ServicesTabs() {
             transition={{ duration: 0.35, ease: "easeOut" }}
             className="relative grid md:grid-cols-2 items-stretch gap-3.5 md:gap-5 rounded-3xl border border-foreground/10 bg-foreground/[0.03] p-4 md:p-5 shadow-sm min-h-[320px] md:min-h-[380px]"
           >
-            <div className="pointer-events-none absolute -inset-1 rounded-[1.6rem] bg-[radial-gradient(45%_60%_at_10%_0%,rgba(99,102,241,0.16),transparent_70%)]" />
-            {/* Left copy (re-using content from original) */}
+            <div className="pointer-events-none absolute -inset-1 rounded-[1.6rem] bg-foreground/[0.02]" />
+            {/* Left: keep detailed per-tab content */}
             <div
               id={`tab-panel-${active}`}
               role="tabpanel"
@@ -180,6 +187,7 @@ export default function ServicesTabs() {
               {active === 1 && <MentoringPrograms />}
               {active === 2 && <LeadershipProgram />}
               {active === 3 && <LDStructure />}
+
               <div className="mt-4 md:mt-5">
                 <button
                   onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -191,10 +199,9 @@ export default function ServicesTabs() {
               </div>
             </div>
 
-            {/* Right visual: chat mock like the demo */}
+            {/* Right: unique curved card with per-tab message */}
             <div className="relative h-full flex items-center">
-              <ChatMock />
-              {/* soft side fades like the screenshot */}
+              <CurvedCard title={TABS[active].title} content={TAB_MESSAGES[active]} variant={active} />
               <div className="pointer-events-none absolute -inset-6 md:-inset-10 bg-[radial-gradient(60%_50%_at_100%_10%,_rgba(99,102,241,0.18),_transparent_60%)]" />
             </div>
           </motion.div>
@@ -229,7 +236,7 @@ function TeamBuilding() {
   const [open, setOpen] = useState(false)
   return (
     <div>
-      <Section title="Team-Building Solutions">
+      <Section title="Revenue team building solution">
         <p className="font-medium">Smart Screening – Hire Right, Every Time</p>
         <ul className="ml-4 list-disc space-y-1">
           <Bullet icon={CheckCircleIcon}>Identify top performers early</Bullet>
@@ -334,6 +341,9 @@ function LeadershipProgram() {
     <div>
       <Section title="Build Your Next Leaders">
         <p>Transform managers into future business leaders in 12 months.</p>
+          <p>Transform Managers into Strategic, Accountable, Growth-Focused Leaders</p>
+        <p>For organizations scaling from ₹15 Cr to ₹100 Cr. Equip high-potential managers to drive revenue, scale operations, and make founder-level decisions with confidence.</p>
+
       </Section>
       {!open && (
         <button
@@ -369,18 +379,21 @@ function LeadershipProgram() {
     </div>
   )
 }
+
 function LDStructure() {
   const [open, setOpen] = useState(false)
   return (
     <div>
       <Section title="Revenue performance enablement">
-        <p className="font-medium">We help your sales and revenue teams sustain performance through a Performance 
-Enablement System — it tracks performance, identifies capability gaps, and provides timely 
-skill interventions to keep revenue growth on track</p>
-  <p className="mt-2">
-              Recruiting top talent is only the first step.The real test begins after hiring — sustaining performance over time.
-            </p>
-       
+        <p className="font-medium">
+          We help your sales and revenue teams sustain performance through a Performance Enablement System — it tracks
+          performance, identifies capability gaps, and provides timely skill interventions to keep revenue growth on
+          track
+        </p>
+        <p className="mt-2">
+          Recruiting top talent is only the first step.The real test begins after hiring — sustaining performance over
+          time.
+        </p>
         {!open && (
           <button
             onClick={() => setOpen(true)}
@@ -391,15 +404,12 @@ skill interventions to keep revenue growth on track</p>
         )}
         {open && (
           <>
-          
-            <p className="mt-2 text-foreground/80">
-              Revenue Performance enablement/System includes:-
-            </p>
-             <ul className="ml-4 list-disc space-y-1">
-          <Bullet icon={PeopleIcon}>Right talent in</Bullet>
-          <Bullet icon={AccountTreeIcon}>Accountability via tracking</Bullet>
-          <Bullet icon={SchoolIcon}>Continuous capability growth</Bullet>
-        </ul>
+            <p className="mt-2 text-foreground/80">Revenue Performance enablement/System includes:-</p>
+            <ul className="ml-4 list-disc space-y-1">
+              <Bullet icon={PeopleIcon}>Right talent in</Bullet>
+              <Bullet icon={AccountTreeIcon}>Accountability via tracking</Bullet>
+              <Bullet icon={SchoolIcon}>Continuous capability growth</Bullet>
+            </ul>
             <button
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex items-center gap-1 text-[13px] font-medium text-indigo-700 hover:underline"
@@ -451,21 +461,9 @@ function ChatMock() {
             </div>
           </div>
           <div className="flex -space-x-2">
-            <img
-              src="/avatar-1.jpg"
-              alt="avatar"
-              className="h-6 w-6 rounded-full border border-background"
-            />
-            <img
-              src="/avatar-2.jpg"
-              alt="avatar"
-              className="h-6 w-6 rounded-full border border-background"
-            />
-            <img
-              src="/avatar-3.jpg"
-              alt="avatar"
-              className="h-6 w-6 rounded-full border border-background"
-            />
+            <img src="/avatar-1.jpg" alt="avatar" className="h-6 w-6 rounded-full border border-background" />
+            <img src="/avatar-2.jpg" alt="avatar" className="h-6 w-6 rounded-full border border-background" />
+            <img src="/avatar-3.jpg" alt="avatar" className="h-6 w-6 rounded-full border border-background" />
           </div>
         </div>
       </div>
@@ -489,6 +487,50 @@ function Bubble({ who = "them", children }) {
       >
         {children}
       </div>
+    </div>
+  )
+}
+
+function CurvedCard({ title, content, variant = 0 }) {
+  return (
+    <div className="relative overflow-hidden rounded-[2rem] border border-foreground/10 bg-background p-5 md:p-7 shadow-sm">
+      {/* Decorative curves - solid neutrals for accessibility, unique per variant */}
+      {variant === 0 && (
+        <>
+          <span aria-hidden className="absolute -top-16 -left-16 h-40 w-40 rounded-full bg-foreground/5" />
+          <span aria-hidden className="absolute -top-8 left-20 h-16 w-16 rounded-full border border-foreground/10" />
+        </>
+      )}
+      {variant === 1 && (
+        <>
+          <span aria-hidden className="absolute -bottom-16 -right-16 h-44 w-44 rounded-full bg-foreground/5" />
+          <span
+            aria-hidden
+            className="absolute bottom-6 right-20 h-14 w-28 rounded-[2rem] border border-foreground/10"
+          />
+        </>
+      )}
+      {variant === 2 && (
+        <>
+          <span aria-hidden className="absolute -top-10 right-6 h-28 w-28 rounded-[2rem] bg-foreground/5 rotate-6" />
+          <span aria-hidden className="absolute top-16 -right-8 h-24 w-24 rounded-full border border-foreground/10" />
+        </>
+      )}
+      {variant === 3 && (
+        <>
+          <span
+            aria-hidden
+            className="absolute top-1/2 -left-16 h-36 w-36 -translate-y-1/2 rounded-full bg-foreground/5"
+          />
+          <span
+            aria-hidden
+            className="absolute top-1/2 left-24 h-10 w-28 -translate-y-1/2 rounded-[2rem] border border-foreground/10"
+          />
+        </>
+      )}
+
+      <h3 className="text-xl md:text-2xl font-bold text-foreground text-balance">{title}</h3>
+      <p className="mt-3 text-[14px] md:text-[15px] leading-relaxed text-foreground/80 text-pretty">{content}</p>
     </div>
   )
 }
