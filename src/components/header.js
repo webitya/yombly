@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu } from "@mui/icons-material"
@@ -9,8 +9,7 @@ import Logo from "./logo"
 
 export default function Header() {
   const [open, setOpen] = useState(false)
-  const [servicesOpen, setServicesOpen] = useState(false)
-  const [resourcesOpen, setResourcesOpen] = useState(false)
+  const [openMenu, setOpenMenu] = useState(null)
   const closeTimeout = useRef(null)
   const pathname = usePathname()
 
@@ -26,7 +25,7 @@ export default function Header() {
     { href: "/leadership", label: "Leadership" },
     { href: "/mentoring", label: "Mentoring" },
     { href: "/team-building", label: "Team Building" },
-     { href: "/revenue-performance-enablement", label: "Revenue performance enablement" },
+    { href: "/revenue-performance-enablement", label: "Revenue performance enablement" },
   ]
 
   const resourcesLinks = [
@@ -35,14 +34,21 @@ export default function Header() {
     { href: "/case-studies", label: "Case Studies" },
   ]
 
-  const handleEnter = (setter) => {
+  const handleEnter = (menuKey) => {
     if (closeTimeout.current) clearTimeout(closeTimeout.current)
-    setter(true)
+    setOpenMenu(menuKey)
   }
 
-  const handleLeave = (setter) => {
-    closeTimeout.current = setTimeout(() => setter(false), 150)
+  const handleLeave = () => {
+    if (closeTimeout.current) clearTimeout(closeTimeout.current)
+    closeTimeout.current = setTimeout(() => setOpenMenu(null), 150)
   }
+
+  useEffect(() => {
+    return () => {
+      if (closeTimeout.current) clearTimeout(closeTimeout.current)
+    }
+  }, [])
 
   return (
     <header className="sticky top-0 z-50 w-full">
@@ -61,23 +67,22 @@ export default function Header() {
             {navLinks.map((link) => {
               if (link.type === "dropdown") {
                 const isServices = link.label === "Services"
-                const dropdownOpen = isServices ? servicesOpen : resourcesOpen
-                const setDropdownOpen = isServices ? setServicesOpen : setResourcesOpen
+                const dropdownOpen = openMenu === (isServices ? "services" : "resources")
                 const dropdownLinks = isServices ? servicesLinks : resourcesLinks
 
                 return (
                   <div
                     key={link.label}
                     className="relative"
-                    onMouseEnter={() => handleEnter(setDropdownOpen)}
-                    onMouseLeave={() => handleLeave(setDropdownOpen)}
+                    onMouseEnter={() => handleEnter(isServices ? "services" : "resources")}
+                    onMouseLeave={handleLeave}
                   >
                     <button
                       className={`transition-all font-medium ${
-                        dropdownLinks.some((d) => d.href === pathname)
-                          ? "text-sky-600"
-                          : "hover:text-sky-500"
+                        dropdownLinks.some((d) => d.href === pathname) ? "text-sky-600" : "hover:text-sky-500"
                       }`}
+                      aria-haspopup="menu"
+                      aria-expanded={dropdownOpen}
                     >
                       {link.label} ▾
                     </button>
@@ -90,6 +95,7 @@ export default function Header() {
                             ? "opacity-100 translate-y-0 pointer-events-auto"
                             : "opacity-0 -translate-y-2 pointer-events-none"
                         }`}
+                      role="menu"
                     >
                       {dropdownLinks.map((d) => {
                         const isActive = pathname === d.href
@@ -98,10 +104,9 @@ export default function Header() {
                             key={d.href}
                             href={d.href}
                             className={`block px-4 py-2 text-gray-700 text-sm transition-all ${
-                              isActive
-                                ? "bg-sky-50 text-sky-600 font-semibold"
-                                : "hover:bg-sky-50 hover:text-sky-600"
+                              isActive ? "bg-sky-50 text-sky-600 font-semibold" : "hover:bg-sky-50 hover:text-sky-600"
                             }`}
+                            role="menuitem"
                           >
                             {d.label}
                           </Link>
@@ -117,11 +122,7 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`transition-all ${
-                    isActive
-                      ? "text-sky-600"
-                      : "text-gray-700 hover:text-sky-500"
-                  }`}
+                  className={`transition-all ${isActive ? "text-sky-600" : "text-gray-700 hover:text-sky-500"}`}
                 >
                   {link.label}
                 </Link>
