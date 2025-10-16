@@ -22,9 +22,9 @@ export default function Header() {
   ]
 
   const servicesLinks = [
-    { href: "/leadership", label: "Leadership" },
+     { href: "/team-building", label: "Revenue Team Building" },
     { href: "/mentoring", label: "Mentoring" },
-    { href: "/team-building", label: "Team Building" },
+    { href: "/leadership", label: "Leadership Developement" },
     { href: "/revenue-performance-enablement", label: "Sales performance enablement" },
   ]
 
