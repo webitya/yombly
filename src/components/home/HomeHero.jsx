@@ -54,12 +54,12 @@ export default function HeroSection() {
           </div>
 
           <h1 className="text-[28px] md:text-[34px] lg:text-[38px] font-bold leading-tight text-balance">
-            Empower{" "}
+            Build, Grow & Future-Proof{" "}
             <span
               className="bg-gradient-to-r from-[#0A66C2] via-[#2F8AF5] to-[#66A9FF] text-transparent bg-clip-text bg-[length:200%_auto]"
               style={{ animation: "gradientShift 6s ease infinite" }}
             >
-              Smarter Sales & Marketing Teams
+              Your revenue Teams — All in One Platform
             </span>
           </h1>
 
@@ -172,8 +172,8 @@ export default function HeroSection() {
               <div className="text-xs md:text-[13px] text-muted-foreground mt-0.5">Enterprises</div>
             </div>
             <div className="text-center">
-              <div className="text-xl md:text-2xl font-bold text-blue-600">99.9%</div>
-              <div className="text-xs md:text-[13px] text-muted-foreground mt-0.5">Uptime</div>
+              <div className="text-xl md:text-2xl font-bold text-blue-600">99%</div>
+              <div className="text-xs md:text-[13px] text-muted-foreground mt-0.5">Accuracy</div>
             </div>
             <div className="text-center">
               <div className="text-xl md:text-2xl font-bold text-blue-600">24/7</div>
@@ -280,7 +280,7 @@ export default function HeroSection() {
     <span className="text-blue-500">
       <EmailIcon fontSize="small" />
     </span>
-    <span>Automated Emails</span>
+    <span>AI Based Mentoring</span>
   </div>
 </div>
 

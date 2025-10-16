@@ -7,7 +7,6 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 export default function HomeScalingWithYombly() {
   const points = [
-    "Hire your first sales team the right way",
     "Train them with market-proven strategies",
     "Build repeatable revenue playbooks",
     "Gain confidence in scale decisions",
@@ -70,7 +69,7 @@ export default function HomeScalingWithYombly() {
             visible: { transition: { staggerChildren: 0.1 } },
           }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-10"
+          className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-6 mb-10"
         >
           {points.map((point, index) => (
             <motion.li

@@ -15,10 +15,10 @@ import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded"
 import ExpandLessRoundedIcon from "@mui/icons-material/ExpandLessRounded"
 
 const TABS = [
-  { id: 0, title: "Team Building Solution", icon: PeopleIcon },
+  { id: 0, title: "Revenue Team Building Solution", icon: PeopleIcon },
   { id: 1, title: "Mentoring", icon: SchoolIcon },
-  { id: 2, title: "LeaderShip", icon: LeaderboardIcon },
-  { id: 3, title: "Revenue Performance Enablement", icon: EmojiObjectsIcon },
+  { id: 2, title: "LeaderShip Developement", icon: LeaderboardIcon },
+  { id: 3, title: "Sales Performance Enablement", icon: EmojiObjectsIcon },
 ]
 
 const TAB_MESSAGES = [
@@ -384,7 +384,7 @@ function LDStructure() {
   const [open, setOpen] = useState(false)
   return (
     <div>
-      <Section title="Revenue performance enablement">
+      <Section title="Sales performance enablement">
         <p className="font-medium">
           We help your sales and revenue teams sustain performance through a Performance Enablement System — it tracks
           performance, identifies capability gaps, and provides timely skill interventions to keep revenue growth on

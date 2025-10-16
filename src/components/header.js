@@ -25,7 +25,7 @@ export default function Header() {
     { href: "/leadership", label: "Leadership" },
     { href: "/mentoring", label: "Mentoring" },
     { href: "/team-building", label: "Team Building" },
-    { href: "/revenue-performance-enablement", label: "Revenue performance enablement" },
+    { href: "/revenue-performance-enablement", label: "Sales performance enablement" },
   ]
 
   const resourcesLinks = [
