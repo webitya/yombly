@@ -23,9 +23,10 @@ export default function MobileDrawer({ open, setOpen, navLinks = [], servicesLin
   const [expanded, setExpanded] = useState(null);
 
   const defaultServices = [
-    { href: "/leadership", label: "Leadership", icon: <WorkspacePremiumIcon fontSize="small" /> },
-    { href: "/mentoring", label: "Mentoring", icon: <SchoolIcon fontSize="small" /> },
-    { href: "/team-building", label: "Team Building", icon: <GroupsIcon fontSize="small" /> },
+   
+    { href: "/team-building", label: "Revenue Team Building", icon: <GroupsIcon fontSize="small" /> },
+     { href: "/mentoring", label: "Mentoring", icon: <SchoolIcon fontSize="small" /> },
+      { href: "/leadership", label: "Leadership Developement", icon: <WorkspacePremiumIcon fontSize="small" /> },
      { href: "/revenue-performance-enablement", label: "Sales performance enablement", icon: <SchoolIcon fontSize="small" /> },
   ];
   const services = servicesLinks && servicesLinks.length ? servicesLinks : defaultServices;
