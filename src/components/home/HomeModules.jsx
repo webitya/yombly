@@ -236,8 +236,9 @@ function TeamBuilding() {
   const [open, setOpen] = useState(false)
   return (
     <div>
-      <Section title="Revenue team building solution">
-        <p className="font-medium">Smart Screening – Hire Right, Every Time</p>
+      <Section>
+       <p className="font-bold text-blue-600 text-xl">Revenue team building solution</p>
+        <p className="font-bold text-black text-xl">Smart Screening – Hire Right, Every Time</p>
         <ul className="ml-4 list-disc space-y-1">
           <Bullet icon={CheckCircleIcon}>Identify top performers early</Bullet>
           <Bullet icon={CheckCircleIcon}>Eliminate hiring mismatches</Bullet>
