@@ -10,6 +10,8 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp"
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch"
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline"
 import { SchoolIcon, TrendingUpDownIcon } from "lucide-react"
+import { motion } from "framer-motion";
+import AIBadge from "@/data/demo"
 
 export default function HeroSection() {
   return (
@@ -49,10 +51,10 @@ export default function HeroSection() {
       <div className="relative z-30 container mx-auto px-5 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-center py-8">
         {/* Left */}
         <div className="text-center lg:text-left space-y-4" style={{ animation: "fadeUp 0.9s ease-out" }}>
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-[#0A66C2]/20 to-[#2F8AF5]/20 border border-[#0A66C2]/35 text-xs md:text-sm font-semibold text-[#2F8AF5] shadow-md shadow-[#0A66C2]/20">
-            <TrendingUpIcon fontSize="small" />
-            AI Revenue productivity platform 
-          </div>
+<AIBadge/>
+
+
+
 
           <h1 className="text-[28px] md:text-[34px] lg:text-[38px] font-bold leading-tight text-balance">
             Build, Grow & Future-Proof{" "}
