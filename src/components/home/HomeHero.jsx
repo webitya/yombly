@@ -278,11 +278,11 @@ export default function HeroSection() {
               />
             </div>
 
-            <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl border border-[#0A66C2]/30 hover:border-[#0A66C2]/55 transition-all duration-500 hover:scale-[1.015] bg-gradient-to-br from-[#001E50]/50 to-[#004182]/30 backdrop-blur-sm">
+            <div className="relative z-10 rounded-xl overflow-hidden  transition-all duration-500 hover:scale-[1.015]  backdrop-blur-sm">
               <img
-                src="/heroimage.webp"
+                src="/heroimg2.webp"
                 alt="Enterprise AI dashboard preview"
-                className="w-auto h-auto max-w-[640px] md:max-w-[700px] lg:max-w-[740px] max-h-[64vh] object-contain"
+                className="w-auto h-auto max-w-[780px] md:max-w-[840px] lg:max-w-[840px] max-h-[70vh] object-contain"
               />
               {/* Scanner overlay */}
               <div
