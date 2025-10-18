@@ -278,7 +278,7 @@ export default function HeroSection() {
               />
             </div>
 
-            <div className="relative z-10 rounded-xl overflow-hidden  transition-all duration-500 hover:scale-[1.015]  backdrop-blur-sm">
+            <div className="relative z-10 rounded-xl overflow-hidden  transition-all duration-500   backdrop-blur-sm">
               <img
                 src="/heroimg2.webp"
                 alt="Enterprise AI dashboard preview"
@@ -291,7 +291,7 @@ export default function HeroSection() {
                 style={{
                   background: "linear-gradient(180deg, transparent 0%, rgba(10,102,194,0.12) 45%, transparent 55%)",
                   backgroundSize: "100% 200%",
-                  animation: "scan 6.5s linear infinite",
+                  animation: "scan 3.5s linear infinite",
                   mixBlendMode: "screen",
                 }}
               />
