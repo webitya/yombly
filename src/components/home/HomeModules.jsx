@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import SmsIcon from "@mui/icons-material/Sms"
 import CheckCircleIcon from "@mui/icons-material/CheckCircle"
 import WorkIcon from "@mui/icons-material/Work"
 import GroupIcon from "@mui/icons-material/Group"
@@ -17,19 +16,57 @@ import ExpandLessRoundedIcon from "@mui/icons-material/ExpandLessRounded"
 const TABS = [
   { id: 0, title: "Revenue Team Building Solution", icon: PeopleIcon },
   { id: 1, title: "Mentoring", icon: SchoolIcon },
-  { id: 2, title: "LeaderShip Developement", icon: LeaderboardIcon },
+  { id: 2, title: "Leadership Developement", icon: LeaderboardIcon },
   { id: 3, title: "Sales Performance Enablement", icon: EmojiObjectsIcon },
 ]
 
+const DEMO_LINKS = [
+  "/team-building",
+  "/mentoring",
+  "/leadership",
+  "/revenue-performance-enablement",
+]
+
 const TAB_MESSAGES = [
-  "Learning that doesn’t stay in the classroom.Our Monthly Mentoring & Capability-Building Programs turn knowledge into measurable performance — helping your teams execute better, lead stronger, and deliver results. From junior executives mastering outreach and time planning to sales managers driving teams, hiring right, and forecasting with precision — we build capability that compounds every month. Outcome: Sharper skills. Stronger teams. Sustainable growth.",
-  "Learning that doesn’t stay in the classroom.Our Monthly Mentoring & Capability-Building Programs turn knowledge into measurable performance — helping your teams execute better, lead stronger, and deliver results. From junior executives mastering outreach and time planning to sales managers driving teams, hiring right, and forecasting with precision — we build capability that compounds every month. Outcome: Sharper skills. Stronger teams. Sustainable growth",
-  "Turn your top managers into growth-driving leaders — in just 12 months. The “Build Your Next Leaders” Program helps ₹10–100 Cr organizations create a self-sustaining growth engine through leadership audits, capability development, real-world projects, and hands-on mentoring. While your team learns to think like owners, you gain time to focus on scaling — not supervising. Outcome: Your business grows — even when you’re not in every meeting",
-  "Hiring top talent isn’t the finish line — it’s just the beginning. We empower your sales and revenue teams to sustain high performance through our Performance Enablement System, designed to keep growth steady and on track. By integrating Performance Intelligence, Skill Enablement, and Performance Acceleration Support, we don’t just measure performance — we elevate it. The result: consistent outcomes, stronger teams, and predictable revenue growth.",
+  "Learning that doesn't stay in the classroom.Our Monthly Mentoring & Capability-Building Programs turn knowledge into measurable performance — helping your teams execute better, lead stronger, and deliver results. From junior executives mastering outreach and time planning to sales managers driving teams, hiring right, and forecasting with precision — we build capability that compounds every month. Outcome: Sharper skills. Stronger teams. Sustainable growth.",
+  "Learning that doesn't stay in the classroom.Our Monthly Mentoring & Capability-Building Programs turn knowledge into measurable performance — helping your teams execute better, lead stronger, and deliver results. From junior executives mastering outreach and time planning to sales managers driving teams, hiring right, and forecasting with precision — we build capability that compounds every month. Outcome: Sharper skills. Stronger teams. Sustainable growth",
+  'Turn your top managers into growth-driving leaders — in just 12 months. The "Build Your Next Leaders" Program helps ₹10–100 Cr organizations create a self-sustaining growth engine through leadership audits, capability development, real-world projects, and hands-on mentoring. While your team learns to think like owners, you gain time to focus on scaling — not supervising. Outcome: Your business grows — even when you\'re not in every meeting',
+  "Hiring top talent isn't the finish line — it's just the beginning. We empower your sales and revenue teams to sustain high performance through our Performance Enablement System, designed to keep growth steady and on track. By integrating Performance Intelligence, Skill Enablement, and Performance Acceleration Support, we don't just measure performance — we elevate it. The result: consistent outcomes, stronger teams, and predictable revenue growth.",
+]
+
+const TAB_BULLETS = [
+  [
+    { text: "Identify top performers early", color: "bg-blue-500" },
+    { text: "Eliminate hiring mismatches", color: "bg-purple-500" },
+    { text: "Save time, cost, and effort", color: "bg-pink-500" },
+    { text: "50+ parameter competency assessment", color: "bg-indigo-500" },
+    { text: "Expert-led screening", color: "bg-cyan-500" },
+  ],
+  [
+    { text: "Outbound & account management", color: "bg-blue-500" },
+    { text: "Time planning & execution", color: "bg-purple-500" },
+    { text: "Decision-maker outreach", color: "bg-pink-500" },
+    { text: "Team management & coaching", color: "bg-indigo-500" },
+    { text: "Forecasting & pipeline planning", color: "bg-cyan-500" },
+  ],
+  [
+    { text: "Leadership audit (identify 2–3 HiPos)", color: "bg-blue-500" },
+    { text: "Capability dev: strategy, P&L, negotiation", color: "bg-purple-500" },
+    { text: "Quarterly on-the-job projects", color: "bg-pink-500" },
+    { text: "Monthly 1:1 & group mentoring", color: "bg-indigo-500" },
+    { text: "Founder alignment & ownership transfer", color: "bg-cyan-500" },
+  ],
+  [
+    { text: "Right talent in", color: "bg-blue-500" },
+    { text: "Accountability via tracking", color: "bg-purple-500" },
+    { text: "Continuous capability growth", color: "bg-pink-500" },
+    { text: "Performance Intelligence", color: "bg-indigo-500" },
+    { text: "Skill Enablement & Acceleration", color: "bg-cyan-500" },
+  ],
 ]
 
 export default function ServicesTabs() {
-  const [active, setActive] = useState(2) // start on the third to show "active" styling
+  const [active, setActive] = useState(2)
   const [expanded, setExpanded] = useState(true)
   const intervalRef = useRef(null)
   const pauseRef = useRef(null)
@@ -56,7 +93,6 @@ export default function ServicesTabs() {
     setActive(idx)
     stop()
     if (pauseRef.current) clearTimeout(pauseRef.current)
-    // pause auto-rotate for 3 minutes after manual interaction
     pauseRef.current = setTimeout(() => start(), 180000)
   }
 
@@ -176,7 +212,6 @@ export default function ServicesTabs() {
             className="relative grid md:grid-cols-2 items-stretch gap-3.5 md:gap-5 rounded-3xl border border-foreground/10 bg-foreground/[0.03] p-4 md:p-5 shadow-sm min-h-[320px] md:min-h-[380px]"
           >
             <div className="pointer-events-none absolute -inset-1 rounded-[1.6rem] bg-foreground/[0.02]" />
-            {/* Left: keep detailed per-tab content */}
             <div
               id={`tab-panel-${active}`}
               role="tabpanel"
@@ -189,19 +224,20 @@ export default function ServicesTabs() {
               {active === 3 && <LDStructure />}
 
               <div className="mt-4 md:mt-5">
-                <button
-                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                  className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-400"
+                <a
+                  href={DEMO_LINKS[active]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-400 transition-colors"
                 >
                   <CheckCircleIcon fontSize="small" />
-                  {"Schedule a demo"}
-                </button>
+                  learn more
+                </a>
               </div>
             </div>
 
-            {/* Right: unique curved card with per-tab message */}
             <div className="relative h-full flex items-center">
-              <CurvedCard title={TABS[active].title} content={TAB_MESSAGES[active]} variant={active} />
+              <BulletCard title={TABS[active].title} bullets={TAB_BULLETS[active]} variant={active} />
               <div className="pointer-events-none absolute -inset-6 md:-inset-10 bg-[radial-gradient(60%_50%_at_100%_10%,_rgba(99,102,241,0.18),_transparent_60%)]" />
             </div>
           </motion.div>
@@ -211,7 +247,6 @@ export default function ServicesTabs() {
   )
 }
 
-/* ---------- CONTENT (adapted from the original file, JS only) ---------- */
 function Section({ title, children }) {
   return (
     <div className="mb-4 last:mb-0">
@@ -237,8 +272,11 @@ function TeamBuilding() {
   return (
     <div>
       <Section>
-       <p className="font-bold text-blue-600 text-xl">Revenue team building solution</p>
-        <p className="font-bold text-black text-xl">Smart Screening – Hire Right, Every Time</p>
+        <p className="font-bold text-blue-600 text-xl">Revenue team building solution</p>
+        <p className="font-bold text-black text-xl">Talent Intelligence Report – Hire Right, Every Time</p>
+        <p className=" text-gray-800 text-sm">
+          Predict the performance before hiring with our talent intelligence report
+        </p>
         <ul className="ml-4 list-disc space-y-1">
           <Bullet icon={CheckCircleIcon}>Identify top performers early</Bullet>
           <Bullet icon={CheckCircleIcon}>Eliminate hiring mismatches</Bullet>
@@ -270,12 +308,13 @@ function TeamBuilding() {
               <p className="mt-2 text-foreground/80">Impact: Faster closures and up to 70–80% cost savings.</p>
             </Section>
 
-            <Section title="30‑Day Onboarding Accelerator">
+            <Section title="30‑Day Onboarding Accelerator- Make New Hires Productive Fast">
               <ul className="ml-4 list-disc space-y-1">
                 <Bullet icon={GroupIcon}>Product knowledge</Bullet>
                 <Bullet icon={GroupIcon}>Process mastery</Bullet>
                 <Bullet icon={GroupIcon}>Pitch & performance readiness</Bullet>
               </ul>
+              <p className="mt-2 text-foreground/80">Outcome: Faster ramp-up. Quicker results. Stronger ROI. </p>
             </Section>
 
             <button
@@ -295,6 +334,12 @@ function MentoringPrograms() {
   const [open, setOpen] = useState(false)
   return (
     <div>
+      <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-100 to-indigo-100 px-3 py-1.5">
+        <span className="text-xs font-semibold text-purple-700">Powered by</span>
+        <span className="text-xs font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+          SalesSyllabus
+        </span>
+      </div>
       <Section title="Mentoring & Capability-Building Programs">
         <p className="font-medium">Monthly mentoring that converts learning into performance.</p>
       </Section>
@@ -342,9 +387,11 @@ function LeadershipProgram() {
     <div>
       <Section title="Build Your Next Leaders">
         <p>Transform managers into future business leaders in 12 months.</p>
-          <p>Transform Managers into Strategic, Accountable, Growth-Focused Leaders</p>
-        <p>For organizations scaling from ₹15 Cr to ₹100 Cr. Equip high-potential managers to drive revenue, scale operations, and make founder-level decisions with confidence.</p>
-
+        <p>Transform Managers into Strategic, Accountable, Growth-Focused Leaders</p>
+        <p>
+          For organizations scaling from ₹15 Cr to ₹100 Cr. Equip high-potential managers to drive revenue, scale
+          operations, and make founder-level decisions with confidence.
+        </p>
       </Section>
       {!open && (
         <button
@@ -424,78 +471,10 @@ function LDStructure() {
   )
 }
 
-/* ---------- Right column chat mock to resemble the demo ---------- */
-function ChatMock() {
+function BulletCard({ title, bullets, variant = 0 }) {
   return (
-    <motion.div
-      initial={{ y: 0 }}
-      animate={{ y: [0, -4, 0] }}
-      transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-      className="relative w-full"
-    >
-      <div className="relative mx-auto w-full max-w-md rounded-2xl border border-foreground/10 bg-background shadow-[0_20px_60px_rgba(99,102,241,0.12)]">
-        {/* Header */}
-        <div className="flex items-center gap-3 border-b border-foreground/10 px-4 py-3">
-          <img
-            src={"/placeholder.svg?height=32&width=32&query=profile_pic"}
-            alt="Melissa Hammond"
-            className="h-8 w-8 rounded-full object-cover"
-          />
-          <p className="font-semibold text-foreground">Melissa Hammond</p>
-        </div>
-        {/* Messages */}
-        <div className="space-y-2.5 px-4 py-4">
-          <Bubble who="them">Hi, Melissa! Thanks for taking the time to chat with me.</Bubble>
-          <Bubble who="me">Hi Alex! I&apos;m doing well, thanks. How can I help?</Bubble>
-          <Bubble who="them">
-            Glad to hear! I wanted to connect because I saw your team has been expanding lately.
-          </Bubble>
-        </div>
-        {/* Footer composer */}
-        <div className="flex items-center gap-2 border-t border-foreground/10 bg-foreground/[0.02] px-3 py-2">
-          <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-indigo-600 text-white">
-            <SmsIcon fontSize="inherit" />
-          </span>
-          <div className="flex-1">
-            <div className="rounded-lg bg-background px-3 py-2 text-sm text-foreground/70 shadow-inner">
-              {"Hi, Melissa! Thanks for taking the time to chat..."}
-            </div>
-          </div>
-          <div className="flex -space-x-2">
-            <img src="/avatar-1.jpg" alt="avatar" className="h-6 w-6 rounded-full border border-background" />
-            <img src="/avatar-2.jpg" alt="avatar" className="h-6 w-6 rounded-full border border-background" />
-            <img src="/avatar-3.jpg" alt="avatar" className="h-6 w-6 rounded-full border border-background" />
-          </div>
-        </div>
-      </div>
-      {/* soft side/floor light */}
-      <div className="pointer-events-none absolute -inset-6 md:-inset-10 bg-[radial-gradient(60%_50%_at_100%_10%,_rgba(99,102,241,0.18),_transparent_60%)]" />
-    </motion.div>
-  )
-}
-
-function Bubble({ who = "them", children }) {
-  const isMe = who === "me"
-  return (
-    <div className={["flex", isMe ? "justify-end" : "justify-start"].join(" ")}>
-      <div
-        className={[
-          "max-w-[80%] rounded-xl px-3 py-2 text-sm",
-          isMe
-            ? "bg-background border border-foreground/10 text-foreground shadow-sm"
-            : "bg-indigo-50 text-indigo-900 border border-indigo-100",
-        ].join(" ")}
-      >
-        {children}
-      </div>
-    </div>
-  )
-}
-
-function CurvedCard({ title, content, variant = 0 }) {
-  return (
-    <div className="relative overflow-hidden rounded-[2rem] border border-foreground/10 bg-background p-5 md:p-7 shadow-sm">
-      {/* Decorative curves - solid neutrals for accessibility, unique per variant */}
+    <div className="relative overflow-hidden rounded-[2rem] border border-foreground/10 bg-background p-5 md:p-7 shadow-sm w-full">
+      {/* Decorative curves - unique per variant */}
       {variant === 0 && (
         <>
           <span aria-hidden className="absolute -top-16 -left-16 h-40 w-40 rounded-full bg-foreground/5" />
@@ -530,8 +509,18 @@ function CurvedCard({ title, content, variant = 0 }) {
         </>
       )}
 
-      <h3 className="text-xl md:text-2xl font-bold text-foreground text-balance">{title}</h3>
-      <p className="mt-3 text-[14px] md:text-[15px] leading-relaxed text-foreground/80 text-pretty">{content}</p>
+      <h3 className="text-xl md:text-2xl font-bold text-foreground text-balance mb-6">{title}</h3>
+
+      <ul className="space-y-3">
+        {bullets.map((bullet, idx) => (
+          <li key={idx} className="flex items-start gap-3">
+            <span className={`${bullet.color} h-2.5 w-2.5 rounded-full flex-shrink-0 mt-2`} />
+            <span className="text-[14px] md:text-[15px] leading-relaxed text-foreground/85 font-medium">
+              {bullet.text}
+            </span>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
