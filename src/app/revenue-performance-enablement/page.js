@@ -17,6 +17,7 @@ import Principles from "@/components/revenue-performance/principles"
 import Testimonials from "@/components/revenue-performance/testimonials"
 import Cta from "@/components/revenue-performance/cta"
 import Steps from "@/components/revenue-performance/steps"
+import ThreePillars from "@/components/revenue-performance/three-pillars"
 
 export default function Page() {
   return (
@@ -31,7 +32,7 @@ export default function Page() {
 
       {/* Hero */}
       <Hero />
-
+      <ThreePillars/>
       {/* TOC in container for alignment */}
       <div className="mx-auto w-full max-w-6xl px-4 md:px-6">
         <Toc />

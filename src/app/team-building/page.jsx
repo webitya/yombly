@@ -68,7 +68,7 @@ export default function TeamBuildingPage() {
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-700">
                 <PsychologyIcon fontSize="small" />
               </div>
-              <h2 className="text-lg font-semibold text-slate-900">Smart Screening System</h2>
+              <h2 className="text-lg font-semibold text-slate-900">Talent Intelligence Report – Hire Right, Every Time</h2>
             </div>
             <p className="mt-3 text-sm leading-6 text-slate-600">
               AI Capability Mapping across 50+ skill, behavioral, and cognitive parameters with role‑specific predictive
@@ -127,7 +127,7 @@ export default function TeamBuildingPage() {
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-700">
                 <TimelineIcon fontSize="small" />
               </div>
-              <h2 className="text-lg font-semibold text-slate-900">30‑Day AI Onboarding Accelerator</h2>
+              <h2 className="text-lg font-semibold text-slate-900">30‑Day Onboarding Accelerator</h2>
             </div>
             <p className="mt-3 text-sm leading-6 text-slate-600">
               Compress 90‑day productivity to 30 days with role‑specific simulation, pitch readiness, and manager
