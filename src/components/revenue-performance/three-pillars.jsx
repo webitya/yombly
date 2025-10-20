@@ -19,7 +19,7 @@ export default function SalesPerformanceEnablement() {
       border: "#93c5fd",
     },
     {
-      title: "Learning & Development (L&D)",
+      title: "Sales Performance Enablement",
       desc: "Ensures continuous growth and adaptability.",
       color: "#fbbf24",
       bg: "linear-gradient(135deg, #fef3c7, #fff8e1)",
@@ -48,7 +48,7 @@ export default function SalesPerformanceEnablement() {
           To build a consistently high-performing revenue team, three elements
           must work together in harmony: <strong>Hiring</strong> +{" "}
           <strong>Performance Tracking</strong> +{" "}
-          <strong>Learning & Development.</strong>
+          <strong>Sales Performance Enablement.</strong>
         </motion.p>
       </div>
 
@@ -83,7 +83,7 @@ export default function SalesPerformanceEnablement() {
       {/* Description */}
       <div className="text-center text-gray-700 text-sm sm:text-base leading-7 max-w-4xl mx-auto">
         <p className="mb-3">
-          A strong <strong>L&D structure</strong> empowers your organization to
+          A strong <strong>Sales Performance Ena structure</strong> empowers your organization to
           translate potential into performance — by equipping your sales and
           marketing teams with the skills, insights, and behaviors that drive
           revenue.
@@ -92,7 +92,7 @@ export default function SalesPerformanceEnablement() {
           Without continuous learning and clear performance management, even
           great hires lose momentum. For consistent growth, you need the right
           people, effective managers, and an intelligent{" "}
-          <strong>L&D system</strong> working together.
+          <strong>Sales Performance Enablement system</strong> working together.
         </p>
         <p className="font-semibold text-gray-900">
           Miss any one of these — and performance will always remain

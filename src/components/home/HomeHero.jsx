@@ -204,7 +204,7 @@ export default function HeroSection() {
             >
               <span className="flex items-center gap-2">
                 <HelpOutlineIcon fontSize="small" />
-                Ask 1 Free Question
+                Get 1 Business Query Solved Free!
               </span>
             </Link>
           </div>

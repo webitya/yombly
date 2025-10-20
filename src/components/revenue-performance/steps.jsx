@@ -109,7 +109,7 @@ export default function Steps() {
       icon: <DomainAddIcon fontSize="small" />,
       points: [
         "Standardize into hiring & onboarding",
-        "Train internal champions to run L&D",
+        "Train internal champions to run Sales Performance Enablement",
         "Document for repeatability and consistency",
       ],
     },

@@ -17,7 +17,7 @@ const steps = [
   {
     title: "Define Objectives & Outcomes",
     bullets: [
-      "Align L&D to revenue goals",
+      "Align Sales Performance Enablement to revenue goals",
       "Ramp new hires faster",
       "Improve conversion & average deal size",
       "Set measurable KPIs (conversion, ramp time, velocity)",
@@ -120,10 +120,10 @@ export default function LearningAndDevelopmentPage() {
               Services
             </span>
             <h1 className="text-balance text-3xl font-bold leading-tight sm:text-4xl">
-              Learning & Development Structure
+              Sales Performance Enablement Structure
             </h1>
             <p className="max-w-3xl text-pretty text-sm leading-relaxed text-blue-100 sm:text-base">
-              A practical, performance‑linked L&D system that drives revenue outcomes, accelerates ramp‑up, and scales
+              A practical, performance‑linked Sales Performance Enablement system that drives revenue outcomes, accelerates ramp‑up, and scales
               across teams.
             </p>
             <div className="mt-2">
@@ -215,7 +215,7 @@ export default function LearningAndDevelopmentPage() {
         <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
             <div>
-              <h4 className="text-lg font-semibold">Ready to operationalize L&D?</h4>
+              <h4 className="text-lg font-semibold">Ready to operationalize Sales Performance Enablement?</h4>
               <p className="text-sm text-blue-100">
                 Get the end‑to‑end playbook and start improving ramp‑up, conversion, and velocity.
               </p>
