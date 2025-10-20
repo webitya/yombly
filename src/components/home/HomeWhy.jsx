@@ -66,8 +66,9 @@ export default function WhyYombly() {
             </span>
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
-            A single intelligent platform that brings your team’s hiring,
-            training, and growth together — simple, connected, and future-ready.
+          Yombly is a Sales Productivity Platform that that bridges pre-hire assessment and post-hire enablement.for revenue teams.
+
+Our Talent Intelligence System not only helps you hire right — it empowers organization to continuously maps skill strengths and gaps to guide mentoring and enablement, driving measurable revenue performance.”
           </p>
         </div>
 

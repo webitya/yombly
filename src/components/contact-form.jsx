@@ -3,12 +3,14 @@ import { useState } from "react"
 import { FiMail, FiLoader } from "react-icons/fi"
 
 const services = [
-  "Smart Screening System",
-  "Revenue Team Continuity Service",
-  "30-Day Onboarding Program",
-  "Monthly Mentoring Sessions",
-  "Build Your Next Leaders (12-Month Program)",
+  "Talent Intelligence Report — a pre-hiring test that predicts on-the-job performance before you hire.",
+  "Pre-Screened & Intent-Verified Candidates",
+  "Onboarding Program to make new hire ready",
+  "Mentoring Solution for your revenue Team",
+  "Leadership Development Solution",
+  "Sales Performance Enablement",
 ]
+
 
 export default function ContactForm() {
   const [form, setForm] = useState({ name: "", email: "", service: "", message: "" })

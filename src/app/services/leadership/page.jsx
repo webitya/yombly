@@ -51,7 +51,7 @@ export default function LeadershipPage() {
               className="inline-flex items-center rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground"
             >
               <HelpOutlineIcon className="-ml-0.5 mr-2 !h-4 !w-4" />
-              {"Ask 1 Free Question"}
+              {"Get 1 Business Query Solved Free!"}
             </Link>
             <p className="text-xs text-muted-foreground">Describe your leadership bottleneck; get a short playbook.</p>
           </div>

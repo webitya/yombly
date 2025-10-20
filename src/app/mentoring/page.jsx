@@ -87,7 +87,7 @@ export default function MentoringPage() {
             </a>
             <a href="/tickets/raise" className="inline-flex">
               <button className="inline-flex items-center justify-center rounded-lg border border-white/80 bg-transparent px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
-                Ask 1 Free Question
+                Get 1 Business Query Solved Free!
               </button>
             </a>
           </div>
@@ -348,7 +348,7 @@ export default function MentoringPage() {
                 </a>
                 <a href="/tickets/raise" className="inline-flex">
                   <button className="inline-flex items-center justify-center rounded-md border border-white/80 bg-transparent px-4 py-2.5 text-sm font-medium text-white transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-purple-800">
-                    Ask 1 Free Question
+                    Get 1 Business Query Solved Free!
                   </button>
                 </a>
               </div>

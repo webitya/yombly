@@ -11,8 +11,8 @@ export default function Page() {
 
    <main className="mx-auto max-w-4xl px-4 py-10">
       <header className="mb-6">
-        <h1 className="text-balance text-3xl font-bold tracking-tight">Raise a Support Ticket</h1>
-        <p className="mt-2 opacity-80">Submit your issue and receive a YOMBLY ticket ID for tracking.</p>
+        <h1 className="text-balance text-3xl font-bold tracking-tight">Get your 1st business query solved for free</h1>
+        <p className="mt-2 opacity-80">Ask one question about your sales or marketing challenge — and we’ll give you the smartest, most practical solution to solve it.</p>
       </header>
       <RaiseTicketForm />
     </main>

@@ -184,7 +184,7 @@ export default function MobileDrawer({ open, setOpen, navLinks = [], servicesLin
                 onClick={() => setOpen(false)}
                 className="block px-3 py-2 rounded-md bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold shadow-sm hover:opacity-90 transition text-center"
               >
-                Ask 1 Free Question
+                Get 1 Business Query Solved Free!
               </Link>
             </li>
           </ul>
