@@ -67,7 +67,7 @@ export default function Hero() {
         >
           <div className="relative rounded-xl overflow-hidden border border-blue-100 bg-white shadow-md">
             <Image
-              src="/hero5.jpg"
+              src="/abouthero.webp"
               alt="Unified Revenue Platform"
               width={440}
               height={340}
