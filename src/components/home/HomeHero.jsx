@@ -67,7 +67,7 @@ export default function HeroSection() {
           </h1>
 
           <p className="text-muted-foreground text-sm md:text-[15px] max-w-xl mx-auto lg:mx-0 leading-relaxed">
-            From smarter hiring to stronger performance — one continuous intelligence system.
+            From smarter hiring to stronger performance — one continuous intelligence system .
           </p>
 
           {/* Feature Pills - compact */}
