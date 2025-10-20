@@ -46,7 +46,7 @@ export default function YomblyChatbot() {
       if (!loaded)
         loaded = [
           { q: "What is Yombly?", a: "Yombly is a modern platform for streamlined learning and sales enablement." },
-          { q: "How can I contact support?", a: "Use the contact form in the app or email support@yombly.example." },
+          { q: "How can I contact support?", a: "Use the contact form in the app or email contact.yombly@gmail.com." },
           { q: "Is there a free plan?", a: "We offer a starter plan for trying out core features. Upgrade anytime." },
         ]
 
@@ -63,7 +63,7 @@ export default function YomblyChatbot() {
     } catch {
       setQas([
         { q: "What is Yombly?", a: "Yombly is a modern platform for streamlined learning and sales enablement." },
-        { q: "How can I contact support?", a: "Use the contact form in the app or email support@yombly.example." },
+        { q: "How can I contact support?", a: "Use the contact form in the app or email contact.yombly@gmail.com." },
         { q: "Is there a free plan?", a: "We offer a starter plan for trying out core features. Upgrade anytime." },
       ])
     }

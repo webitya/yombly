@@ -299,7 +299,7 @@ export default function HeroSection() {
 
             <div className="relative z-10 rounded-xl overflow-hidden  transition-all duration-500   backdrop-blur-sm">
               <img
-                src="/heroimg2.webp"
+                src="/homeherof.webp"
                 alt="Enterprise AI dashboard preview"
                 className="w-auto h-auto max-w-[780px] md:max-w-[840px] lg:max-w-[840px] max-h-[70vh] object-contain"
               />
